@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1487038428425" TestSessionContainerId="3e82fb50-ad1d-448b-8e2b-897f3c3a96f0" version="1.0">
+<SrcFileList>
+<SrcFile Content="package Dominion;&#13;&#10;&#13;&#10;import static org.junit.Assert.*;&#13;&#10;&#13;&#10;import java.util.ArrayList;&#13;&#10;import java.util.List;&#13;&#10;&#13;&#10;import org.junit.Test;&#13;&#10;&#13;&#10;public class PlayerTest1&#13;&#10;{&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testGetMoney() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;p.discardAll(p.hand);&#13;&#10;&#9;&#9;p.hand.add(new Card(&quot;Copper&quot;));&#13;&#10;&#9;&#9;assertEquals(&quot;One copper&quot;, 1, p.getMoney());&#13;&#10;&#9;&#9;p.hand.add(new Card(&quot;Silver&quot;));&#13;&#10;&#9;&#9;assertEquals(&quot;One copper, one silver&quot;, 3, p.getMoney());&#13;&#10;&#9;&#9;p.hand.add(new Card(&quot;Gold&quot;));&#13;&#10;&#9;&#9;assertEquals(&quot;One copper, one silver, one gold&quot;, 6, p.getMoney());&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testTurn() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testShuffle() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;int cop = 0;&#13;&#10;&#9;&#9;int es = 0;&#13;&#10;&#9;&#9;boolean same = true;&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;List&lt;Card&gt; c = new ArrayList();&#13;&#10;&#9;&#9;List&lt;Card&gt; test = new ArrayList();&#13;&#10;&#9;&#9;for (int i = 0; i &lt; 10; i++)&#13;&#10;&#9;&#9;&#9;c.add(new Card(&quot;Copper&quot;));&#13;&#10;&#9;&#9;for (int i = 0; i &lt; 10; i++)&#13;&#10;&#9;&#9;&#9;c.add(new Card(&quot;Estate&quot;));&#13;&#10;&#9;&#9;&#13;&#10;&#13;&#10;&#9;&#9;for (int i = 0; i &lt; 10; i++)&#13;&#10;&#9;&#9;&#9;test.add(new Card(&quot;Copper&quot;));&#13;&#10;&#9;&#9;for (int i = 0; i &lt; 10; i++)&#13;&#10;&#9;&#9;&#9;test.add(new Card(&quot;Estate&quot;));&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;List&lt;Card&gt; s = p.shuffle(c);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;for (int i = 0; i &lt; 20; i++)&#13;&#10;&#9;&#9;{&#13;&#10;&#9;&#9;&#9;if (s.get(i).getName() != test.get(i).getName())&#13;&#10;&#9;&#9;&#9;&#9;same = false;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;for (int i = 0; i &lt; 20; i++)&#13;&#10;&#9;&#9;{&#13;&#10;&#9;&#9;&#9;if (s.get(i).getName() == &quot;Copper&quot;)&#13;&#10;&#9;&#9;&#9;&#9;cop++;&#13;&#10;&#9;&#9;&#9;if (s.get(i).getName() == &quot;Estate&quot;)&#13;&#10;&#9;&#9;&#9;&#9;es++;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;assert(same == false);&#13;&#10;&#9;&#9;assert(s.size() == 20);&#13;&#10;&#9;&#9;assert(es == 10);&#13;&#10;&#9;&#9;assert(cop == 10);&#13;&#10;&#9;&#9;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testPlayer() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;assert(p.playerNum == 1);&#13;&#10;&#9;&#9;assert(p.hand.size() == 5);&#13;&#10;&#9;&#9;for (int i = 0; i &lt; 5; i++)&#13;&#10;&#9;&#9;&#9;assert(p.hand.get(i).getName() == &quot;Copper&quot; || p.hand.get(i).getName() == &quot;Estate&quot;);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testDrawDeck() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;List&lt;Card&gt; h = new ArrayList();&#13;&#10;&#9;&#9;List&lt;Card&gt; d = new ArrayList();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;d.add(new Card(&quot;Duchy&quot;));&#13;&#10;&#9;&#9;d.add(new Card(&quot;Province&quot;));&#13;&#10;&#9;&#9;d.add(new Card(&quot;Silver&quot;));&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;p.deck = d;&#13;&#10;&#9;&#9;p.hand = h;&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;p.drawDeck(3);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;assert(p.hand.get(0).getName() == &quot;Duchy&quot;);&#13;&#10;&#9;&#9;assert(p.hand.get(1).getName() == &quot;Province&quot;);&#13;&#10;&#9;&#9;assert(p.hand.get(2).getName() == &quot;Silver&quot;);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;assertEquals(&quot;d should be empty&quot;, 0, d.size());&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testDiscard() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;List&lt;Card&gt; h = new ArrayList();&#13;&#10;&#9;&#9;List&lt;Card&gt; d = new ArrayList();&#13;&#10;&#9;&#9;p.hand = h;&#13;&#10;&#9;&#9;p.discard = d;&#13;&#10;&#9;&#9;p.hand.add(new Card(&quot;Copper&quot;));&#13;&#10;&#9;&#9;Player.readCards(p.discard);&#13;&#10;&#9;&#9;assert(p.discard.isEmpty() == true);&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;p.discard(new Card(&quot;Copper&quot;));&#13;&#10;&#9;&#9;assert (p.hand.isEmpty());&#13;&#10;&#9;&#9;assert (p.discard.size() == 1);&#13;&#10;&#9;&#9;assert (p.discard.get(0).getName() == &quot;Copper&quot;);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testDiscardAll() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;Board b = new Board();&#13;&#10;&#9;&#9;List&lt;Card&gt; d = new ArrayList();&#13;&#10;&#13;&#10;&#9;&#9;for (int i = 0; i &lt; p.hand.size(); i++)&#13;&#10;&#9;&#9;&#9;d.add(p.hand.get(i));&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;assert(p.hand.size() &gt; 0);&#13;&#10;&#9;&#9;p.discardAll(p.hand);&#13;&#10;&#9;&#9;assertEquals(&quot;Hand should be empty&quot;, 0, p.hand.size());&#13;&#10;&#13;&#10;&#9;&#9;for (int i = 0; i &lt; p.discard.size(); i++)&#13;&#10;&#9;&#9;&#9;assert(d.get(i).getName() == p.discard.get(i).getName());&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testGain() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;Board b = new Board();&#13;&#10;&#9;&#9;assert(!Card.search(new Card(&quot;Smithy&quot;, 4), p.hand));&#13;&#10;&#9;&#9;p.gain(new Card(&quot;Smithy&quot;, 4), b.supply);&#13;&#10;&#9;&#9;assert(Card.search(new Card(&quot;Smithy&quot;, 4), p.hand));&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testTrash() &#13;&#10;&#9;{&#13;&#10;&#9;&#9;List&lt;Card&gt; testSupply = new ArrayList();&#13;&#10;&#9;&#9;List&lt;Card&gt; hand = new ArrayList();&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;p.hand = hand;&#13;&#10;&#9;&#9;p.hand.add(new Card(&quot;Silver&quot;));&#13;&#10;&#9;&#9;assert(Card.search(new Card(&quot;Silver&quot;), p.hand));&#13;&#10;&#9;&#9;p.trash(new Card(&quot;Silver&quot;));&#13;&#10;&#9;&#9;assert(!Card.search(new Card(&quot;Silver&quot;), p.hand));&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void testPlayK()&#13;&#10;&#9;{&#13;&#10;&#9;&#9;List&lt;Card&gt; testSupply = new ArrayList();&#13;&#10;&#9;&#9;List&lt;Card&gt; hand = new ArrayList();&#13;&#10;&#9;&#9;Player p = new Player(1);&#13;&#10;&#9;&#9;Board b = new Board();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;hand.add(new Card(&quot;Smithy&quot;, 4));&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;p.hand = hand;&#13;&#10;&#9;&#9;p.playK(&quot;Smithy&quot;, b);&#13;&#10;&#13;&#10;&#9;&#9;assertEquals(&quot;Hand should contain three cards&quot;, 3, p.hand.size());&#13;&#10;&#9;}&#13;&#10;&#13;&#10;}&#13;&#10;" Filename="PlayerTest1.java" Intrnl_Id="1"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList/>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="2"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="3"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="5"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="13" HierarchyLvlTypeId="5" Intrnl_Id="6" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="12" HierarchyLvlTypeId="2" Intrnl_Id="7" Name="Dominion">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="11" HierarchyLvlTypeId="4" Intrnl_Id="8" Name="PlayerTest1">
+<Header>
+<Loc EndOffset="163" SrcFileId="1" StartOffset="139"/>
+</Header>
+<LocList>
+<Loc EndOffset="4061" SrcFileId="1" StartOffset="139"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="1" HierarchyLvlTypeId="3" Intrnl_Id="9" Name="testGetMoney">
+<Header>
+<Loc EndOffset="205" SrcFileId="1" StartOffset="171"/>
+</Header>
+<LocList>
+<Loc EndOffset="553" SrcFileId="1" StartOffset="171"/>
+</LocList>
+<StmntSeq Intrnl_Id="10">
+<LocList>
+<Loc EndOffset="239" SrcFileId="1" StartOffset="214"/>
+<Loc EndOffset="264" SrcFileId="1" StartOffset="243"/>
+<Loc EndOffset="299" SrcFileId="1" StartOffset="268"/>
+<Loc EndOffset="347" SrcFileId="1" StartOffset="303"/>
+<Loc EndOffset="382" SrcFileId="1" StartOffset="351"/>
+<Loc EndOffset="442" SrcFileId="1" StartOffset="386"/>
+<Loc EndOffset="475" SrcFileId="1" StartOffset="446"/>
+<Loc EndOffset="545" SrcFileId="1" StartOffset="479"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="11">
+<LocList>
+<Loc EndOffset="239" SrcFileId="1" StartOffset="214"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="264" SrcFileId="1" StartOffset="243"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="13">
+<LocList>
+<Loc EndOffset="299" SrcFileId="1" StartOffset="268"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="14">
+<LocList>
+<Loc EndOffset="347" SrcFileId="1" StartOffset="303"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="15">
+<LocList>
+<Loc EndOffset="382" SrcFileId="1" StartOffset="351"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="442" SrcFileId="1" StartOffset="386"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="17">
+<LocList>
+<Loc EndOffset="475" SrcFileId="1" StartOffset="446"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="18">
+<LocList>
+<Loc EndOffset="545" SrcFileId="1" StartOffset="479"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="2" HierarchyLvlTypeId="3" Intrnl_Id="19" Name="testTurn">
+<Header>
+<Loc EndOffset="588" SrcFileId="1" StartOffset="558"/>
+</Header>
+<LocList>
+<Loc EndOffset="609" SrcFileId="1" StartOffset="558"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="3" HierarchyLvlTypeId="3" Intrnl_Id="20" Name="testShuffle">
+<Header>
+<Loc EndOffset="647" SrcFileId="1" StartOffset="614"/>
+</Header>
+<LocList>
+<Loc EndOffset="1480" SrcFileId="1" StartOffset="614"/>
+</LocList>
+<StmntSeq Intrnl_Id="21">
+<LocList>
+<Loc EndOffset="668" SrcFileId="1" StartOffset="656"/>
+<Loc EndOffset="683" SrcFileId="1" StartOffset="672"/>
+<Loc EndOffset="707" SrcFileId="1" StartOffset="687"/>
+<Loc EndOffset="736" SrcFileId="1" StartOffset="711"/>
+<Loc EndOffset="771" SrcFileId="1" StartOffset="740"/>
+<Loc EndOffset="809" SrcFileId="1" StartOffset="775"/>
+<Loc EndOffset="872" SrcFileId="1" StartOffset="813"/>
+<Loc EndOffset="935" SrcFileId="1" StartOffset="876"/>
+<Loc EndOffset="1007" SrcFileId="1" StartOffset="945"/>
+<Loc EndOffset="1073" SrcFileId="1" StartOffset="1011"/>
+<Loc EndOffset="1109" SrcFileId="1" StartOffset="1081"/>
+<Loc EndOffset="1227" SrcFileId="1" StartOffset="1117"/>
+<Loc EndOffset="1376" SrcFileId="1" StartOffset="1235"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="668" SrcFileId="1" StartOffset="656"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="23">
+<LocList>
+<Loc EndOffset="683" SrcFileId="1" StartOffset="672"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="24">
+<LocList>
+<Loc EndOffset="707" SrcFileId="1" StartOffset="687"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="736" SrcFileId="1" StartOffset="711"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S13" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="771" SrcFileId="1" StartOffset="740"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S14" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="809" SrcFileId="1" StartOffset="775"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S15" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="28" MltplExecId="L1-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L1-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L1-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="872" SrcFileId="1" StartOffset="846"/>
+</LocList>
+<BasicStmnt CovItemId="S16" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="872" SrcFileId="1" StartOffset="846"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="816" SrcFileId="1" StartOffset="813"/>
+<LocList>
+<Loc EndOffset="872" SrcFileId="1" StartOffset="813"/>
+</LocList>
+</LoopStmnt>
+<LoopStmnt CovItemId="S17" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="31" MltplExecId="L2-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L2-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L2-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="935" SrcFileId="1" StartOffset="909"/>
+</LocList>
+<BasicStmnt CovItemId="S18" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="33">
+<LocList>
+<Loc EndOffset="935" SrcFileId="1" StartOffset="909"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="879" SrcFileId="1" StartOffset="876"/>
+<LocList>
+<Loc EndOffset="935" SrcFileId="1" StartOffset="876"/>
+</LocList>
+</LoopStmnt>
+<LoopStmnt CovItemId="S19" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="34" MltplExecId="L3-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L3-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L3-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="35">
+<LocList>
+<Loc EndOffset="1007" SrcFileId="1" StartOffset="978"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="36">
+<LocList>
+<Loc EndOffset="1007" SrcFileId="1" StartOffset="978"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="948" SrcFileId="1" StartOffset="945"/>
+<LocList>
+<Loc EndOffset="1007" SrcFileId="1" StartOffset="945"/>
+</LocList>
+</LoopStmnt>
+<LoopStmnt CovItemId="S21" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="37" MltplExecId="L4-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L4-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L4-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="38">
+<LocList>
+<Loc EndOffset="1073" SrcFileId="1" StartOffset="1044"/>
+</LocList>
+<BasicStmnt CovItemId="S22" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="1073" SrcFileId="1" StartOffset="1044"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="1014" SrcFileId="1" StartOffset="1011"/>
+<LocList>
+<Loc EndOffset="1073" SrcFileId="1" StartOffset="1011"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S23" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="1109" SrcFileId="1" StartOffset="1081"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S24" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="41" MltplExecId="L5-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L5-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L5-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="1222" SrcFileId="1" StartOffset="1155"/>
+</LocList>
+<CondStmnt CovItemId="S25" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="43">
+<Branch CovItemId="B1" CovItemPrefix="Dominion.PlayerTest1.java" Implct="false" Intrnl_Id="44">
+<Cond/>
+<LocList>
+<Loc EndOffset="1222" SrcFileId="1" StartOffset="1209"/>
+</LocList>
+<StmntSeq Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="1222" SrcFileId="1" StartOffset="1209"/>
+</LocList>
+<BasicStmnt CovItemId="S26" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="46">
+<LocList>
+<Loc EndOffset="1222" SrcFileId="1" StartOffset="1209"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="Dominion.PlayerTest1.java" Implct="true" Intrnl_Id="47">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="48">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1157" SrcFileId="1" StartOffset="1155"/>
+<LocList>
+<Loc EndOffset="1222" SrcFileId="1" StartOffset="1155"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="1120" SrcFileId="1" StartOffset="1117"/>
+<LocList>
+<Loc EndOffset="1227" SrcFileId="1" StartOffset="1117"/>
+</LocList>
+</LoopStmnt>
+<LoopStmnt CovItemId="S27" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="49" MltplExecId="L6-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L6-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L6-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="50">
+<LocList>
+<Loc EndOffset="1320" SrcFileId="1" StartOffset="1273"/>
+<Loc EndOffset="1371" SrcFileId="1" StartOffset="1325"/>
+</LocList>
+<CondStmnt CovItemId="S28" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="51">
+<Branch CovItemId="B3" CovItemPrefix="Dominion.PlayerTest1.java" Implct="false" Intrnl_Id="52">
+<Cond/>
+<LocList>
+<Loc EndOffset="1320" SrcFileId="1" StartOffset="1314"/>
+</LocList>
+<StmntSeq Intrnl_Id="53">
+<LocList>
+<Loc EndOffset="1320" SrcFileId="1" StartOffset="1314"/>
+</LocList>
+<BasicStmnt CovItemId="S29" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="54">
+<LocList>
+<Loc EndOffset="1320" SrcFileId="1" StartOffset="1314"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="Dominion.PlayerTest1.java" Implct="true" Intrnl_Id="55">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="56">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1275" SrcFileId="1" StartOffset="1273"/>
+<LocList>
+<Loc EndOffset="1320" SrcFileId="1" StartOffset="1273"/>
+</LocList>
+</CondStmnt>
+<CondStmnt CovItemId="S30" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="57">
+<Branch CovItemId="B5" CovItemPrefix="Dominion.PlayerTest1.java" Implct="false" Intrnl_Id="58">
+<Cond/>
+<LocList>
+<Loc EndOffset="1371" SrcFileId="1" StartOffset="1366"/>
+</LocList>
+<StmntSeq Intrnl_Id="59">
+<LocList>
+<Loc EndOffset="1371" SrcFileId="1" StartOffset="1366"/>
+</LocList>
+<BasicStmnt CovItemId="S31" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="60">
+<LocList>
+<Loc EndOffset="1371" SrcFileId="1" StartOffset="1366"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="Dominion.PlayerTest1.java" Implct="true" Intrnl_Id="61">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="62">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1327" SrcFileId="1" StartOffset="1325"/>
+<LocList>
+<Loc EndOffset="1371" SrcFileId="1" StartOffset="1325"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="1238" SrcFileId="1" StartOffset="1235"/>
+<LocList>
+<Loc EndOffset="1376" SrcFileId="1" StartOffset="1235"/>
+</LocList>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="4" HierarchyLvlTypeId="3" Intrnl_Id="63" Name="testPlayer">
+<Header>
+<Loc EndOffset="1517" SrcFileId="1" StartOffset="1485"/>
+</Header>
+<LocList>
+<Loc EndOffset="1734" SrcFileId="1" StartOffset="1485"/>
+</LocList>
+<StmntSeq Intrnl_Id="64">
+<LocList>
+<Loc EndOffset="1551" SrcFileId="1" StartOffset="1526"/>
+<Loc EndOffset="1730" SrcFileId="1" StartOffset="1615"/>
+</LocList>
+<BasicStmnt CovItemId="S32" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="65">
+<LocList>
+<Loc EndOffset="1551" SrcFileId="1" StartOffset="1526"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S33" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="66" MltplExecId="L7-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L7-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L7-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="67">
+<LocList/>
+</StmntSeq>
+<Keyword EndOffset="1618" SrcFileId="1" StartOffset="1615"/>
+<LocList>
+<Loc EndOffset="1730" SrcFileId="1" StartOffset="1615"/>
+</LocList>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="5" HierarchyLvlTypeId="3" Intrnl_Id="68" Name="testDrawDeck">
+<Header>
+<Loc EndOffset="1773" SrcFileId="1" StartOffset="1739"/>
+</Header>
+<LocList>
+<Loc EndOffset="2236" SrcFileId="1" StartOffset="1739"/>
+</LocList>
+<StmntSeq Intrnl_Id="69">
+<LocList>
+<Loc EndOffset="1807" SrcFileId="1" StartOffset="1782"/>
+<Loc EndOffset="1842" SrcFileId="1" StartOffset="1811"/>
+<Loc EndOffset="1877" SrcFileId="1" StartOffset="1846"/>
+<Loc EndOffset="1910" SrcFileId="1" StartOffset="1885"/>
+<Loc EndOffset="1942" SrcFileId="1" StartOffset="1914"/>
+<Loc EndOffset="1972" SrcFileId="1" StartOffset="1946"/>
+<Loc EndOffset="1991" SrcFileId="1" StartOffset="1980"/>
+<Loc EndOffset="2006" SrcFileId="1" StartOffset="1995"/>
+<Loc EndOffset="2028" SrcFileId="1" StartOffset="2014"/>
+<Loc EndOffset="2232" SrcFileId="1" StartOffset="2185"/>
+</LocList>
+<BasicStmnt CovItemId="S34" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="70">
+<LocList>
+<Loc EndOffset="1807" SrcFileId="1" StartOffset="1782"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S35" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="71">
+<LocList>
+<Loc EndOffset="1842" SrcFileId="1" StartOffset="1811"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S36" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="72">
+<LocList>
+<Loc EndOffset="1877" SrcFileId="1" StartOffset="1846"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S37" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="73">
+<LocList>
+<Loc EndOffset="1910" SrcFileId="1" StartOffset="1885"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S38" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="74">
+<LocList>
+<Loc EndOffset="1942" SrcFileId="1" StartOffset="1914"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S39" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="75">
+<LocList>
+<Loc EndOffset="1972" SrcFileId="1" StartOffset="1946"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S40" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="76">
+<LocList>
+<Loc EndOffset="1991" SrcFileId="1" StartOffset="1980"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S41" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="77">
+<LocList>
+<Loc EndOffset="2006" SrcFileId="1" StartOffset="1995"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S42" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="78">
+<LocList>
+<Loc EndOffset="2028" SrcFileId="1" StartOffset="2014"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S43" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="79">
+<LocList>
+<Loc EndOffset="2232" SrcFileId="1" StartOffset="2185"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="6" HierarchyLvlTypeId="3" Intrnl_Id="80" Name="testDiscard">
+<Header>
+<Loc EndOffset="2274" SrcFileId="1" StartOffset="2241"/>
+</Header>
+<LocList>
+<Loc EndOffset="2677" SrcFileId="1" StartOffset="2241"/>
+</LocList>
+<StmntSeq Intrnl_Id="81">
+<LocList>
+<Loc EndOffset="2308" SrcFileId="1" StartOffset="2283"/>
+<Loc EndOffset="2343" SrcFileId="1" StartOffset="2312"/>
+<Loc EndOffset="2378" SrcFileId="1" StartOffset="2347"/>
+<Loc EndOffset="2393" SrcFileId="1" StartOffset="2382"/>
+<Loc EndOffset="2411" SrcFileId="1" StartOffset="2397"/>
+<Loc EndOffset="2446" SrcFileId="1" StartOffset="2415"/>
+<Loc EndOffset="2478" SrcFileId="1" StartOffset="2450"/>
+<Loc EndOffset="2556" SrcFileId="1" StartOffset="2526"/>
+</LocList>
+<BasicStmnt CovItemId="S44" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="82">
+<LocList>
+<Loc EndOffset="2308" SrcFileId="1" StartOffset="2283"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S45" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="83">
+<LocList>
+<Loc EndOffset="2343" SrcFileId="1" StartOffset="2312"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S46" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="84">
+<LocList>
+<Loc EndOffset="2378" SrcFileId="1" StartOffset="2347"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S47" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="85">
+<LocList>
+<Loc EndOffset="2393" SrcFileId="1" StartOffset="2382"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S48" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="86">
+<LocList>
+<Loc EndOffset="2411" SrcFileId="1" StartOffset="2397"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S49" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="87">
+<LocList>
+<Loc EndOffset="2446" SrcFileId="1" StartOffset="2415"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S50" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="88">
+<LocList>
+<Loc EndOffset="2478" SrcFileId="1" StartOffset="2450"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S51" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="89">
+<LocList>
+<Loc EndOffset="2556" SrcFileId="1" StartOffset="2526"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="7" HierarchyLvlTypeId="3" Intrnl_Id="90" Name="testDiscardAll">
+<Header>
+<Loc EndOffset="2718" SrcFileId="1" StartOffset="2682"/>
+</Header>
+<LocList>
+<Loc EndOffset="3116" SrcFileId="1" StartOffset="2682"/>
+</LocList>
+<StmntSeq Intrnl_Id="91">
+<LocList>
+<Loc EndOffset="2752" SrcFileId="1" StartOffset="2727"/>
+<Loc EndOffset="2778" SrcFileId="1" StartOffset="2756"/>
+<Loc EndOffset="2813" SrcFileId="1" StartOffset="2782"/>
+<Loc EndOffset="2884" SrcFileId="1" StartOffset="2819"/>
+<Loc EndOffset="2943" SrcFileId="1" StartOffset="2922"/>
+<Loc EndOffset="3002" SrcFileId="1" StartOffset="2947"/>
+<Loc EndOffset="3112" SrcFileId="1" StartOffset="3008"/>
+</LocList>
+<BasicStmnt CovItemId="S52" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="92">
+<LocList>
+<Loc EndOffset="2752" SrcFileId="1" StartOffset="2727"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S53" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="93">
+<LocList>
+<Loc EndOffset="2778" SrcFileId="1" StartOffset="2756"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S54" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="94">
+<LocList>
+<Loc EndOffset="2813" SrcFileId="1" StartOffset="2782"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S55" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="95" MltplExecId="L8-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L8-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L8-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="96">
+<LocList>
+<Loc EndOffset="2884" SrcFileId="1" StartOffset="2863"/>
+</LocList>
+<BasicStmnt CovItemId="S56" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="97">
+<LocList>
+<Loc EndOffset="2884" SrcFileId="1" StartOffset="2863"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="2822" SrcFileId="1" StartOffset="2819"/>
+<LocList>
+<Loc EndOffset="2884" SrcFileId="1" StartOffset="2819"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S57" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="98">
+<LocList>
+<Loc EndOffset="2943" SrcFileId="1" StartOffset="2922"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S58" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="99">
+<LocList>
+<Loc EndOffset="3002" SrcFileId="1" StartOffset="2947"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S59" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="100" MltplExecId="L9-2" MltplExecPrefix="Dominion.PlayerTest1.java" NvrExecId="L9-0" NvrExecPrefix="Dominion.PlayerTest1.java" OnceExecutedId="L9-1" OnceExecutedPrefix="Dominion.PlayerTest1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="101">
+<LocList/>
+</StmntSeq>
+<Keyword EndOffset="3011" SrcFileId="1" StartOffset="3008"/>
+<LocList>
+<Loc EndOffset="3112" SrcFileId="1" StartOffset="3008"/>
+</LocList>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="8" HierarchyLvlTypeId="3" Intrnl_Id="102" Name="testGain">
+<Header>
+<Loc EndOffset="3151" SrcFileId="1" StartOffset="3121"/>
+</Header>
+<LocList>
+<Loc EndOffset="3370" SrcFileId="1" StartOffset="3121"/>
+</LocList>
+<StmntSeq Intrnl_Id="103">
+<LocList>
+<Loc EndOffset="3185" SrcFileId="1" StartOffset="3160"/>
+<Loc EndOffset="3211" SrcFileId="1" StartOffset="3189"/>
+<Loc EndOffset="3311" SrcFileId="1" StartOffset="3271"/>
+</LocList>
+<BasicStmnt CovItemId="S60" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="104">
+<LocList>
+<Loc EndOffset="3185" SrcFileId="1" StartOffset="3160"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S61" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="105">
+<LocList>
+<Loc EndOffset="3211" SrcFileId="1" StartOffset="3189"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S62" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="106">
+<LocList>
+<Loc EndOffset="3311" SrcFileId="1" StartOffset="3271"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="9" HierarchyLvlTypeId="3" Intrnl_Id="107" Name="testTrash">
+<Header>
+<Loc EndOffset="3406" SrcFileId="1" StartOffset="3375"/>
+</Header>
+<LocList>
+<Loc EndOffset="3716" SrcFileId="1" StartOffset="3375"/>
+</LocList>
+<StmntSeq Intrnl_Id="108">
+<LocList>
+<Loc EndOffset="3455" SrcFileId="1" StartOffset="3415"/>
+<Loc EndOffset="3493" SrcFileId="1" StartOffset="3459"/>
+<Loc EndOffset="3522" SrcFileId="1" StartOffset="3497"/>
+<Loc EndOffset="3540" SrcFileId="1" StartOffset="3526"/>
+<Loc EndOffset="3575" SrcFileId="1" StartOffset="3544"/>
+<Loc EndOffset="3659" SrcFileId="1" StartOffset="3631"/>
+</LocList>
+<BasicStmnt CovItemId="S63" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="109">
+<LocList>
+<Loc EndOffset="3455" SrcFileId="1" StartOffset="3415"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S64" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="110">
+<LocList>
+<Loc EndOffset="3493" SrcFileId="1" StartOffset="3459"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S65" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="111">
+<LocList>
+<Loc EndOffset="3522" SrcFileId="1" StartOffset="3497"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S66" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="112">
+<LocList>
+<Loc EndOffset="3540" SrcFileId="1" StartOffset="3526"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S67" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="113">
+<LocList>
+<Loc EndOffset="3575" SrcFileId="1" StartOffset="3544"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S68" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="114">
+<LocList>
+<Loc EndOffset="3659" SrcFileId="1" StartOffset="3631"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="10" HierarchyLvlTypeId="3" Intrnl_Id="115" Name="testPlayK">
+<Header>
+<Loc EndOffset="3752" SrcFileId="1" StartOffset="3721"/>
+</Header>
+<LocList>
+<Loc EndOffset="4056" SrcFileId="1" StartOffset="3721"/>
+</LocList>
+<StmntSeq Intrnl_Id="116">
+<LocList>
+<Loc EndOffset="3800" SrcFileId="1" StartOffset="3760"/>
+<Loc EndOffset="3838" SrcFileId="1" StartOffset="3804"/>
+<Loc EndOffset="3867" SrcFileId="1" StartOffset="3842"/>
+<Loc EndOffset="3893" SrcFileId="1" StartOffset="3871"/>
+<Loc EndOffset="3933" SrcFileId="1" StartOffset="3901"/>
+<Loc EndOffset="3955" SrcFileId="1" StartOffset="3941"/>
+<Loc EndOffset="3980" SrcFileId="1" StartOffset="3959"/>
+<Loc EndOffset="4052" SrcFileId="1" StartOffset="3986"/>
+</LocList>
+<BasicStmnt CovItemId="S69" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="117">
+<LocList>
+<Loc EndOffset="3800" SrcFileId="1" StartOffset="3760"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S70" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="118">
+<LocList>
+<Loc EndOffset="3838" SrcFileId="1" StartOffset="3804"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S71" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="119">
+<LocList>
+<Loc EndOffset="3867" SrcFileId="1" StartOffset="3842"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S72" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="120">
+<LocList>
+<Loc EndOffset="3893" SrcFileId="1" StartOffset="3871"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S73" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="121">
+<LocList>
+<Loc EndOffset="3933" SrcFileId="1" StartOffset="3901"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S74" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="122">
+<LocList>
+<Loc EndOffset="3955" SrcFileId="1" StartOffset="3941"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S75" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="123">
+<LocList>
+<Loc EndOffset="3980" SrcFileId="1" StartOffset="3959"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S76" CovItemPrefix="Dominion.PlayerTest1.java" Intrnl_Id="124">
+<LocList>
+<Loc EndOffset="4052" SrcFileId="1" StartOffset="3986"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+<TestSession Comment="" Date="1487038635495" Name="Feb 13, 2017 6:17:15 PM">
+<TestCase Comment="This is a test case containing all coverage results cause no startTestCase methods where captured." Date="1487038635060" Name="UNNAMED TESTCASE">
+<CovList/>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+<TestSession Comment="" Date="1487038756938" Name="Feb 13, 2017 6:19:16 PM">
+<TestCase Comment="This is a test case containing all coverage results cause no startTestCase methods where captured." Date="1487038756841" Name="UNNAMED TESTCASE">
+<CovList/>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+</TestSessionContainer>
