@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.smartcardio.Card;
+//import javax.smartcardio.Card;
 
 import org.cs362.dominion.Card.Type;
 
@@ -126,10 +126,10 @@ public class Player implements Cloneable{
 		for(int i=0; i<treasureCards.size(); i++){
 			Card c = treasureCards.get(i);
 			coins += c.getTreasureValue();
-			hand.remove();
+			hand.remove(c);
 		}
 	   }
-	   public void buyCard() {
+	   public void buyCard(GameState state) {
 		   while(numBuys > 0 && coins >= 0)
 		   {
 			   if(coins <= 1){

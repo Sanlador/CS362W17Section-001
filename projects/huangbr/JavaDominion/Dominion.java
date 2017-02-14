@@ -47,8 +47,6 @@ public class Dominion
 	{
 		for(int i=0; i < playerCount; i++)
 		{
-			System.out.println("Player " + i);
-			players[i].takeTurn(this);
 			if(gameOver())
 			{
 				Player temp = getWinner();
@@ -56,6 +54,8 @@ public class Dominion
 				System.out.println("Player " + temp.playerID + " has " + temp.getPoints() + " points.");
 				break;
 			}
+			System.out.println("Player " + i);
+			players[i].takeTurn(this);
 			if(i == playerCount-1)
 			{
 				i = -1;

@@ -119,7 +119,7 @@ public class GameState implements Cloneable{
 		        	 	//player plays treasure card
 		   			    player.playTtreasureCard();
 		   			    //player buy cards
-		        	    player.buyCard();
+		        	    player.buyCard(this);
 		        	  //player ends turn
 		        	    player.endTurn();
 		         }

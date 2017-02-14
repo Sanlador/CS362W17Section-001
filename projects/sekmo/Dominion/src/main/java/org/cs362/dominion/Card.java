@@ -126,7 +126,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		
 		switch(this.cardName) {
 		case Adventurer:
-	    	  int count;
+	    	  int count = 0;
 	    	  
 	    	  while(count < 2){
 	    		  Card draw = player.drawCard();
@@ -170,7 +170,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 			
 		case Baron:
 			player.numBuys++;
-			if(getCard(player.hand, CardName.Estate) != NULL){
+			if(getCard(player.hand, CardName.Estate) != null){
 				player.discard(getCard(player.hand, CardName.Estate));
 				player.coins += 4;
 			}
@@ -197,7 +197,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 			player.coins += 2;
 			
 			for(Player p: state.players){
-				if(p != player && getCard(player.hand, CardName.Copper) != NULL) {
+				if(p != player && getCard(player.hand, CardName.Copper) != null) {
 					p.discard(getCard(p.hand, CardName.Copper));
 				}
 			}
@@ -214,7 +214,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 			return;
 			
 		case Feast:
-			player.remove(getCard(player.hand, CardName.Feast));
+			player.playedCards.remove(getCard(player.hand, CardName.Feast));
 			player.coins += 5; //BUG: Instead of obtaining a card with value up to 5,
 							//you gain 5 coins
 			
@@ -226,17 +226,17 @@ public final class Card implements Comparable<Card>, Cloneable{
 			return;
 			
 		case GreatHall:
-			player.getCard();
+			player.drawCard();
 			player.numActions++;
 			
 			return;
 			
 		case Mine:
-			if(getCard(player.hand, CardName.Silver) != NULL){
+			if(getCard(player.hand, CardName.Silver) != null){
 				player.hand.remove(getCard(player.hand, CardName.Silver));
 				player.gain(getCard(state.cards, CardName.Gold));
 			}
-			else if(getCard(player.hand, CardName.Copper) != NULL){
+			else if(getCard(player.hand, CardName.Copper) != null){
 				player.hand.remove(getCard(player.hand, CardName.Copper));
 				player.gain(getCard(state.cards, CardName.Silver));
 			}

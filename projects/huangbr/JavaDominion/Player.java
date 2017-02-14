@@ -62,27 +62,38 @@ public class Player
 
 	public void actionPhase(Dominion game)
 	{
+		boolean hasAction = false;
 		Random rand = new Random();
 		List<Integer> indexList = new ArrayList<Integer>();
 		for(int i=0; i < hand.getSize(); i++)
 		{
 			if(hand.getCard(i).type == Card.cardType.Action || hand.getCard(i).type == Card.cardType.Attack)
 			{
-				indexList.add(i);
+				hasAction = true;
+				break;
 			}
 		}
-		if(indexList.size() == 0)
+		if(hasAction == false)
 		{
 			System.out.println("No Action cards in hand.");
 			actions--;
 		}
 		while(actions > 0)
 		{
-			System.out.println("Trying to play action.");
-			int randomIndex = rand.nextInt(indexList.size());
-			hand.getCard(randomIndex).play(game,this);
+			int actionIndex = 0;
+			for(int i=0; i < hand.getSize(); i++)
+			{
+				if(hand.getCard(i).type == Card.cardType.Action || hand.getCard(i).type == Card.cardType.Attack)
+				{
+					actionIndex = i;
+					break;
+				}
+			}
+
+			int randomIndex = rand.nextInt(hand.getSize());
+			System.out.println("Playing " + hand.getCard(actionIndex).name);
+			hand.getCard(actionIndex).play(game,this);
 			actions--;
-			hand.revealAll();
 		}
 		System.out.println("Action Phase Over.");
 	}
@@ -126,7 +137,7 @@ public class Player
 	public void buyCard(Dominion game, int coins, String name)
 	{
 		int cardIndex = game.getKingdomCardIndex(name);
-		System.out.println("Trying to buy " + name);
+		System.out.println("Buying " + name);
 		if(cardIndex > -1)
 		{
 			if(game.kingdomCards.get(cardIndex).getCard(0).cost > coins)

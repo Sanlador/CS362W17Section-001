@@ -1,1 +1,12 @@
+org\cs362\dominion\Card$1.class
+org\cs362\dominion\GameState.class
+org\cs362\dominion\Randomness.class
+org\cs362\dominion\Card$CardName.class
+org\cs362\dominion\Player.class
+org\cs362\dominion\SmithyTest.class
+org\cs362\dominion\mainRandomness.class
 org\cs362\dominion\mainCard.class
+org\cs362\dominion\PlayDominion.class
+org\cs362\dominion\Card.class
+org\cs362\dominion\Card$Type.class
+org\cs362\dominion\mainPlayer.class

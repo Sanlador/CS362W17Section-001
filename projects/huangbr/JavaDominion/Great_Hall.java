@@ -3,7 +3,7 @@ public class Great_Hall extends Card
 	public Great_Hall()
 	{
 		name = "Great Hall";
-		type = cardType.Victory;
+		type = cardType.Action;
 		cost = 3;
 		value = 0;
 		points = 1;
