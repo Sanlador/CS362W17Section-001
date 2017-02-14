@@ -1,0 +1,104 @@
+\documentclass[letterpaper,10pt,onecolumn,draftclsnofoot]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{alltt}
+\usepackage{datetime}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{csvsimple}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+
+\def\name{Gabriel Jonas}
+\title{Dominion in Java}
+\def\class{CS362, Winter 2017}
+\author{\name}
+
+\begin{document}
+
+\clearpage
+\maketitle
+\thispagestyle{empty} % Removes titlepage number
+\vspace{-10ex}
+{\centering \class \par}
+
+\section{Introduction}
+This project is to create an implementation of the Dominion board game in Java (with accompanying unit tests and a code coverage report). This paper will be broken up into three sections, namely the unit tests and choice of input, results of unit tests, a summary of information regarding the code coverage, and a possible implementation of random testing.
+
+\section{Unit Testing}
+For my implementation of the game, I decided to focus on testing the implementation rather than the setup of each individual item. The unit testing for this project follows a common format: set up the players, gamestate, and cards; perform one implemented API call; and test the changes after the API call is completed. While this method is not the most efficient, it gives a clean state for testing each implementation. An example of this is shown below with the Sea Hag.
+
+\lstinputlisting[caption={Sea Hag Test}, label={SeaHagTest}, basicstyle=\footnotesize]{SeaHagTest.java}
+
+As shown in the Sea Hag card test, the cards are first initialized to have a baseline that can be called upon. From there each player is initialized, and the gamestate itself is created. Once an accurate example of the gamestate is created and cloned, it can be modified and tested against a copy to ensure that the desired changes take effect (namely that the player draws a card, and every other player discards a card and topdecks a curse).
+
+Other card tests follow the same implementation of initialization, playing, and checking the result. For cards with a choice, only one implementation is tested at a time (to be unit tested multiple times until the other random state is covered). One such test would be for the Minion card.
+
+\lstinputlisting[caption={Minion Test}, label={MinionTest}, basicstyle=\footnotesize, firstline=51, lastline=103]{MinionTest.java}
+
+Given more time, I would generate desired test states for each case instead of relying on randomly generated tests.
+
+\section{Bugs}
+There are five induced bugs in my program, each with a varying depth of complexity to find.
+
+Players start with 2 buys at game beginning instead of 1.
+\lstinputlisting[caption={Setup Bug}, label={Setup Bug}, basicstyle=\footnotesize, firstline=79, lastline=82]{GameState.java}
+
+Game setup initialized 11 kingdom cards.
+\lstinputlisting[caption={Setup Bug}, label={Setup Bug}, basicstyle=\footnotesize, firstline=61, lastline=68]{GameState.java}
+
+Players do not reset their coins at the end of each turn.
+\lstinputlisting[caption={Player Coin Reset Bug}, label={Player Coin Reset Bug}, basicstyle=\footnotesize, firstline=158, lastline=176]{Player.java}
+
+Duchy gives 2 victory points instead of 3.
+\lstinputlisting[caption={Duchy Bug}, label={Duchy Bug}, basicstyle=\footnotesize, firstline=67, lastline=68]{Card.java}
+
+Playing mine may not upgrade a treasure card.
+\lstinputlisting[caption={Mine Test}, label={MineTest}, basicstyle=\footnotesize, firstline=246, lastline=289]{Card.java}
+
+\section{Results of Unit Testing}
+With the random input on some card implementations, the unit testing may varies a bit per implementation. On an average run the unit tests give the following results:
+
+\lstinputlisting[basicstyle=\footnotesize]{results.txt}
+
+All 5 of the bugs presented earlier are caught in these tests. The first test catches the mine bug of not upgrading silver in some cases. The duchy card is caught with the wrong value. In the gamestate test, it catches both the spare kingdom card and the wrong number of buys. The next test also notices that the number of buys is wrong. Lastly, the final error shows that the player did not reset their coin value at the end of their turn.
+
+When run in a loop of 20 testing calls, the results are close to the same.
+
+\section{Code Coverage}
+The code coverage report shows that most of the code is run through, with many branch cases hit.
+
+\csvautotabular{coverage.csv}
+
+\section{Random Test Generator}
+The pseudocode for a random test generator of this implementation would follow a partially structured format, but use random testing as the main portion. The format is simple in its conception, but would be much harder to implement (as the test would have to have access to a pool of structured unit tests that it could access as necessary). The code is as follows:
+
+\begin{itemize}
+\item Initialize game
+\item Test initialization states (cards, players)
+\item Play game
+\begin{itemize}
+	\item Test player action phase (card test)
+	\item Update state tracking
+	\item Test player treasure phase
+	\item Update state tracking
+	\item Test player buy phase
+	\item Update state tracking
+	\item Test player end phase
+	\item Test game state
+\end{itemize}
+\item Run final state tests
+\end{itemize}
+
+\end{document}

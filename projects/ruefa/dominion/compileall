@@ -1,0 +1,5 @@
+#!/bin/bash
+javac Card.java
+javac Player.java
+javac dominionBoard.java
+javac dominion.java

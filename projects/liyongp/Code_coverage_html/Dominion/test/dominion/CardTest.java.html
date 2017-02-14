@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>CardTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">AllTests (1) (Feb 13, 2017 3:07:02 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">test</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">CardTest.java</span></div><h1>CardTest.java</h1><pre class="source lang-java linenums">package dominion;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+
+<span class="fc" id="L11">public class CardTest {</span>
+	private List&lt;Card&gt; cards;
+    private GameState state, testState, controlState;
+    private Player player1;
+    private Player player2;
+    private Player control;
+    private Player player;
+    
+// // initialize a game state and player cards
+	@Before
+	public void reset(){
+<span class="fc" id="L22">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L23">		state = new GameState(cards);</span>
+		
+<span class="fc" id="L25">		controlState = new GameState(cards);</span>
+		
+<span class="fc" id="L27">		player1 = new Player(state, &quot;player-1&quot;);</span>
+<span class="fc" id="L28">		state.addPlayer(player1);</span>
+<span class="fc" id="L29">		player2 = new Player(state, &quot;player-2&quot;);</span>
+<span class="fc" id="L30">		state.addPlayer(player2);</span>
+		
+<span class="fc" id="L32">		control = new Player(controlState, &quot;Controled player 1&quot;);</span>
+<span class="fc" id="L33">		controlState.addPlayer(control);</span>
+	         
+	    //Initialize the game!
+<span class="fc" id="L36">		state.initializeGame();</span>
+<span class="fc" id="L37">	}</span>
+		
+		//--------------------  TESTING TREASURE CARDS  --------------------
+		//--------------------  TESTING TREASURE CARDS  --------------------
+		
+	
+		//TEST ____ COPPER ____
+		//TEST ____ COPPER ____
+	@Test
+	public void copperTest() throws Throwable {
+<span class="fc" id="L47">		assertEquals(Card.getCard(cards, Card.CardName.Copper).getCost(), 0); //Assert basic stats of card</span>
+<span class="fc" id="L48">		assertEquals(Card.getCard(cards, Card.CardName.Copper).getTreasureValue(), 1);</span>
+<span class="fc" id="L49">		assertEquals(Card.getCard(cards, Card.CardName.Copper).getType(), Card.Type.TREASURE);</span>
+<span class="fc" id="L50">		assertEquals(Card.getCard(cards, Card.CardName.Copper).score(), 0);</span>
+		
+<span class="fc" id="L52">		player=(Player) control.clone();								//Clone control player</span>
+<span class="fc" id="L53">		player.hand.add(Card.getCard(cards, Card.CardName.Copper));		//ADD Copper to hand</span>
+<span class="fc" id="L54">		player.playTtreasureCard();										//Player use Treasure Cards(1 Copper)</span>
+<span class="fc" id="L55">		assertEquals(player.coins, 1);									//Assertions</span>
+<span class="fc" id="L56">		assertEquals(player.playedCards.size(), 1);</span>
+<span class="fc" id="L57">		assertEquals(player.hand.size(), 0);</span>
+<span class="fc" id="L58">	}</span>
+		
+		//TEST ____ SILVER ____
+		//TEST ____ SILVER ____
+	@Test
+	public void silverTest() throws Throwable {
+<span class="fc" id="L64">		assertEquals(Card.getCard(cards, Card.CardName.Silver).getCost(), 3); //Assert basic stats of card</span>
+<span class="fc" id="L65">		assertEquals(Card.getCard(cards, Card.CardName.Silver).getTreasureValue(), 2);</span>
+<span class="fc" id="L66">		assertEquals(Card.getCard(cards, Card.CardName.Silver).getType(), Card.Type.TREASURE);</span>
+<span class="fc" id="L67">		assertEquals(Card.getCard(cards, Card.CardName.Silver).score(), 0);</span>
+		
+<span class="fc" id="L69">		player=(Player) control.clone();								//Clone control player</span>
+<span class="fc" id="L70">		player.hand.add(Card.getCard(cards, Card.CardName.Silver));		//ADD Silver to hand</span>
+<span class="fc" id="L71">		player.playTtreasureCard();										//Player use Treasure Cards(1 Silver)</span>
+<span class="fc" id="L72">		assertEquals(player.coins, 2);									//Assertions</span>
+<span class="fc" id="L73">		assertEquals(player.playedCards.size(), 1);</span>
+<span class="fc" id="L74">		assertEquals(player.hand.size(), 0);</span>
+<span class="fc" id="L75">	}</span>
+		
+		//TEST ____ GOLD ____
+		//TEST ____ GOLD ____
+	@Test
+	public void goldTest() throws Throwable {
+<span class="fc" id="L81">		assertEquals(Card.getCard(cards, Card.CardName.Gold).getCost(), 6); //Assert basic stats of card</span>
+<span class="fc" id="L82">		assertEquals(Card.getCard(cards, Card.CardName.Gold).getTreasureValue(), 3);</span>
+<span class="fc" id="L83">		assertEquals(Card.getCard(cards, Card.CardName.Gold).getType(), Card.Type.TREASURE);</span>
+<span class="fc" id="L84">		assertEquals(Card.getCard(cards, Card.CardName.Gold).score(), 0);</span>
+		
+<span class="fc" id="L86">		player=(Player) control.clone();								//Clone control player</span>
+<span class="fc" id="L87">		player.hand.add(Card.getCard(cards, Card.CardName.Gold));		//ADD Gold to hand</span>
+<span class="fc" id="L88">		player.playTtreasureCard();										//Player use Treasure Cards(1 Gold)</span>
+<span class="fc" id="L89">		assertEquals(player.coins, 3);									//Assertions</span>
+<span class="fc" id="L90">		assertEquals(player.playedCards.size(), 1);</span>
+<span class="fc" id="L91">		assertEquals(player.hand.size(), 0);</span>
+<span class="fc" id="L92">	}</span>
+		
+		//--------------------  TESTING VICTORY CARDS  --------------------
+		//--------------------  TESTING VICTORY CARDS  --------------------
+		
+		
+		//TEST ____ CURSE ____
+		//TEST ____ CURSE ____
+	@Test
+	public void curseTest() throws Throwable {
+<span class="fc" id="L102">		assertEquals(Card.getCard(cards, Card.CardName.Curse).getCost(), 0); //Assert basic stats of card</span>
+<span class="fc" id="L103">		assertEquals(Card.getCard(cards, Card.CardName.Curse).getTreasureValue(), 0);</span>
+<span class="fc" id="L104">		assertEquals(Card.getCard(cards, Card.CardName.Curse).getType(), Card.Type.VICTORY);</span>
+<span class="fc" id="L105">		assertEquals(Card.getCard(cards, Card.CardName.Curse).score(), -1);</span>
+		
+<span class="fc" id="L107">		player=(Player) control.clone();										//Clone control player</span>
+<span class="fc" id="L108">		player.hand.add(Card.getCard(cards, Card.CardName.Curse));				//ADD Curse to hand</span>
+<span class="fc" id="L109">		assertEquals(player.scoreFor(), -1);									//Assertions</span>
+<span class="fc" id="L110">		assertEquals(player.hand.size(), 1);</span>
+<span class="fc" id="L111">	}</span>
+	
+	
+		//TEST ____ ESTATE ____
+		//TEST ____ ESTATE ____
+	@Test
+	public void estateTest() throws Throwable {
+<span class="fc" id="L118">		assertEquals(Card.getCard(cards, Card.CardName.Estate).getCost(), 2); //Assert basic stats of card</span>
+<span class="fc" id="L119">		assertEquals(Card.getCard(cards, Card.CardName.Estate).getTreasureValue(), 0);</span>
+<span class="fc" id="L120">		assertEquals(Card.getCard(cards, Card.CardName.Estate).getType(), Card.Type.VICTORY);</span>
+<span class="fc" id="L121">		assertEquals(Card.getCard(cards, Card.CardName.Estate).score(), 1);</span>
+		
+<span class="fc" id="L123">		player=(Player) control.clone();									//Clone control player</span>
+<span class="fc" id="L124">		player.hand.add(Card.getCard(cards, Card.CardName.Estate));			//ADD Estate to hand</span>
+<span class="fc" id="L125">		assertEquals(player.scoreFor(), 1);									//Assertions</span>
+<span class="fc" id="L126">		assertEquals(player.hand.size(), 1);</span>
+<span class="fc" id="L127">	}</span>
+		
+		//TEST ____ DUCHY ____
+		//TEST ____ DUCHY ____
+	@Test
+	public void duckyTest() throws Throwable {
+<span class="fc" id="L133">		assertEquals(Card.getCard(cards, Card.CardName.Duchy).getCost(), 5); //Assert basic stats of card</span>
+<span class="fc" id="L134">		assertEquals(Card.getCard(cards, Card.CardName.Duchy).getTreasureValue(), 0);</span>
+<span class="fc" id="L135">		assertEquals(Card.getCard(cards, Card.CardName.Duchy).getType(), Card.Type.VICTORY);</span>
+<span class="fc" id="L136">		assertEquals(Card.getCard(cards, Card.CardName.Duchy).score(), 3);</span>
+		
+<span class="fc" id="L138">		player=(Player) control.clone();									//Clone control player</span>
+<span class="fc" id="L139">		player.hand.add(Card.getCard(cards, Card.CardName.Duchy));			//ADD Duchy to hand</span>
+<span class="fc" id="L140">		assertEquals(player.scoreFor(), 3);									//Assertions</span>
+<span class="fc" id="L141">		assertEquals(player.hand.size(), 1);</span>
+<span class="fc" id="L142">	}</span>
+		
+		//TEST ____ PROVINCE ____
+		//TEST ____ PROVINCE ____
+	@Test
+	public void provinceTest() throws Throwable {
+<span class="fc" id="L148">		assertEquals(Card.getCard(cards, Card.CardName.Province).getCost(), 8); //Assert basic stats of card</span>
+<span class="fc" id="L149">		assertEquals(Card.getCard(cards, Card.CardName.Province).getTreasureValue(), 0);</span>
+<span class="fc" id="L150">		assertEquals(Card.getCard(cards, Card.CardName.Province).getType(), Card.Type.VICTORY);</span>
+<span class="fc" id="L151">		assertEquals(Card.getCard(cards, Card.CardName.Province).score(), 6);</span>
+		
+<span class="fc" id="L153">		player=(Player) control.clone();									//Clone control player</span>
+<span class="fc" id="L154">		player.hand.add(Card.getCard(cards, Card.CardName.Province));		//ADD Province to hand</span>
+<span class="fc" id="L155">		assertEquals(player.scoreFor(), 6);									//Assertions</span>
+<span class="fc" id="L156">		assertEquals(player.hand.size(), 1);</span>
+<span class="fc" id="L157">	}</span>
+		
+		//--------------------  TESTING ACTION CARDS  --------------------
+		//--------------------  TESTING ACTION CARDS  --------------------
+		
+		
+		//TEST ____ ADVENTURER ____
+		//TEST ____ ADCENTURER ____
+	@Test
+	public void adventurerTest() throws Throwable {
+<span class="fc" id="L167">		assertEquals(Card.getCard(cards, Card.CardName.Adventurer).getCost(), 6); //Assert basic stats of card</span>
+<span class="fc" id="L168">		assertEquals(Card.getCard(cards, Card.CardName.Adventurer).getTreasureValue(), 0);</span>
+<span class="fc" id="L169">		assertEquals(Card.getCard(cards, Card.CardName.Adventurer).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L170">		assertEquals(Card.getCard(cards, Card.CardName.Adventurer).score(), 0);</span>
+		
+<span class="fc" id="L172">		testState=(GameState) state.clone();													//Clone State, need initialized board</span>
+<span class="fc" id="L173">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Adventurer));		//ADD Adventurer to hand</span>
+<span class="fc" id="L174">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L177">		assertEquals(state.players.get(0).hand.size()+2, testState.players.get(0).hand.size()); //Adventurer is added +1 then move to played card -1 then we gain 2 Treasure cards +2</span>
+<span class="fc" id="L178">		assertEquals(testState.players.get(0).playedCards.size(), 1); 							//PlayedCards +1</span>
+<span class="fc" id="L179">	}</span>
+	
+		//TEST ____ AMBASSADOR ____
+		//TEST ____ AMBASSADOR ____
+	@Test
+	public void ambassadorTest() throws Throwable {
+<span class="fc" id="L185">		assertEquals(Card.getCard(cards, Card.CardName.Ambassador).getCost(), 3); //Assert basic stats of card</span>
+<span class="fc" id="L186">		assertEquals(Card.getCard(cards, Card.CardName.Ambassador).getTreasureValue(), 0);</span>
+<span class="fc" id="L187">		assertEquals(Card.getCard(cards, Card.CardName.Ambassador).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L188">		assertEquals(Card.getCard(cards, Card.CardName.Ambassador).score(), 0);</span>
+		
+<span class="fc" id="L190">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L191">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Ambassador));		//ADD Ambassador to hand</span>
+<span class="fc" id="L192">		testState.players.get(0).playKingdomCard();												//Play Ambassador</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L195">		assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size()+2); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L196">		assertEquals(testState.players.get(0).playedCards.size(), 1); 							//To supply so only played 1 card</span>
+<span class="fc" id="L197">	}</span>
+	
+		//TEST ____ BARON ____
+		//TEST ____ BARON ____
+	@Test
+	public void baronTest() throws Throwable {
+<span class="fc" id="L203">		assertEquals(Card.getCard(cards, Card.CardName.Baron).getCost(), 4); //Assert basic stats of card</span>
+<span class="fc" id="L204">		assertEquals(Card.getCard(cards, Card.CardName.Baron).getTreasureValue(), 0);</span>
+<span class="fc" id="L205">		assertEquals(Card.getCard(cards, Card.CardName.Baron).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L206">		assertEquals(Card.getCard(cards, Card.CardName.Baron).score(), 0);</span>
+		
+<span class="fc" id="L208">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L209">		testState.players.get(0).hand.remove(0);											//remove a card add estate to ensure estate is in hand</span>
+<span class="fc" id="L210">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Estate));</span>
+<span class="fc" id="L211">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Baron));		//ADD Baron to hand</span>
+		//System.out.println(testState.players.get(0).discard.size());
+<span class="fc" id="L213">		testState.players.get(0).playKingdomCard();											//Play card	</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+		//System.out.println(testState.players.get(0).discard.size());
+<span class="fc" id="L217">		assertEquals(state.players.get(0).hand.size() , testState.players.get(0).hand.size()+1); </span>
+<span class="fc" id="L218">		assertEquals(testState.players.get(0).playedCards.size(), 1); </span>
+<span class="fc" id="L219">		assertEquals(testState.players.get(0).discard.size(), state.players.get(0).discard.size()+1); </span>
+<span class="fc" id="L220">		assertEquals(testState.players.get(0).coins, 4); </span>
+<span class="fc" id="L221">	}</span>
+		
+		//TEST ____ COUNCIL_ROOM ____
+		//TEST ____ COUNCIL_ROOM ____
+	@Test
+	public void council_roomTest() throws Throwable {
+<span class="fc" id="L227">		assertEquals(Card.getCard(cards, Card.CardName.Council_Room).getCost(), 5); //Assert basic stats of card</span>
+<span class="fc" id="L228">		assertEquals(Card.getCard(cards, Card.CardName.Council_Room).getTreasureValue(), 0);</span>
+<span class="fc" id="L229">		assertEquals(Card.getCard(cards, Card.CardName.Council_Room).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L230">		assertEquals(Card.getCard(cards, Card.CardName.Council_Room).score(), 0);</span>
+		//Play Adventure
+<span class="fc" id="L232">		System.out.println(&quot;State: &quot; + state.players.get(0).hand.size());		</span>
+<span class="fc" id="L233">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L234">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Council_Room));		//ADD Adventurer to hand</span>
+<span class="fc" id="L235">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L238">		assertEquals(state.players.get(0).hand.size()+2 , testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L239">		assertEquals(testState.players.get(0).playedCards.size(), 1); </span>
+<span class="fc" id="L240">		assertEquals(testState.players.get(0).numBuys, 2); </span>
+<span class="fc" id="L241">	}</span>
+		
+		//TEST ____ CUTPURSE ____
+		//TEST ____ CUTPURSE ____
+	@Test
+	public void cutpurseTest() throws Throwable {
+<span class="fc" id="L247">		assertEquals(Card.getCard(cards, Card.CardName.Cutpurse).getCost(), 4); //Assert basic stats of card</span>
+<span class="fc" id="L248">		assertEquals(Card.getCard(cards, Card.CardName.Cutpurse).getTreasureValue(), 2);</span>
+<span class="fc" id="L249">		assertEquals(Card.getCard(cards, Card.CardName.Cutpurse).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L250">		assertEquals(Card.getCard(cards, Card.CardName.Cutpurse).score(), 0);</span>
+		
+		
+<span class="fc" id="L253">		testState=(GameState) state.clone();//Clone control State, assert involves two players</span>
+<span class="fc" id="L254">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Cutpurse));		//ADD Adventurer to hand</span>
+<span class="fc" id="L255">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());	
+<span class="pc bpc" id="L257" title="1 of 2 branches missed.">		assertTrue(state.players.get(0).hand.size() &lt; testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L258">		assertEquals(testState.players.get(0).coins, 2); </span>
+<span class="fc" id="L259">		assertEquals(testState.players.get(0).playedCards.size(), 1); </span>
+<span class="fc" id="L260">	}</span>
+	
+	
+		//TEST ____ EMBARGO ____
+		//TEST ____ EMBARGO ____
+	@Test
+	public void embargoTest() throws Throwable {
+<span class="fc" id="L267">		assertEquals(Card.getCard(cards, Card.CardName.Embargo).getCost(), 2); //Assert basic stats of card</span>
+<span class="fc" id="L268">		assertEquals(Card.getCard(cards, Card.CardName.Embargo).getTreasureValue(), 2);</span>
+<span class="fc" id="L269">		assertEquals(Card.getCard(cards, Card.CardName.Embargo).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L270">		assertEquals(Card.getCard(cards, Card.CardName.Embargo).score(), 0);</span>
+		
+<span class="fc" id="L272">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L273">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Embargo));		//ADD Adventurer to hand</span>
+<span class="fc" id="L274">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L277">		assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L278">		assertEquals(testState.players.get(0).playedCards.size(), 0); </span>
+<span class="fc" id="L279">	}</span>
+	
+		
+		//TEST ____ FEAST ____
+		//TEST ____ FEAST ____
+	@Test
+	public void feastTest() throws Throwable {
+<span class="fc" id="L286">		assertEquals(Card.getCard(cards, Card.CardName.Feast).getCost(), 4); //Assert basic stats of card</span>
+<span class="fc" id="L287">		assertEquals(Card.getCard(cards, Card.CardName.Feast).getTreasureValue(), 0);</span>
+<span class="fc" id="L288">		assertEquals(Card.getCard(cards, Card.CardName.Feast).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L289">		assertEquals(Card.getCard(cards, Card.CardName.Feast).score(), 0);</span>
+		
+<span class="fc" id="L291">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L292">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Feast));		//ADD Adventurer to hand</span>
+<span class="fc" id="L293">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L296">		assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L297">		assertEquals(testState.players.get(0).playedCards.size(), 0); </span>
+<span class="fc" id="L298">		assertEquals(testState.players.get(0).coins, 5); </span>
+<span class="fc" id="L299">	}</span>
+	
+		
+		//TEST ____ FESTIVAL ____
+		//TEST ____ FESTIVAL ____
+	@Test
+	public void festivalTest() throws Throwable {
+<span class="fc" id="L306">		assertEquals(Card.getCard(cards, Card.CardName.Festival).getCost(), 5); //Assert basic stats of card</span>
+<span class="fc" id="L307">		assertEquals(Card.getCard(cards, Card.CardName.Festival).getTreasureValue(), 0);</span>
+<span class="fc" id="L308">		assertEquals(Card.getCard(cards, Card.CardName.Festival).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L309">		assertEquals(Card.getCard(cards, Card.CardName.Festival).score(), 0);</span>
+		
+<span class="fc" id="L311">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L312">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Festival));		//ADD Adventurer to hand</span>
+<span class="fc" id="L313">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L316">		assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L317">		assertEquals(testState.players.get(0).playedCards.size(), 1); </span>
+<span class="fc" id="L318">		assertEquals(testState.players.get(0).numActions, 2); // action +2 but this card used the 1 action we started with</span>
+<span class="fc" id="L319">		assertEquals(testState.players.get(0).numBuys, 2); </span>
+<span class="fc" id="L320">		assertEquals(testState.players.get(0).coins, 2); </span>
+<span class="fc" id="L321">	}</span>
+	
+		//TEST ____ GARDENS ____
+		//TEST ____ GARDENS ____
+	@Test
+	public void gardensTest() throws Throwable {
+<span class="fc" id="L327">		assertEquals(Card.getCard(cards, Card.CardName.Gardens).getCost(), 4); //Assert basic stats of card</span>
+<span class="fc" id="L328">		assertEquals(Card.getCard(cards, Card.CardName.Gardens).getTreasureValue(), 0);</span>
+<span class="fc" id="L329">		assertEquals(Card.getCard(cards, Card.CardName.Gardens).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L330">		assertEquals(Card.getCard(cards, Card.CardName.Gardens).score(), 0);</span>
+		
+<span class="fc" id="L332">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L333">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Gardens));		//ADD Adventurer to hand</span>
+<span class="fc" id="L334">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L337">		assertEquals(state.players.get(0).hand.size() , testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L338">		assertEquals(testState.players.get(0).scoreFor(), 4); //+1 points for 10 cards</span>
+<span class="fc" id="L339">	}</span>
+		
+		//TEST ____ GREAT_HALL ____
+		//TEST ____ GREAT_HALL ____
+	@Test
+	public void great_hallTest() throws Throwable {
+<span class="fc" id="L345">		assertEquals(Card.getCard(cards, Card.CardName.Great_Hall).getCost(), 3); //Assert basic stats of card</span>
+<span class="fc" id="L346">		assertEquals(Card.getCard(cards, Card.CardName.Great_Hall).getTreasureValue(), 0);</span>
+<span class="fc" id="L347">		assertEquals(Card.getCard(cards, Card.CardName.Great_Hall).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L348">		assertEquals(Card.getCard(cards, Card.CardName.Great_Hall).score(), 1);</span>
+		
+<span class="fc" id="L350">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L351">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Great_Hall));		//ADD Adventurer to hand</span>
+<span class="fc" id="L352">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L355">		assertEquals(state.players.get(0).hand.size()+1, testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L356">		assertEquals(testState.players.get(0).playedCards.size(), 1); </span>
+<span class="fc" id="L357">		assertEquals(testState.players.get(0).numActions, 1);</span>
+<span class="fc" id="L358">		assertEquals(testState.players.get(0).scoreFor(), state.players.get(0).scoreFor() + 1);</span>
+<span class="fc" id="L359">	}</span>
+	
+		
+		//TEST ____ MINE ____
+		//TEST ____ MINE ____
+	@Test
+	public void mineTest() throws Throwable {
+<span class="fc" id="L366">		assertEquals(Card.getCard(cards, Card.CardName.Mine).getCost(), 5); //Assert basic stats of card</span>
+<span class="fc" id="L367">		assertEquals(Card.getCard(cards, Card.CardName.Mine).getTreasureValue(), 0);</span>
+<span class="fc" id="L368">		assertEquals(Card.getCard(cards, Card.CardName.Mine).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L369">		assertEquals(Card.getCard(cards, Card.CardName.Mine).score(), 0);</span>
+		
+<span class="fc" id="L371">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L372">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Mine));		//ADD Adventurer to hand</span>
+<span class="fc" id="L373">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+<span class="fc" id="L374">		System.out.println(&quot;SSAS&quot; +state.players.get(0).hand.size());									</span>
+<span class="fc" id="L375">		System.out.println(testState.players.get(0).hand.size());</span>
+<span class="fc" id="L376">		assertEquals(state.players.get(0).hand.size(), testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L377">		assertEquals(testState.players.get(0).playedCards.size(), 1);</span>
+<span class="fc" id="L378">		testState.players.get(0).playTtreasureCard();</span>
+<span class="fc" id="L379">		state.players.get(0).playTtreasureCard();</span>
+<span class="fc" id="L380">		assertEquals(testState.players.get(0).coins, state.players.get(0).coins +1); //lose copper add silver = -1 +2 = 1 ;; lose silver add gold = -2 +3 = 1.</span>
+		
+<span class="fc" id="L382">	}</span>
+	
+		//TEST ____ SMITHY ____
+		//TEST ____ SMITHY ____
+	@Test
+	public void smithyTest() throws Throwable {
+<span class="fc" id="L388">		assertEquals(Card.getCard(cards, Card.CardName.Smithy).getCost(), 4); //Assert basic stats of card</span>
+<span class="fc" id="L389">		assertEquals(Card.getCard(cards, Card.CardName.Smithy).getTreasureValue(), 0);</span>
+<span class="fc" id="L390">		assertEquals(Card.getCard(cards, Card.CardName.Smithy).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L391">		assertEquals(Card.getCard(cards, Card.CardName.Smithy).score(), 0);</span>
+		
+<span class="fc" id="L393">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L394">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Smithy));		//ADD Adventurer to hand</span>
+<span class="fc" id="L395">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L398">		assertEquals(state.players.get(0).hand.size() +3 , testState.players.get(0).hand.size()); 	//Draw 3 cards, smithy is in playedcard.</span>
+<span class="fc" id="L399">		assertEquals(testState.players.get(0).playedCards.size(), 1); </span>
+<span class="fc" id="L400">	}</span>
+	
+	
+		//TEST ____ VILLAGE ____
+		//TEST ____ VILLAGE ____
+	@Test
+	public void villageTest() throws Throwable {
+<span class="fc" id="L407">		assertEquals(Card.getCard(cards, Card.CardName.Village).getCost(), 3); //Assert basic stats of card</span>
+<span class="fc" id="L408">		assertEquals(Card.getCard(cards, Card.CardName.Village).getTreasureValue(), 0);</span>
+<span class="fc" id="L409">		assertEquals(Card.getCard(cards, Card.CardName.Village).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L410">		assertEquals(Card.getCard(cards, Card.CardName.Village).score(), 0);</span>
+		
+<span class="fc" id="L412">		testState=(GameState) state.clone();													//Clone control State, assert involves two players</span>
+<span class="fc" id="L413">		testState.players.get(0).hand.add(Card.getCard(cards, Card.CardName.Village));		//ADD Adventurer to hand</span>
+<span class="fc" id="L414">		testState.players.get(0).playKingdomCard();												//Play Adventure</span>
+		//System.out.println(state.players.get(0).hand.size());									
+		//System.out.println(testState.players.get(0).hand.size());
+<span class="fc" id="L417">		assertEquals(state.players.get(0).hand.size() +1, testState.players.get(0).hand.size()); 	//Ambassador move 1 or 2 cards from hand to supply</span>
+<span class="fc" id="L418">		assertEquals(testState.players.get(0).playedCards.size(), 1); </span>
+<span class="fc" id="L419">		assertEquals(testState.players.get(0).numActions, 2); </span>
+	
+<span class="fc" id="L421">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>AllTests (1) (Feb 13, 2017 3:07:02 PM)</div></body></html>

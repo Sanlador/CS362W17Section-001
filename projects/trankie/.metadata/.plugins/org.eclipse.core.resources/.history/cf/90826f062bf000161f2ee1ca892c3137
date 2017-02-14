@@ -1,0 +1,20 @@
+
+public class DominionBoard {
+	int num_Duchy;
+	int num_Estate;
+	int num_Province;
+	int num_Curse;
+	int num_Gold;
+	int num_Silver;
+	int num_Cooper;
+	
+	public void initialize(){
+		this.num_Duchy = 8;
+		this.num_Estate = 8;
+		this.num_Province = 8;
+		this.num_Curse = 10;
+		this.num_Gold = 30;
+		this.num_Silver = 40;
+		this.num_Cooper = 46;
+	}
+}

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: org.cs362.dominion.SmithyTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.067 sec <<< FAILURE! - in org.cs362.dominion.SmithyTest
+test0(org.cs362.dominion.SmithyTest)  Time elapsed: 0.02 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at org.cs362.dominion.GameState.clone(GameState.java:195)
+	at org.cs362.dominion.SmithyTest.test0(SmithyTest.java:44)
+

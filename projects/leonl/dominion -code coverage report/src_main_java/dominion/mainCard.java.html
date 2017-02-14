@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>mainCard.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">dominion (3) (Feb 13, 2017 3:20:26 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">mainCard.java</span></div><h1>mainCard.java</h1><pre class="source lang-java linenums">package dominion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+<span class="nc" id="L8">public class mainCard {</span>
+	public  static void main(String args[]){
+		
+<span class="nc" id="L11">		List&lt;Card&gt; cards=new LinkedList&lt;Card&gt;();</span>
+		//the cards  are achieved by each element/constant in the enum class 
+<span class="nc" id="L13">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+		
+<span class="nc bnc" id="L15" title="All 2 branches missed.">		for(Card card:cards)</span>
+<span class="nc" id="L16">			System.out.println(card.toString());</span>
+		
+<span class="nc bnc" id="L18" title="All 2 branches missed.">		for(Card card:cards)</span>
+<span class="nc" id="L19">			card.play(null,null); </span>
+<span class="nc" id="L20">		System.exit(0);   </span>
+<span class="nc" id="L21">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>dominion (3) (Feb 13, 2017 3:20:26 PM)</div></body></html>

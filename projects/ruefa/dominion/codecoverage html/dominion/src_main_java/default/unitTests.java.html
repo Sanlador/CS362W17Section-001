@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>unitTests.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">unitTests (Feb 12, 2017 5:32:59 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">unitTests.java</span></div><h1>unitTests.java</h1><pre class="source lang-java linenums">import static org.junit.Assert.*;
+
+import java.util.Random;
+
+import org.junit.Test;
+import java.util.ArrayList;
+<span class="pc bpc" id="L7" title="1 of 2 branches missed.">public class unitTests {</span>
+
+	//tests adding cards without buying them.
+	@Test
+	public void addCardTest() {
+<span class="fc" id="L12">		Random rand = new Random();</span>
+<span class="fc" id="L13">		int i=0;</span>
+<span class="fc" id="L14">		new dominionBoard();</span>
+<span class="fc" id="L15">		Player player = dominionBoard.player1;</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">		for(Card card : dominionBoard.cardList.values())</span>
+		{
+<span class="fc" id="L18">			dominionBoard.addCard(player, card);</span>
+<span class="pc bpc" id="L19" title="2 of 4 branches missed.">			assert(player.getdiscard().get(i) == card);</span>
+<span class="fc" id="L20">			i++;</span>
+		}
+<span class="fc" id="L22">	}</span>
+	
+	//make sure you can buy when you have enough money
+	@Test
+	public void successfulBuy() {
+		Player player;
+<span class="fc" id="L28">		new dominionBoard();</span>
+<span class="fc" id="L29">		player = dominionBoard.player1;</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">		for(Card card : dominionBoard.cardList.values())</span>
+		{
+<span class="fc" id="L32">			player.setmoney(card.cost);</span>
+<span class="fc" id="L33">			dominionBoard.buyCard(player, card);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">			if(card == dominionBoard.cardList.get(Card.Name.curse))</span>
+<span class="pc bpc" id="L35" title="2 of 4 branches missed.">				assert(dominionBoard.player2.getdiscard().contains(card));</span>
+			else
+<span class="pc bpc" id="L37" title="2 of 4 branches missed.">				assert(player.getdiscard().contains(card));</span>
+		}
+<span class="fc" id="L39">	}</span>
+	
+	//tests buying cards you have no money for(also make sure copper and curse cards get bought since they are free)
+	@Test
+	public void noMoneyBuy() {
+		Player player;
+<span class="fc" id="L45">		new dominionBoard();</span>
+<span class="fc" id="L46">		player = dominionBoard.player1;</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">		for(Card card : dominionBoard.cardList.values()){</span>
+<span class="fc" id="L48">			dominionBoard.buyCard(player, card);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">			if(card == dominionBoard.cardList.get(Card.Name.curse))</span>
+<span class="pc bpc" id="L50" title="2 of 4 branches missed.">				assert(dominionBoard.player2.getdiscard().contains(card));</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">			else if(card == dominionBoard.cardList.get(Card.Name.copper))</span>
+<span class="pc bpc" id="L52" title="2 of 4 branches missed.">				assert(player.getdiscard().contains(card));</span>
+			else
+<span class="pc bpc" id="L54" title="2 of 4 branches missed.">				assert(!player.getdiscard().contains(card));</span>
+		}
+<span class="fc" id="L56">	}</span>
+	
+	//tests buying cards that have are out
+	@Test
+	public void noPoolBuy() {
+<span class="fc" id="L61">		new dominionBoard();</span>
+<span class="fc" id="L62">		Player player = dominionBoard.player1;</span>
+<span class="fc" id="L63">		Card card = dominionBoard.cardList.get(Card.Name.gold);</span>
+<span class="fc" id="L64">		player.setmoney(card.cost);</span>
+<span class="fc" id="L65">		dominionBoard.pool.put(card, 0);</span>
+<span class="fc" id="L66">		dominionBoard.buyCard(player, card);</span>
+<span class="pc bpc" id="L67" title="2 of 4 branches missed.">		assert(player.getdiscard().size()==0);</span>
+<span class="pc bpc" id="L68" title="2 of 4 branches missed.">		assert(dominionBoard.pool.get(card)==0);</span>
+<span class="fc" id="L69">	}</span>
+	
+	//tests drawing cards
+	@Test
+	public void drawTest() {
+<span class="fc" id="L74">		new dominionBoard();</span>
+<span class="fc" id="L75">		Player player = dominionBoard.player1;</span>
+<span class="fc" id="L76">		Card[] cards = new Card[5];</span>
+<span class="fc" id="L77">		cards[0] = dominionBoard.cardList.get(Card.Name.copper);</span>
+<span class="fc" id="L78">		cards[1] = dominionBoard.cardList.get(Card.Name.smithy);</span>
+<span class="fc" id="L79">		cards[2] = dominionBoard.cardList.get(Card.Name.gardens);</span>
+<span class="fc" id="L80">		cards[3] = dominionBoard.cardList.get(Card.Name.gold);</span>
+<span class="fc" id="L81">		cards[4] = dominionBoard.cardList.get(Card.Name.estate);</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		for(int i=0;i&lt;cards.length;i++)</span>
+		{
+<span class="fc" id="L84">			player.getdiscard().add(cards[i]);</span>
+		}
+<span class="fc" id="L86">		player.draw(5);</span>
+<span class="pc bpc" id="L87" title="2 of 4 branches missed.">		assert(player.getdeck().size()==0);</span>
+<span class="pc bpc" id="L88" title="2 of 4 branches missed.">		assert(player.getdiscard().size()==0);</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">		for(int i=0;i&lt;cards.length;i++)</span>
+		{
+<span class="pc bpc" id="L91" title="2 of 4 branches missed.">			assert(player.gethand().contains(cards[i]));</span>
+		}
+<span class="fc" id="L93">	}</span>
+	
+	//test if the game is over
+	@Test
+	public void isGameOverTest() {
+<span class="fc" id="L98">		new dominionBoard();</span>
+<span class="pc bpc" id="L99" title="2 of 4 branches missed.">		assert(dominionBoard.isGameOver()==false);</span>
+<span class="fc" id="L100">		dominionBoard.pool.put(dominionBoard.cardList.get(Card.Name.province), 0);</span>
+<span class="pc bpc" id="L101" title="2 of 4 branches missed.">		assert(dominionBoard.isGameOver()==true);</span>
+<span class="fc" id="L102">		new dominionBoard();</span>
+<span class="pc bpc" id="L103" title="2 of 4 branches missed.">		assert(dominionBoard.isGameOver()==false);</span>
+<span class="fc" id="L104">		dominionBoard.pool.put(dominionBoard.cardList.get(Card.Name.gold), 0);</span>
+<span class="fc" id="L105">		dominionBoard.pool.put(dominionBoard.cardList.get(Card.Name.smithy), 0);</span>
+<span class="fc" id="L106">		dominionBoard.pool.put(dominionBoard.cardList.get(Card.Name.gardens), 0);</span>
+<span class="pc bpc" id="L107" title="2 of 4 branches missed.">		assert(dominionBoard.isGameOver()==true);</span>
+<span class="fc" id="L108">	}</span>
+	
+	//tests the function that plays cards
+	@Test
+	public void playCardTest() {
+<span class="fc" id="L113">		new dominionBoard();</span>
+<span class="fc" id="L114">		Player player = dominionBoard.player1;</span>
+<span class="fc" id="L115">		Card card = dominionBoard.cardList.get(Card.Name.gold);</span>
+<span class="fc" id="L116">		player.gethand().add(card);</span>
+<span class="fc" id="L117">		dominionBoard.playCard(card);</span>
+<span class="pc bpc" id="L118" title="2 of 4 branches missed.">		assert(player.gethand().size()==0);</span>
+<span class="pc bpc" id="L119" title="2 of 4 branches missed.">		assert(player.getdiscard().get(0)==card);</span>
+<span class="fc" id="L120">	}</span>
+	
+	//tests the cleanup function
+	@Test
+	public void cleanupTest() {
+<span class="fc" id="L125">		new dominionBoard();</span>
+<span class="fc" id="L126">		Player player = dominionBoard.player1;</span>
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">		for(Card card : dominionBoard.cardList.values())</span>
+		{
+<span class="fc" id="L129">			player.getdeck().add(card);</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">			if(player.getdeck().size()==5)</span>
+<span class="fc" id="L131">				break;</span>
+		}
+<span class="fc" id="L133">		player.cleanup();</span>
+<span class="pc bpc" id="L134" title="2 of 4 branches missed.">		assert(player.getactions()==1);</span>
+<span class="pc bpc" id="L135" title="2 of 4 branches missed.">		assert(player.getbuys()==1);</span>
+<span class="pc bpc" id="L136" title="2 of 4 branches missed.">		assert(player.getmoney()==0);</span>
+<span class="pc bpc" id="L137" title="2 of 4 branches missed.">		assert(player.gethand().size()==5);</span>
+<span class="fc" id="L138">	}</span>
+	
+	//tests the function that returns action cards in a players hand
+	@Test
+	public void actionCardsTest() {
+<span class="fc" id="L143">		new dominionBoard();</span>
+<span class="fc" id="L144">		Player player = dominionBoard.player1;</span>
+<span class="fc" id="L145">		Card[] cards = new Card[3];</span>
+<span class="fc" id="L146">		cards[0] = dominionBoard.cardList.get(Card.Name.smithy);</span>
+<span class="fc" id="L147">		cards[1] = dominionBoard.cardList.get(Card.Name.adventurer);</span>
+<span class="fc" id="L148">		cards[2] = dominionBoard.cardList.get(Card.Name.salvager);</span>
+<span class="fc" id="L149">		Card vpCard = dominionBoard.cardList.get(Card.Name.estate);</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">		for(int i=0;i&lt;3;i++)</span>
+		{
+<span class="fc" id="L152">			player.gethand().add(cards[i]);</span>
+		}
+<span class="fc bfc" id="L154" title="All 2 branches covered.">		for(int i=0;i&lt;3;i++)</span>
+		{
+<span class="pc bpc" id="L156" title="2 of 4 branches missed.">			assert(player.actionCards().contains(cards[i]));</span>
+		}
+<span class="pc bpc" id="L158" title="2 of 4 branches missed.">		assert(!player.actionCards().contains(vpCard));</span>
+<span class="fc" id="L159">	}</span>
+	
+	//test that the winner function
+	@Test
+	public void winnerTest() {
+<span class="fc" id="L164">		new dominionBoard();</span>
+<span class="fc" id="L165">		Card estate = dominionBoard.cardList.get(Card.Name.estate);</span>
+<span class="fc" id="L166">		Card duchy = dominionBoard.cardList.get(Card.Name.duchy);</span>
+<span class="fc" id="L167">		Card province = dominionBoard.cardList.get(Card.Name.province);</span>
+<span class="fc" id="L168">		Card gardens = dominionBoard.cardList.get(Card.Name.gardens);</span>
+<span class="fc" id="L169">		Card smithy = dominionBoard.cardList.get(Card.Name.smithy);</span>
+<span class="fc" id="L170">		dominionBoard.player1.getdeck().add(estate);</span>
+<span class="fc" id="L171">		dominionBoard.player1.getdeck().add(province);</span>
+<span class="fc" id="L172">		dominionBoard.player1.getdeck().add(duchy);</span>
+		
+<span class="fc" id="L174">		dominionBoard.turn=2;</span>
+<span class="fc bfc" id="L175" title="All 2 branches covered.">		for(int i=0;i&lt;10;i++)</span>
+		{
+<span class="fc" id="L177">			dominionBoard.player2.getdeck().add(smithy);</span>
+		}
+<span class="fc" id="L179">		dominionBoard.player2.getdeck().add(gardens);</span>
+		
+<span class="pc bpc" id="L181" title="2 of 4 branches missed.">		assert(dominionBoard.winner()==&quot;Player1 wins!&quot;);</span>
+<span class="pc bpc" id="L182" title="2 of 4 branches missed.">		assert(dominionBoard.player1.getvp()==10);</span>
+<span class="pc bpc" id="L183" title="2 of 4 branches missed.">		assert(dominionBoard.player2.getvp()==1);</span>
+<span class="fc" id="L184">	}</span>
+	
+	//tests the embargo card
+	@Test
+	public void embargoTest() {
+<span class="fc" id="L189">		new dominionBoard();</span>
+<span class="fc" id="L190">		Card embargo = dominionBoard.cardList.get(Card.Name.embargo);</span>
+<span class="fc" id="L191">		dominionBoard.player1.gethand().add(embargo);</span>
+<span class="fc" id="L192">		dominionBoard.playCard(embargo);</span>
+<span class="fc" id="L193">		Card card = embargo;</span>
+<span class="fc bfc" id="L194" title="All 2 branches covered.">		for(Card i : dominionBoard.embargo.keySet())</span>
+		{
+<span class="fc bfc" id="L196" title="All 2 branches covered.">			if(dominionBoard.embargo.get(i)==1)</span>
+<span class="fc" id="L197">				card = i;</span>
+		}
+<span class="fc" id="L199">		dominionBoard.player2.setmoney(card.cost);</span>
+<span class="fc" id="L200">		dominionBoard.buyCard(dominionBoard.player2, card);</span>
+<span class="pc bpc" id="L201" title="2 of 4 branches missed.">		assert(dominionBoard.player2.getdiscard().contains(dominionBoard.cardList.get(Card.Name.curse)));</span>
+<span class="fc" id="L202">	}</span>
+	
+	//tests the options function
+	@Test
+	public void optionsTest() {
+<span class="fc" id="L207">		new dominionBoard();</span>
+<span class="fc" id="L208">		Player player = dominionBoard.player1;</span>
+<span class="fc" id="L209">		Card[] cards = new Card[7];</span>
+<span class="fc" id="L210">		cards[0] = dominionBoard.cardList.get(Card.Name.ambassador);</span>
+<span class="fc" id="L211">		cards[1] = dominionBoard.cardList.get(Card.Name.embargo);</span>
+<span class="fc" id="L212">		cards[2] = dominionBoard.cardList.get(Card.Name.great_hall);</span>
+<span class="fc" id="L213">		cards[3] = dominionBoard.cardList.get(Card.Name.copper);</span>
+<span class="fc" id="L214">		cards[4] = dominionBoard.cardList.get(Card.Name.silver);</span>
+<span class="fc" id="L215">		cards[5] = dominionBoard.cardList.get(Card.Name.curse);</span>
+<span class="fc" id="L216">		cards[6] = dominionBoard.cardList.get(Card.Name.estate);</span>
+<span class="fc" id="L217">		ArrayList&lt;Card&gt; options = dominionBoard.cardOptions(3);</span>
+<span class="fc bfc" id="L218" title="All 2 branches covered.">		for(int i=0;i&lt;cards.length;i++)</span>
+		{
+<span class="pc bpc" id="L220" title="2 of 4 branches missed.">			assert(options.contains(cards[i]));</span>
+		}
+<span class="fc" id="L222">	}</span>
+	
+	//test the adventurer card
+	@Test
+	public void adventurerTest() {
+<span class="fc" id="L227">		new dominionBoard();</span>
+<span class="fc" id="L228">		Player player = dominionBoard.player1;</span>
+<span class="fc" id="L229">		Card adventurer = dominionBoard.cardList.get(Card.Name.adventurer);</span>
+<span class="fc" id="L230">		Card smithy = dominionBoard.cardList.get(Card.Name.smithy);</span>
+<span class="fc" id="L231">		Card gold = dominionBoard.cardList.get(Card.Name.gold);</span>
+<span class="fc" id="L232">		player.getdeck().add(smithy);</span>
+<span class="fc" id="L233">		player.getdeck().add(smithy);</span>
+<span class="fc" id="L234">		player.getdeck().add(smithy);</span>
+<span class="fc" id="L235">		player.getdeck().add(gold);</span>
+<span class="fc" id="L236">		player.getdeck().add(gold);</span>
+<span class="fc" id="L237">		adventurer.name.action();</span>
+<span class="pc bpc" id="L238" title="2 of 4 branches missed.">		assert(player.gethand().get(0)==gold);</span>
+<span class="pc bpc" id="L239" title="2 of 4 branches missed.">		assert(player.gethand().get(1)==gold);</span>
+<span class="pc bpc" id="L240" title="2 of 4 branches missed.">		assert(player.getdiscard().size()==3);</span>
+<span class="fc" id="L241">	}</span>
+	
+	//test the mine card
+	@Test
+	public void mineTest() {
+<span class="fc" id="L246">		new dominionBoard();</span>
+<span class="fc" id="L247">		Player player = dominionBoard.player1;</span>
+<span class="fc" id="L248">		Card mine = dominionBoard.cardList.get(Card.Name.mine);</span>
+<span class="fc" id="L249">		Card copper = dominionBoard.cardList.get(Card.Name.copper);</span>
+<span class="fc" id="L250">		int cost = copper.cost+3;</span>
+<span class="fc" id="L251">		player.gethand().add(copper);</span>
+<span class="fc bfc" id="L252" title="All 2 branches covered.">		for(int i=0;i&lt;20;i++)</span>
+		{
+<span class="fc" id="L254">			cost = player.gethand().get(0).cost+3;</span>
+<span class="fc" id="L255">			mine.name.action();</span>
+<span class="pc bpc" id="L256" title="2 of 4 branches missed.">			assert(player.gethand().size()==1);</span>
+<span class="pc bpc" id="L257" title="2 of 4 branches missed.">			assert(player.gethand().get(0).type==Card.Type.treasure);</span>
+<span class="pc bpc" id="L258" title="2 of 4 branches missed.">			assert(player.gethand().get(0).cost&lt;=cost);</span>
+		}
+<span class="fc" id="L260">	}</span>
+	
+	//Run the game a few times and tests that they finished correctly
+	@Test
+	public void fullRunTest() {
+<span class="fc bfc" id="L265" title="All 2 branches covered.">		for(int i=0;i&lt;20;i++)</span>
+		{
+<span class="fc" id="L267">			new dominionBoard();</span>
+<span class="fc" id="L268">			dominionBoard.start();</span>
+<span class="pc bpc" id="L269" title="2 of 4 branches missed.">			assert(dominionBoard.isGameOver()==true);</span>
+		}
+<span class="fc" id="L271">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>unitTests (Feb 12, 2017 5:32:59 PM)</div></body></html>

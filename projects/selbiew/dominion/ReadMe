@@ -1,0 +1,24 @@
+Create a Maven Project for Dominion, using the instructions from 9th Powerpoint (on Java Unit Testing Tools).
+
+Copy all of the files from the src folder in the dominion folder on my github, NOT including the files inside the junit folder,
+and put them in the default package of the Maven Project, such as src\main\java\org\cs362\dominion.
+
+Copy all of the files from the junit folder inside the src folder on my github, and put them inside test folder inside the src folder
+of the Maven Project, such as \src\test\java.
+
+The Project can then be compiled by typing "mvn compile" when in the project directory in command prompt
+
+To run Dominion by itself: 
+  Use command prompt to navigate to the src folder containing all the .java files, then type "javac PlayGame.java" to compile the
+  .java files into .class files. In order to run the game, type "java PlayGame #" where # is the number being used for a random seed
+  for instance "java PlayGame 0".
+ 
+To run Dominion with the Unit Tests:
+  Use command prompt to navigate to the maven project folder, and then type "mvn compile" and "mvn test". Note that it is possible for
+  several of the Unit tests to fail, this is because of the bugs that were deliberately introduced into the code. Specifically, the
+  TestAmbassador, TestShuffle, and TestRemodel unit tests all have the possibility of failing for reasons documented in the source and 
+  test code.
+
+To run Dominion with Cobertura Coverage:
+  Use command prompt to navigate to the maven project folder, and then type "mvn compile" and "mvn cobertura:cobertura" this will generate
+  and HTML Code coverage report at "project_name/target/site/cobertura/index.html".

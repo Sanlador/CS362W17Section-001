@@ -1,0 +1,11 @@
+How to compile:
+I did not realize this needed to be compiled in Linux until too late as it was not mentioned in the original assignment, but rather only in the submission guidelines. There simply wasn't enough time to learn how once I went to read the submission guidelines.
+
+How to run:
+java -jar Dominion.jar
+
+How to compile with code coverage tool:
+Use Netbeans and the JaCoCoverage plugin. 
+
+
+Dominion_files folder is for Dominion.html 

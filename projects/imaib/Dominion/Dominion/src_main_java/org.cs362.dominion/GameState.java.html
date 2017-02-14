@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>GameState.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">org.cs362.dominion (Feb 10, 2017 11:10:50 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">GameState.java</span></div><h1>GameState.java</h1><pre class="source lang-java linenums">//*************************
+//Name: Bradley Imai
+//Project: Assignment 1
+//File: GameState.java
+//Class: CS362
+//*************************
+package org.cs362.dominion;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.TreeMap;
+
+
+public class GameState implements Cloneable{
+<span class="fc" id="L17">	   public List&lt;Player&gt; players = new ArrayList&lt;Player&gt;();</span>
+	   public List&lt;Card&gt; cards;
+<span class="fc" id="L19">	   public HashMap&lt;Card, Integer&gt; gameBoard = new HashMap&lt;Card, Integer&gt;();	</span>
+	   
+<span class="fc" id="L21">	   public GameState(List&lt;Card&gt; cards) {</span>
+<span class="fc" id="L22">		   this.cards=cards;</span>
+		   
+<span class="fc" id="L24">	   }</span>
+	   public void addPlayer(Player player) {
+<span class="fc" id="L26">		      players.add(player);</span>
+<span class="fc" id="L27">	   }   </span>
+
+	   
+ /*
+*initializing all supplies, and shuffling deck and
+drawing starting hands for all players.  Check that 10 cards selected
+are in fact (different) kingdom cards, and that numPlayers is valid.
+* steps: initialize supply
+*        check for the number of players
+*        supply for only two players requirements for this assignment
+*        set number of cures cards however this card is not being used
+*        set victory cards
+*        set treasury cards
+*/  
+	   public void initializeGame(){
+<span class="nc bnc" id="L42" title="All 4 branches missed.">			   if (players.size() &gt; 4 || players.size() &lt; 2)</span>
+			    {
+<span class="nc" id="L44">				   System.err.println(&quot;the number of players mus be between 2 and 4 &quot;);</span>
+<span class="nc" id="L45">			      return ;</span>
+			    }
+<span class="nc" id="L47">				  int selectedKindom=0;</span>
+<span class="nc" id="L48">				   int Kingdom_Cards_Selected=13;</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">		      while (selectedKindom &lt; Kingdom_Cards_Selected) {</span>
+<span class="nc" id="L50">			         int random = (int)  Randomness.random.nextInt(cards.size());//</span>
+<span class="nc" id="L51">			         Card tmp = cards.get(random);</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">			         if(tmp.getType()!=Card.Type.ACTION) continue;</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">			         if(gameBoard.containsKey(tmp)) continue;</span>
+<span class="nc" id="L54">			         gameBoard.put(tmp, 10);</span>
+<span class="nc" id="L55">			         selectedKindom++;</span>
+			      }		   
+<span class="nc" id="L57">		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);</span>
+		      //Victory cards
+<span class="nc" id="L59">		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);</span>
+<span class="nc" id="L60">		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);</span>
+<span class="nc" id="L61">		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);</span>
+		      //Treasure cards
+<span class="nc" id="L63">		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);</span>
+<span class="nc" id="L64">		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);</span>
+<span class="nc" id="L65">		      gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);</span>
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">		      for (Player player : players) {</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">			         for (int i = 0; i &lt; 7; i++)</span>
+<span class="nc" id="L69">			            player.StartGain(Card.getCard(cards, Card.CardName.Copper));</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">			         for (int i = 0; i &lt; 3; i++)</span>
+<span class="nc" id="L71">			            player.StartGain(Card.getCard(cards,Card.CardName.Estate));</span>
+			         
+<span class="nc" id="L73">			         player.numActions = 1;</span>
+<span class="nc" id="L74">			         player.coins = 0;</span>
+<span class="nc" id="L75">			         player.numBuys = 1;</span>
+				      //Shuffle your starting 10 cards (7 Coppers &amp; 3 Estates) and place them face-down as your Deck. Draw the top
+				      //5 cards as your starting hand
+<span class="nc bnc" id="L78" title="All 2 branches missed.">				      for (int i = 0; i &lt; 5; i++) {</span>
+<span class="nc" id="L79">				    	  player.drawCard();</span>
+				      }
+			      }
+<span class="nc" id="L82">	   }</span>
+	   
+	   public HashMap&lt;Player, Integer&gt;  play() {
+			 
+<span class="nc" id="L86">		   	  int turn =0;	</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">		      while (!isGameOver()) {</span>
+<span class="nc" id="L88">		    	  turn++;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		         for (Player player : players) {</span>
+<span class="nc" id="L90">		        	 	System.out.println(&quot;Turn &quot;+turn+&quot;: &quot;+ player.player_username + &quot; is playing&quot;);</span>
+		   				//player plays action card
+<span class="nc" id="L92">		        	 	player.playKingdomCard();</span>
+		        	 	//player plays treasure card
+<span class="nc" id="L94">		   			    player.playTreasureCard();</span>
+		   			    //player buy cards
+<span class="nc" id="L96">		        	    player.buyCard();</span>
+		        	    //player ends turn
+<span class="nc" id="L98">		        	    player.endTurn();</span>
+		         }
+		         //if(turn==3)
+		        	 //break;
+		      }
+<span class="nc" id="L103">		      return this.getWinners();</span>
+		   }
+	   public boolean isGameOver() {
+		 //if stack of Province cards is empty, the game ends
+<span class="nc bnc" id="L107" title="All 4 branches missed.">		   if((this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))==null)||(this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))== 0))</span>
+<span class="nc" id="L108">		   {System.out.println(&quot;Out of Province cards.&quot;);</span>
+<span class="nc" id="L109">			   return true;}</span>
+		 //if three supply piles are at 0, the game ends
+<span class="nc" id="L111">		      int emptySupplyPile = 0;</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">		      for (int i : gameBoard.values()){</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		         if (i &lt;= 0)</span>
+<span class="nc" id="L114">		        	 emptySupplyPile++;</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">		         if ( emptySupplyPile &gt;= 3)</span>
+		         {
+<span class="nc" id="L117">		        	System.out.println(&quot;3 Supply piles empty.&quot;);</span>
+<span class="nc" id="L118">		           return true;</span>
+		         }
+		      }
+<span class="nc" id="L121">		         return false;</span>
+		   }
+	   
+	   /* Set HashMap  of each player and the score (remember ties!) */
+	   public HashMap&lt;Player, Integer&gt;  getWinners() {
+<span class="nc" id="L126">		   HashMap&lt;Player, Integer&gt; playerScore = new HashMap&lt;Player, Integer&gt;();</span>
+
+		    //get score for each player
+<span class="nc bnc" id="L129" title="All 2 branches missed.">		      for (Player p : players) {</span>
+<span class="nc" id="L130">		         int score = p.scoreFor();</span>
+<span class="nc" id="L131">		         playerScore.put(p, score);</span>
+		      }
+<span class="nc" id="L133">		      return playerScore;</span>
+		   }
+	   
+	   @Override
+	public String toString() {
+
+<span class="nc" id="L139">		StringBuilder sb = new StringBuilder();</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">		if (gameBoard.isEmpty())</span>
+<span class="nc" id="L141">			sb.append(&quot;The board game is empty, you need to intialize the game!&quot;);</span>
+		else {
+<span class="nc bnc" id="L143" title="All 2 branches missed.">			for (Player player : players)</span>
+<span class="nc" id="L144">				sb.append(&quot; --- &quot; + player.toString() + &quot;\n&quot;);</span>
+<span class="nc" id="L145">			sb.append(&quot; --- gameBoard --- \n&quot;);</span>
+<span class="nc" id="L146">			sb.append(&quot;Cards on the table: \n&quot;);</span>
+<span class="nc" id="L147">			sb.append(String.format(&quot;%-20s %s&quot; , &quot;Name:&quot;, &quot;Number:&quot;) + &quot;\n&quot;);</span>
+<span class="nc" id="L148">			Map&lt;Card, Integer&gt; treeMap = new TreeMap&lt;Card, Integer&gt;(gameBoard);</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">			for (Card card : treeMap.keySet())</span>
+<span class="nc" id="L150">				sb.append(String.format(&quot;%-20s %s&quot; , &quot;  &quot; + card.getCardName(), &quot;  &quot; + treeMap.get(card)) + &quot;\n&quot;);</span>
+		}
+<span class="nc" id="L152">		return sb.toString();</span>
+	}   
+	   
+<span class="fc" id="L155">	   private GameState(List&lt;Card&gt; cards, List&lt;Player&gt; players, HashMap&lt;Card, Integer&gt; gameBoard) {</span>
+<span class="fc" id="L156">		   this.cards=cards;</span>
+<span class="fc" id="L157">		   this.players=players;</span>
+<span class="fc" id="L158">		   this.gameBoard=gameBoard;</span>
+<span class="fc" id="L159">	   }</span>
+
+	   public GameState clone() throws CloneNotSupportedException {
+<span class="fc" id="L162">		   List&lt;Player&gt; clonePlayers = new ArrayList&lt;Player&gt;();</span>
+<span class="fc" id="L163">		   List&lt;Card&gt; cloneCards = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L164">		   HashMap&lt;Card, Integer&gt; cloneGmeBoard = new HashMap&lt;Card, Integer&gt;();	</span>
+		   
+<span class="fc bfc" id="L166" title="All 2 branches covered.">		    for (Player player : players) </span>
+<span class="fc" id="L167">		    	clonePlayers.add((Player) player.clone());</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">		    for (Card card : cards) </span>
+<span class="fc" id="L169">		    	cloneCards.add((Card) card.clone());</span>
+<span class="fc bfc" id="L170" title="All 2 branches covered.">		    for (Card card : gameBoard.keySet())</span>
+<span class="fc" id="L171">		    	cloneGmeBoard.put((Card) card.clone(),gameBoard.get(card));</span>
+
+<span class="fc" id="L173">		   final GameState cloneState= new GameState(cloneCards,clonePlayers,cloneGmeBoard);</span>
+<span class="fc" id="L174">	        return  cloneState;</span>
+	    }
+	   
+   /*
+   *Customized game setup function for test suite (doesn't include drawing initial hand)
+   * steps: initialize supply
+   *        check for the number of players
+   *        supply for only two players requirements for this assignment
+   *        set number of cures cards however this card is not being used
+   *        set victory cards
+   *        set treasury cards
+   *        Since this is my testing, I will not be drawing a new cards
+   */     
+		
+		public void prepTestGame()
+		{
+			// Initialize supply
+<span class="fc" id="L191">			int selectedKindom=0;</span>
+<span class="fc" id="L192">			int Kingdom_Cards_Selected=13;</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">		    while (selectedKindom &lt; Kingdom_Cards_Selected) {</span>
+<span class="fc" id="L194">		    	int random = (int)  Randomness.random.nextInt(cards.size());</span>
+<span class="fc" id="L195">			    Card tmp = cards.get(random);</span>
+<span class="fc bfc" id="L196" title="All 2 branches covered.">			    if(tmp.getType()!=Card.Type.ACTION) continue;</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">			    if(gameBoard.containsKey(tmp)) continue;</span>
+<span class="fc" id="L198">			    gameBoard.put(tmp, 10);</span>
+<span class="fc" id="L199">			    selectedKindom++;</span>
+			}
+		      //set number of Curse cards		   
+<span class="fc" id="L202">		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);</span>
+		      //set number of Victory cards
+<span class="fc" id="L204">		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);</span>
+<span class="fc" id="L205">		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);</span>
+<span class="fc" id="L206">		      gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);</span>
+		      //set number of Treasure cards
+<span class="fc" id="L208">		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);</span>
+<span class="fc" id="L209">		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);</span>
+<span class="fc" id="L210">		      gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);</span>
+		      // Create starting deck for each player
+<span class="fc bfc" id="L212" title="All 2 branches covered.">		      for (Player player : players) {</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">			         for (int i = 0; i &lt; 7; i++)</span>
+<span class="fc" id="L214">			            player.StartGain(Card.getCard(cards, Card.CardName.Copper));</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">			         for (int i = 0; i &lt; 3; i++)</span>
+<span class="fc" id="L216">			            player.StartGain(Card.getCard(cards,Card.CardName.Estate));</span>
+<span class="fc" id="L217">			         player.numActions = 1;</span>
+<span class="fc" id="L218">			         player.coins = 0;</span>
+<span class="fc" id="L219">			         player.numBuys = 1;</span>
+				      //Shuffle your starting 10 cards (7 Coppers &amp; 3 Estates) and place them face-down as your Deck.
+<span class="fc" id="L221">						System.out.println(&quot;Reshuffling discard pile of &quot;+ player.player_username +&quot; into a new deck&quot;);</span>
+<span class="fc bfc" id="L222" title="All 2 branches covered.">						while (player.discard.size() &gt; 0) {</span>
+<span class="fc" id="L223">							int ndx = (int) Randomness.nextRandomInt(player.discard.size());</span>
+							// Move discard to deck
+<span class="fc" id="L225">							player.deck.add(player.discard.remove(ndx));</span>
+						}
+			      }
+<span class="fc" id="L228">		     }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>org.cs362.dominion (Feb 10, 2017 11:10:50 PM)</div></body></html>

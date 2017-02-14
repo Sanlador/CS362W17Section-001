@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Player_GameState_Test.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">AllTests (1) (Feb 13, 2017 3:07:02 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">test</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">Player_GameState_Test.java</span></div><h1>Player_GameState_Test.java</h1><pre class="source lang-java linenums">package dominion;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+
+<span class="fc" id="L11">public class Player_GameState_Test {</span>
+	private List&lt;Card&gt; cards;
+    private GameState state, testState, controlState;
+    private Player player1;
+    private Player player2;
+    private Player control;
+    private Player control2;
+    private Player player;
+    
+// // initialize a game state and player cards
+	@Before
+	public void reset(){
+<span class="fc" id="L23">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L24">		state = new GameState(cards);</span>
+		
+<span class="fc" id="L26">		controlState = new GameState(cards);</span>
+		
+<span class="fc" id="L28">		player1 = new Player(state, &quot;player-1&quot;);</span>
+<span class="fc" id="L29">		state.addPlayer(player1);</span>
+<span class="fc" id="L30">		player2 = new Player(state, &quot;player-2&quot;);</span>
+<span class="fc" id="L31">		state.addPlayer(player2);</span>
+		
+<span class="fc" id="L33">		control = new Player(controlState, &quot;Controled player 1&quot;);</span>
+<span class="fc" id="L34">		controlState.addPlayer(control);</span>
+<span class="fc" id="L35">		control2 = new Player(controlState, &quot;Controled player 2&quot;);</span>
+<span class="fc" id="L36">		controlState.addPlayer(control);</span>
+	         
+	    //Initialize the game!
+<span class="fc" id="L39">		state.initializeGame();</span>
+<span class="fc" id="L40">	}</span>
+	
+	@Test
+	public void testall() throws Throwable {
+<span class="fc" id="L44">		assertEquals(player1.hand.size(), 5); //IF the top 7 asserts are true, state initialize correctly</span>
+<span class="fc" id="L45">		assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L46">		assertEquals(player1.playedCards.size(), 0);</span>
+<span class="fc" id="L47">		assertEquals(player1.deck.size(), 5);</span>
+<span class="fc" id="L48">		assertEquals(player1.coins , 0);</span>
+<span class="fc" id="L49">		assertEquals(player1.numActions , 1);</span>
+<span class="fc" id="L50">		assertEquals(player1.numBuys , 1);</span>
+		
+<span class="fc" id="L52">		player=(Player) player1.clone();</span>
+<span class="fc" id="L53">		player.drawCard();</span>
+		
+		// Test Draw Card
+<span class="fc" id="L56">		assertEquals(player1.hand.size()+1, player.hand.size());  //changed: draw a card, hand +1</span>
+<span class="fc" id="L57">		assertEquals(player1.discard.size(), player.discard.size());</span>
+<span class="fc" id="L58">		assertEquals(player1.playedCards.size(), player.playedCards.size());</span>
+<span class="fc" id="L59">		assertEquals(player1.deck.size()-1, player.deck.size()); // changed:draw a card, deck -1</span>
+<span class="fc" id="L60">		assertEquals(player1.coins , player.coins);</span>
+<span class="fc" id="L61">		assertEquals(player1.numActions , player.numActions);</span>
+<span class="fc" id="L62">		assertEquals(player1.numBuys , player.numBuys);</span>
+		
+		// Test play kingdom card
+<span class="fc" id="L65">		player.hand.add(Card.getCard(cards, Card.CardName.Gardens));</span>
+<span class="fc" id="L66">		player.playKingdomCard();</span>
+<span class="fc" id="L67">		assertEquals(player1.hand.size()+1, player.hand.size()); </span>
+<span class="fc" id="L68">		assertEquals(player1.discard.size(), player.discard.size());</span>
+<span class="fc" id="L69">		assertEquals(player1.playedCards.size()+1, player.playedCards.size()); //changed: clone player played a card and now has 1 more than player 1 in played cards</span>
+<span class="fc" id="L70">		assertEquals(player1.deck.size()-1, player.deck.size());   </span>
+<span class="fc" id="L71">		assertEquals(player1.coins , player.coins);</span>
+<span class="fc" id="L72">		assertEquals(player1.numActions - 1, player.numActions); //changed: player used 1 actions</span>
+<span class="fc" id="L73">		assertEquals(player1.numBuys , player.numBuys);</span>
+		
+		// Test scorefor function
+<span class="fc" id="L76">		assertEquals(player1.scoreFor() +1, player.scoreFor()); // Due to the garden card played above, player has 1 more score than player1.</span>
+		
+		// Test play treasure cards
+<span class="fc" id="L79">		player=(Player) player1.clone(); // reset player</span>
+<span class="fc" id="L80">		player.hand.add(Card.getCard(cards, Card.CardName.Copper)); //create difference, because we don't have how many copper is in hand of player1</span>
+<span class="fc" id="L81">		player.playTtreasureCard();</span>
+<span class="fc" id="L82">		player1.playTtreasureCard();  </span>
+<span class="fc" id="L83">		assertEquals(player1.coins +1 , player.coins);</span>
+		
+		// Test Buy cards
+<span class="fc" id="L86">		assertEquals(player1.deck.size(), player.deck.size());  </span>
+<span class="fc" id="L87">		assertEquals(player1.discard.size(), player.discard.size());</span>
+<span class="fc" id="L88">		player.buyCard(state);</span>
+<span class="fc" id="L89">		assertEquals(player1.deck.size(), player.deck.size());  </span>
+<span class="fc" id="L90">		assertEquals(player1.discard.size()+1, player.discard.size()); // changed: Brought card goes to the discard pile</span>
+		
+		//Test End turn
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">		assertTrue(player.playedCards.size() &gt; 0);   // don't assert hand because hand maybe 0 already if you are lucky enough to get 5 copper at the first turn</span>
+<span class="fc" id="L94">		player.endTurn();</span>
+<span class="fc" id="L95">		assertEquals(player.playedCards.size(), 0);</span>
+		
+		
+		//Test initialize Player turn which resets everything
+<span class="fc" id="L99">		player.initializePlayerTurn();</span>
+<span class="fc" id="L100">		assertEquals(player.hand.size(), 5); //Can have cards in discard, not sure number of cards in deck</span>
+<span class="fc" id="L101">		assertEquals(player.playedCards.size(), 0);</span>
+<span class="fc" id="L102">		assertEquals(player.coins , 0);</span>
+<span class="fc" id="L103">		assertEquals(player.numActions , 1);</span>
+<span class="fc" id="L104">		assertEquals(player.numBuys , 1);</span>
+		
+<span class="fc" id="L106">	}</span>
+	//Test Game ---- game state.play()
+	@Test
+	public void testGame() throws Throwable {
+<span class="fc" id="L110">		assertEquals(player1.scoreFor(), 3);</span>
+<span class="fc" id="L111">		assertEquals(player1.hand.size(), 5); //IF the top 7 asserts are true, state initialize correctly</span>
+<span class="fc" id="L112">		assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L113">		assertEquals(player1.playedCards.size(), 0);</span>
+<span class="fc" id="L114">		assertEquals(player1.deck.size(), 5);</span>
+<span class="fc" id="L115">		assertEquals(player1.coins , 0);</span>
+<span class="fc" id="L116">		assertEquals(player1.numActions , 1);</span>
+<span class="fc" id="L117">		assertEquals(player1.numBuys , 1);</span>
+<span class="fc" id="L118">		HashMap&lt;Player, Integer&gt; winners=state.play(); // game is only 10 rounds</span>
+<span class="fc" id="L119">		System.out.println (&quot;Finished game.\n&quot;);</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">		for(Player p: winners.keySet()){</span>
+<span class="fc" id="L121">			System.out.println (&quot;Player name: &quot;+ p.player_username + &quot; , Score: &quot;+ p.scoreFor() );</span>
+		}
+<span class="fc" id="L123">		player1.endTurn();</span>
+<span class="fc" id="L124">		player1.initializePlayerTurn();</span>
+		//assertTrue(player1.scoreFor() &gt;= 3); // Not sure if player purchase Victory cards
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">		assertTrue(player1.hand.size() + player1.deck.size() + player1.playedCards.size() + player1.discard.size() &gt; 10); //IF the top 7 asserts are true, state initialize correctly</span>
+<span class="fc" id="L127">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>AllTests (1) (Feb 13, 2017 3:07:02 PM)</div></body></html>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">AllTests (1) (Feb 13, 2017 3:07:02 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums"><span class="pc" id="L1">package dominion;</span>
+import java.util.*;
+
+
+
+public final class Card implements Comparable&lt;Card&gt;, Cloneable{
+<span class="fc" id="L7">	public static enum Type {</span>
+<span class="fc" id="L8">		ACTION, TREASURE, VICTORY;</span>
+	}
+
+<span class="fc" id="L11">	public static enum CardName {</span>
+<span class="fc" id="L12">		/** The Treasure cards */</span>
+<span class="fc" id="L13">		Gold, Silver, Copper, </span>
+<span class="fc" id="L14">		/** The Victory cards */</span>
+<span class="fc" id="L15">		Province,Duchy,Estate,Curse,</span>
+<span class="fc" id="L16">		/** The Kingdom cards */</span>
+<span class="fc" id="L17">		Adventurer, Ambassador, Baron, Council_Room, Cutpurse, Embargo, Feast, Festival, Gardens, Great_Hall, Mine, Smithy, Village;</span>
+	}
+	/**
+	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER, 
+	 * @param enum Type the type of the card (Victory, Treasure, or Kingdom
+	 * @param int cost the cost of the card
+	 * @param int score the score of the card, when the game is finished
+	 * @param treasureValue  the treasure value of the treasure cards (cooper, silver, and gold cards)
+	 */
+	private final Type realType;
+	private final CardName cardName;
+	private final int cost, score, treasureValue;
+
+<span class="fc" id="L30">	private Card(CardName cardName, Type type, int cost, int score, int treasureValue) {</span>
+<span class="fc" id="L31">		this.cost = cost;</span>
+<span class="fc" id="L32">		this.score = score;</span>
+<span class="fc" id="L33">		this.treasureValue = treasureValue;</span>
+<span class="fc" id="L34">		this.realType = type;</span>
+<span class="fc" id="L35">		this.cardName = cardName;</span>
+<span class="fc" id="L36">	}</span>
+
+	/**
+	 * Returns the type
+	 */
+	public Type getType() {
+<span class="fc" id="L42">		return realType;</span>
+	}
+
+	/**
+	 * Returns the cardName
+	 */
+	public CardName getCardName() {
+<span class="fc" id="L49">		return cardName;</span>
+	}
+	/**
+	 * Returns the cost
+	 */
+	public int getCost() {
+<span class="fc" id="L55">		return cost;</span>
+	}
+
+
+	/**
+	 * Returns the treasureValue
+	 */
+	public int getTreasureValue() {
+<span class="fc" id="L63">		return treasureValue; </span>
+	}
+	public int score() { 
+<span class="fc" id="L66">			return score; </span>
+		}
+	
+	public static List&lt;Card&gt; createCards() {
+<span class="fc" id="L70">		List&lt;Card&gt; ret = new LinkedList&lt;Card&gt;();</span>
+
+		/** The Treasure cards  */
+		// CardName, Type, Cost, Score, TreasureValue
+<span class="fc" id="L74">		Card o = new Card(CardName.Gold, Type.TREASURE, 6, 0, 3);</span>
+<span class="fc" id="L75">		ret.add(o);</span>
+<span class="fc" id="L76">		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2);</span>
+<span class="fc" id="L77">		ret.add(o);</span>
+<span class="fc" id="L78">		o = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);</span>
+<span class="fc" id="L79">		ret.add(o);</span>
+
+		/** The Victory cards  */ 
+<span class="fc" id="L82">		o = new Card(CardName.Province,Type.VICTORY, 	8, 6, 0);</span>
+<span class="fc" id="L83">		ret.add(o);</span>
+<span class="fc" id="L84">		o = new Card(CardName.Duchy,Type.VICTORY,		5, 3, 0);</span>
+<span class="fc" id="L85">		ret.add(o);		</span>
+<span class="fc" id="L86">		o = new Card(CardName.Estate,Type.VICTORY,		2, 1, 0);</span>
+<span class="fc" id="L87">		ret.add(o);		</span>
+<span class="fc" id="L88">		o = new Card(CardName.Curse,Type.VICTORY,		0, -1, 0);</span>
+<span class="fc" id="L89">		ret.add(o);				</span>
+		/** The Kingdom cards , it should more than 10 cards*/ 	
+		
+<span class="fc" id="L92">		o = new Card(CardName.Adventurer,Type.ACTION,6,0,0);</span>
+<span class="fc" id="L93">		ret.add(o);</span>
+<span class="fc" id="L94">		o = new Card(CardName.Ambassador,Type.ACTION,3,0,0);</span>
+<span class="fc" id="L95">		ret.add(o);</span>
+<span class="fc" id="L96">		o = new Card(CardName.Baron,Type.ACTION,4,0,0);</span>
+<span class="fc" id="L97">		ret.add(o);</span>
+<span class="fc" id="L98">		o = new Card(CardName.Council_Room,Type.ACTION,5,0,0);</span>
+<span class="fc" id="L99">		ret.add(o);</span>
+<span class="fc" id="L100">		o = new Card(CardName.Cutpurse,Type.ACTION,4,0,2);</span>
+<span class="fc" id="L101">		ret.add(o);</span>
+<span class="fc" id="L102">		o = new Card(CardName.Embargo,Type.ACTION,2,0,2);</span>
+<span class="fc" id="L103">		ret.add(o);</span>
+<span class="fc" id="L104">		o = new Card(CardName.Feast,Type.ACTION,4,0,0);</span>
+<span class="fc" id="L105">		ret.add(o);</span>
+<span class="fc" id="L106">		o = new Card(CardName.Festival,Type.ACTION,5,0,0);</span>
+<span class="fc" id="L107">		ret.add(o);</span>
+<span class="fc" id="L108">		o = new Card(CardName.Gardens,Type.ACTION,4,0,0);</span>
+<span class="fc" id="L109">		ret.add(o);</span>
+<span class="fc" id="L110">		o = new Card(CardName.Great_Hall,Type.ACTION,3,1,0);</span>
+<span class="fc" id="L111">		ret.add(o);</span>
+<span class="fc" id="L112">		o = new Card(CardName.Mine,Type.ACTION,5,0,0);</span>
+<span class="fc" id="L113">		ret.add(o);</span>
+<span class="fc" id="L114">		o = new Card(CardName.Smithy,Type.ACTION,4,0,0);</span>
+<span class="fc" id="L115">		ret.add(o);	</span>
+<span class="fc" id="L116">		o = new Card(CardName.Village,Type.ACTION,3,0,0);</span>
+<span class="fc" id="L117">		ret.add(o);	</span>
+		
+<span class="fc" id="L119">		return ret;</span>
+	}
+	
+	public void play(Player player, GameState state) {
+		
+<span class="pc bpc" id="L124" title="1 of 14 branches missed.">		switch(this.cardName) {</span>
+		
+		case Adventurer:
+	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
+<span class="fc" id="L128">	    	  System.out.println(&quot;Adventure: Draw 2 treasure cards&quot;);</span>
+	    	 
+<span class="fc" id="L130">	    	  int draws = 2;</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">	    	  while(draws != 0){</span>
+<span class="fc" id="L132">	    		  Card draw = player.drawCard();</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">	    		  if(draw.realType != Type.TREASURE){</span>
+<span class="fc" id="L134">	    			  player.hand.remove(draw);</span>
+<span class="fc" id="L135">	    			  player.deck.add(draw);</span>
+<span class="fc" id="L136">	    		  }</span>
+	    		  else{
+<span class="fc" id="L138">	    			  draws--;</span>
+	    		  }
+	    	  }
+<span class="fc" id="L141">			return;</span>
+		
+		case Ambassador:
+<span class="fc" id="L144">			System.out.println(&quot;Ambassador: Return up to 2 copies of a card from hand to supply. Other players gain a copy of it.&quot;);</span>
+<span class="pc bpc" id="L145" title="1 of 2 branches missed.">			if (player.hand.isEmpty()) {</span>
+<span class="nc" id="L146">				return;</span>
+			}
+<span class="fc" id="L148">				Card chose = player.hand.get(0);</span>
+<span class="fc" id="L149">				player.hand.remove(chose);</span>
+<span class="fc" id="L150">				int supply = 1;</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">				if(getCard(player.hand, chose.cardName) != null){</span>
+<span class="fc" id="L152">					player.hand.remove(chose);</span>
+<span class="fc" id="L153">					supply = 2;</span>
+				}
+<span class="fc" id="L155">				state.gameBoard.put(chose, state.gameBoard.get(chose)+supply);</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">				for(Player p: state.players){</span>
+<span class="fc" id="L157">					p.gain(chose);</span>
+				}
+				 
+			
+<span class="fc" id="L161">			return;</span>
+	
+				 
+		case Baron:
+<span class="fc" id="L165">			System.out.println(&quot;Baron: buys+1, discard Estate for 4 coins or gain an estate&quot;);</span>
+<span class="fc" id="L166">			player.numBuys++;</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">			if(getCard(player.hand, CardName.Estate) != null){</span>
+<span class="fc" id="L168">				Card chose1 = getCard(player.hand, CardName.Estate);</span>
+<span class="fc" id="L169">				player.discard(chose1);</span>
+<span class="fc" id="L170">				player.coins = player.coins+4;</span>
+<span class="fc" id="L171">			}</span>
+			else{
+<span class="fc" id="L173">				player.gain(getCard(state.cards, CardName.Estate));</span>
+			}
+<span class="fc" id="L175">			return;</span>
+		
+		case Council_Room:
+<span class="fc" id="L178">			System.out.println(&quot;Council_Room: Cards +4, buys +1, other players +1 card&quot;);</span>
+<span class="fc" id="L179">			player.numBuys++;</span>
+<span class="fc" id="L180">			player.drawCard();</span>
+<span class="fc" id="L181">			player.drawCard();</span>
+<span class="fc" id="L182">			player.drawCard();</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">			for(Player p: state.players){</span>
+<span class="fc" id="L184">				p.drawCard();</span>
+			}
+<span class="fc" id="L186">			return;</span>
+			
+		case Cutpurse:
+<span class="fc" id="L189">			System.out.println(&quot;Cutpurse: coins+2, other players discard a copper if any&quot;);</span>
+<span class="fc" id="L190">			player.coins++;</span>
+<span class="fc" id="L191">			player.coins++;</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">			for(Player p: state.players){</span>
+<span class="fc" id="L193">				Card copper = getCard(p.hand, CardName.Copper);</span>
+<span class="pc bpc" id="L194" title="1 of 4 branches missed.">				if(copper != null &amp;&amp; p != player){</span>
+<span class="fc" id="L195">					p.discard(copper);</span>
+				}
+			}
+<span class="fc" id="L198">			return;</span>
+			
+		case Embargo:
+<span class="fc" id="L201">			System.out.println(&quot;Embargo: +2 coins, trash the card and place a token on top of a supply pile. Player buy from pile gains a curse card per token&quot;);</span>
+<span class="fc" id="L202">			player.coins++;</span>
+<span class="fc" id="L203">			player.coins++;</span>
+<span class="fc" id="L204">			player.playedCards.remove(getCard(player.playedCards, CardName.Embargo));</span>
+			// Don't have token feature yet
+<span class="fc" id="L206">			return;</span>
+		
+		case Feast:
+<span class="fc" id="L209">			System.out.println(&quot;Feast: Trash this card and gain a card cost up to 5 coins.&quot;);</span>
+<span class="fc" id="L210">			player.coins = player.coins + 5;</span>
+<span class="fc" id="L211">			player.playedCards.remove(getCard(player.playedCards, CardName.Feast));</span>
+<span class="fc" id="L212">			return;</span>
+			
+		case Festival:
+<span class="fc" id="L215">			System.out.println(&quot;Festival: +2 Actions, +1 Buy, +2 coins&quot;);</span>
+<span class="fc" id="L216">			player.numActions += 2;</span>
+<span class="fc" id="L217">			player.numBuys++;</span>
+<span class="fc" id="L218">			player.coins +=2;</span>
+<span class="fc" id="L219">			return;</span>
+			
+		case Gardens:
+<span class="fc" id="L222">			System.out.println(&quot;Gardens: Worth 1 Victory Points per 10 cards you have.&quot;);</span>
+			// score adjustment in Players.java
+<span class="fc" id="L224">			return;</span>
+	
+		case Great_Hall:
+<span class="fc" id="L227">			System.out.println(&quot;Great Hall: +1 card, +1 action and +1 Victory point&quot;);</span>
+<span class="fc" id="L228">			player.drawCard();</span>
+<span class="fc" id="L229">			player.numActions++;</span>
+			//points manipulated in Player.java
+<span class="fc" id="L231">			return;</span>
+		
+		case Mine:
+<span class="fc" id="L234">			System.out.println(&quot;Mine: Trash a Treasure from hand and gain a Treasure to your hand costing up to 3 more than it.&quot;);</span>
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">			if(getCard(player.hand, CardName.Silver) != null){</span>
+<span class="nc" id="L236">				player.hand.remove(getCard(player.hand, CardName.Silver));</span>
+<span class="nc" id="L237">				player.hand.add(getCard(state.cards, CardName.Gold));</span>
+<span class="nc" id="L238">			}</span>
+<span class="pc bpc" id="L239" title="1 of 2 branches missed.">			else if(getCard(player.hand, CardName.Copper) != null){</span>
+<span class="fc" id="L240">				player.hand.remove(getCard(player.hand, CardName.Copper));</span>
+<span class="fc" id="L241">				player.hand.add(getCard(state.cards, CardName.Silver));</span>
+			}
+<span class="fc" id="L243">			return;</span>
+			
+		case Smithy:
+<span class="fc" id="L246">			System.out.println(&quot;Smithy: +3 Cards&quot;);</span>
+<span class="fc" id="L247">			player.drawCard();</span>
+<span class="fc" id="L248">			player.drawCard();</span>
+<span class="fc" id="L249">			player.drawCard();</span>
+<span class="fc" id="L250">			return;</span>
+			
+		case Village:
+<span class="fc" id="L253">	    	System.out.println(&quot;Village: +1 card, +2 actions&quot;);</span>
+<span class="fc" id="L254">	    	player.drawCard();</span>
+<span class="fc" id="L255">	    	player.numActions = player.numActions + 2;</span>
+<span class="fc" id="L256">			return;</span>
+			
+			
+<span class="nc" id="L259">		default: return;</span>
+		}
+	}
+
+	public static Card getCard(List&lt;Card&gt; cards,CardName cardName) {
+<span class="fc bfc" id="L264" title="All 2 branches covered.">		for(int i=0; i&lt;cards.size();i++){</span>
+<span class="fc bfc" id="L265" title="All 2 branches covered.">			if(cards.get(i).cardName.equals(cardName))</span>
+<span class="fc" id="L266">					return 	cards.get(i);</span>
+		}
+		
+<span class="fc" id="L269">		return null;</span>
+	}
+
+	   public static List&lt;Card&gt; filter(Iterable&lt;Card&gt; cards, Type target) {
+<span class="fc" id="L273">		      List&lt;Card&gt; out = new ArrayList&lt;Card&gt;();</span>
+<span class="fc bfc" id="L274" title="All 2 branches covered.">		      for (Card c : cards)</span>
+<span class="fc bfc" id="L275" title="All 2 branches covered.">		         if (c.getType() == target)</span>
+<span class="fc" id="L276">		            out.add(c);</span>
+<span class="fc" id="L277">		      return out;</span>
+		   }
+	   
+	// this method will print out all the constant cards ENUM
+	@Override
+	public String toString() {
+<span class="fc" id="L283">		StringBuilder sb = new StringBuilder();</span>
+
+<span class="fc" id="L285">		sb.append(&quot; \n\t&quot; + this.getCardName());</span>
+//		sb.append(&quot;-&quot; + this.getType() + &quot; &quot;);
+//		sb.append(&quot;\t\t Cost: &quot; + this.cost + &quot; &quot;);
+//		sb.append(&quot;\t\t Score: &quot; + this.score + &quot; &quot;);
+//		sb.append(&quot;\tTreasure Value: &quot; + this.treasureValue);
+
+<span class="fc" id="L291">		return sb.toString();</span>
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="fc bfc" id="L297" title="All 2 branches covered.">		if(this == obj) return true;</span>
+<span class="pc bpc" id="L298" title="1 of 2 branches missed.">		if(!super.equals(obj)) return false;</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">		if(!(obj instanceof Card)) return false;</span>
+
+<span class="nc" id="L301">		return cardName.equals(((Card) obj).cardName);</span>
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		// TODO Auto-generated method stub
+<span class="fc" id="L307">		return cardName.compareTo(o.cardName);</span>
+	}
+    protected Object clone() throws CloneNotSupportedException {
+<span class="fc" id="L310">        return super.clone();</span>
+    } 
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>AllTests (1) (Feb 13, 2017 3:07:02 PM)</div></body></html>

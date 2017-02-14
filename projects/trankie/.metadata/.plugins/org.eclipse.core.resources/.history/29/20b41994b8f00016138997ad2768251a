@@ -1,0 +1,108 @@
+import java.util.*;
+
+public class PlayGame {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int turn = 0, decision=0, cardnum, check, loopCtrl=0;
+		long seed = System.nanoTime();
+		Card temp;
+		// TODO Auto-generated method stub
+		System.out.print("Welcome to Dominion!\nThis will be a 2-player game.");
+		
+		DominionBoard board = new DominionBoard();
+		board.initialize();
+		Player player = new Player("Kien", 1 , 1 , 0);
+		
+		
+		System.out.print("\nPlayer-1: " + player.player_name + " here is your info:");
+		player.buildDeck();
+		for(int i = 0; i < 5; i++){
+			player.drawCard();
+			if(player.deck.isEmpty()){
+				Collections.shuffle(player.discard, new Random(seed));
+				for (Card card:player.discard){
+					player.deck.add(card);
+				}
+				player.discard.clear();
+			}
+		}
+		
+		while(turn == 0){
+			player.printHand();
+			player.printInfo();
+			System.out.print("\nWhat would you like to do:\n1. Action\n2. Buy\n3. End Turn\n");
+			decision = input.nextInt();
+			if(decision == 1 && player.getActions() != 0){
+				while(loopCtrl == 0){
+				System.out.print("\nWhich action card would you like to use (Enter 0 to end this menu):\n ");
+				cardnum = input.nextInt();
+				if(cardnum == 0){
+					break;
+				}
+				System.out.print("You chose card number: " + cardnum);
+				check = player.checkTypeAction(cardnum);
+				if(check == 1){//Make Action
+					player.activateCard(cardnum);
+					loopCtrl = 1;
+					player.setActions(-1);
+				}
+				else
+					System.out.print("\nThe card you picked was not an ACTION card!");
+				}
+				loopCtrl = 0;
+			}
+			else if(decision == 2 && player.getBuys() != 0){
+				player.setCoins(player.checkTreasure());
+				while(player.getBuys() != 0){
+					System.out.print("\nYou have " + player.getCoins() +" coins to use!\nHere is the list of cards:");
+					board.printBoard();
+					System.out.print("\nWhat do you want to buy (Enter 0 to end this menu): ");
+					cardnum = input.nextInt();
+					if(cardnum == 0){
+						player.setBuys(((-1)*player.getBuys()));
+						break;
+						}
+					temp = board.buyCards.get(cardnum-1);
+					if(player.getCoins() < temp.getCost()){
+						System.out.print("\nInsufficent funds!");
+					}
+					else if(board.buyingCard(cardnum) == 0){
+						System.out.print("\nThere are no more of those cards left");
+					}
+					else{
+						System.out.print("\nYou just bought " + temp.getCardName()+"!");
+						player.discard.add(temp);
+						player.setCoins(((-1)*temp.getCost()));
+						player.setBuys(-1);
+					}
+				}
+			}
+			else if(decision == 3 || (player.getActions() + player.getBuys()) == 0){
+				System.out.print("\nYour turn is over, going to new player's turn");
+				player.removeHand();
+				for(int i = 0; i < 5; i++){
+					player.drawCard();
+					if(player.deck.isEmpty()){
+						Collections.shuffle(player.discard, new Random(seed));
+						for (Card card:player.discard){
+							player.deck.add(card);
+						}
+						player.discard.clear();
+					}
+				}
+				player.resetStats();
+				player.setCoins(player.checkTreasure());
+				//break;
+			}
+		}
+		if(board.num_Province == 0 || board.checkEnd() == 1){
+			System.out.print("\nThe game is over, checking players amount of Victory Cards!");
+			input.close();
+			System.exit(0);
+		}
+		input.close();
+		System.exit(0);
+	}
+
+}

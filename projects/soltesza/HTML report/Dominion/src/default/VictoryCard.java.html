@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VictoryCard.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">(default package) (Feb 12, 2017 2:28:21 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">VictoryCard.java</span></div><h1>VictoryCard.java</h1><pre class="source lang-java linenums"><span class="pc" id="L1"></span>
+public class VictoryCard extends Card implements Cloneable {
+<span class="fc" id="L3">	public enum VictoryType {</span>
+<span class="fc" id="L4">		CURSE,</span>
+<span class="fc" id="L5">		ESTATE,</span>
+<span class="fc" id="L6">		DUCHY,</span>
+<span class="fc" id="L7">		PROVINCE,</span>
+<span class="fc" id="L8">		GARDENS</span>
+	}
+	
+	public final VictoryType type;
+	
+<span class="fc" id="L13">	public VictoryCard(VictoryType type) {</span>
+<span class="fc" id="L14">		this.type = type;</span>
+		
+<span class="fc bfc" id="L16" title="All 5 branches covered.">		switch(type) {</span>
+			case CURSE:
+<span class="fc" id="L18">				super.name = &quot;Curse&quot;;</span>
+<span class="fc" id="L19">				super.cost = 0;</span>
+<span class="fc" id="L20">				break;</span>
+			case ESTATE:
+<span class="fc" id="L22">				super.name = &quot;Estate&quot;;</span>
+<span class="fc" id="L23">				super.cost = 1;</span>
+<span class="fc" id="L24">				break;</span>
+			case DUCHY:
+<span class="fc" id="L26">				super.name = &quot;Duchy&quot;;</span>
+<span class="fc" id="L27">				super.cost = 5;</span>
+<span class="fc" id="L28">				break;</span>
+			case PROVINCE:
+<span class="fc" id="L30">				super.name = &quot;Province&quot;;</span>
+<span class="fc" id="L31">				super.cost = 8;</span>
+<span class="fc" id="L32">				break;</span>
+			default:
+<span class="fc" id="L34">				super.name = &quot;Gardens&quot;;</span>
+<span class="fc" id="L35">				super.cost = 4;</span>
+		}
+<span class="fc" id="L37">	}</span>
+	
+	@Override
+	public VictoryCard clone() {
+<span class="fc" id="L41">		final VictoryCard clone = (VictoryCard)super.clone();</span>
+<span class="fc" id="L42">		return clone;</span>
+	}
+	
+	public int GetVPs() {
+<span class="pc bpc" id="L46" title="2 of 5 branches missed.">		switch(type) {</span>
+			case CURSE:
+<span class="fc" id="L48">				return -1;</span>
+			
+			case ESTATE:
+<span class="fc" id="L51">				return 1;</span>
+			
+			case DUCHY:
+<span class="fc" id="L54">				return 5;</span>
+				
+			case PROVINCE:
+<span class="nc" id="L57">				return 8;</span>
+			default:
+<span class="nc" id="L59">				return 1;</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>(default package) (Feb 12, 2017 2:28:21 AM)</div></body></html>

@@ -1,0 +1,18 @@
+CS362 Winter 2017 Robert Hayden Anderson
+
+Because all of the unit tests are written with Junit, they are not able to be run off of the server and must ran inside Eclipse with the Junit add-on.
+
+Import all files in this folder as an eclipse package.  
+
+To run the game:
+
+You can use the run button on PlayDominion.java.
+
+
+To run the tests:
+
+The Junit tests are all in separate files but are all in a singular test suite called AllTests.java.
+Navigate to the AllTests class and use run to run the tests, or use run with coverage to see the coverage of the tests.
+
+
+

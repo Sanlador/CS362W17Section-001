@@ -1,0 +1,198 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>dec - Feb 12, 2017 8:17:06 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        Feb 12, 2017 8:17:06 PM
+    </div>
+    <div class="sessionDate">
+        measured on February 12, 2017 8:17:06 PM PST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../REPORT2">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../index.html">
+        org</a>
+    .
+    <a href="../../../index.html">
+        cs362</a>
+    .
+    <a href="../../index.html">
+        dominion</a>
+    .
+    <a href="../index.html">
+        card_tuple</a>
+    .
+    dec
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Synchronized Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+            <th class="methodInfo" colspan="3">?-Operator Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public void dec(board b1)
+            </td>  
+                                    <td class="methodInfo">
+                        1&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        50&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:50%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        1&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        50&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:50%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        1&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        50&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:50%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">dominion.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L1003">
+             <td class="code lineNumber">
+                  <a href="#L1003">1003</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;public void dec(board b1){
+              </td>
+          </tr>
+                      <tr class="code" id="L1004">
+             <td class="code lineNumber">
+                  <a href="#L1004">1004</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = remaining - 1;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1005">
+             <td class="code lineNumber">
+                  <a href="#L1005">1005</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span> (<span class="covered partlyCovered Term_Coverage">remaining == 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1006">
+             <td class="code lineNumber">
+                  <a href="#L1006">1006</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered notCovered Statement_Coverage">b1.set_num_out(b1.get_num_out() + 1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1007">
+             <td class="code lineNumber">
+                  <a href="#L1007">1007</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1008">
+             <td class="code lineNumber">
+                  <a href="#L1008">1008</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on February 12, 2017 8:18:30 PM PST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

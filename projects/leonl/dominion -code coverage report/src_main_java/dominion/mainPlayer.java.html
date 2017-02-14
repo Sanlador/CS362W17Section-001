@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>mainPlayer.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">dominion (3) (Feb 13, 2017 3:20:26 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">mainPlayer.java</span></div><h1>mainPlayer.java</h1><pre class="source lang-java linenums">package dominion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+<span class="nc" id="L8">public class mainPlayer {</span>
+	public  static void main(String args[]){			
+		  //set up random number generator
+		// To know about the reason of using the seed https://en.wikipedia.org/wiki/Pseudorandom_number_generator
+		
+<span class="nc" id="L13">		Randomness.reset(10);	   </span>
+
+<span class="nc" id="L15">		List&lt;Card&gt; cards=new LinkedList&lt;Card&gt;();</span>
+		//the cards  are achieved by each element/constant in the enum class 
+<span class="nc" id="L17">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+
+<span class="nc" id="L19">		 Player player = new Player(null,&quot;leon&quot;);</span>
+<span class="nc" id="L20">		 System.out.println(&quot;Player-1 information:\n &quot; + player.toString()); </span>
+		 
+<span class="nc bnc" id="L22" title="All 2 branches missed.">         for (int i = 0; i &lt; 7; i++)</span>
+<span class="nc" id="L23">	            player.gain(Card.getCard(cards,Card.CardName.Gold));</span>
+         
+<span class="nc" id="L25">         player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));</span>
+  
+         
+<span class="nc" id="L28">         player.initializePlayerTurn();</span>
+         
+<span class="nc" id="L30">         System.out.println(&quot;Player-1 information:\n &quot; + player.toString()); </span>
+         
+<span class="nc" id="L32">         player.drawCard();</span>
+        	 	
+<span class="nc" id="L34">         player.playKingdomCard();</span>
+		 
+<span class="nc" id="L36">		System.exit(0);   </span>
+<span class="nc" id="L37">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>dominion (3) (Feb 13, 2017 3:20:26 PM)</div></body></html>

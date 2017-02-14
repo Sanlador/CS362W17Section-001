@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">unitTests (Feb 12, 2017 5:32:59 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+import java.util.Random;
+
+public class Player
+{
+	public ArrayList&lt;Card&gt; deck, discard, hand;
+	public int money, actions, buys, vp;
+	private static Random rand;
+
+	//constructor for player object
+<span class="fc" id="L11">	public Player()</span>
+	{
+<span class="fc" id="L13">		deck = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L14">		discard = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L15">		hand = new ArrayList&lt;Card&gt;();</span>
+<span class="fc" id="L16">		rand = new Random();</span>
+<span class="fc" id="L17">		money = 0;</span>
+<span class="fc" id="L18">		actions = 0;</span>
+<span class="fc" id="L19">		buys = 0;</span>
+<span class="fc" id="L20">		vp = 0;//victory points</span>
+<span class="fc" id="L21">	}</span>
+
+	//draw cards until you are out of cards or you hit numCards
+	public void draw(int numCards)
+	{
+<span class="fc" id="L26">		int n = numCards;</span>
+
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">		if(numCards &gt; deck.size()+discard.size())</span>
+<span class="nc" id="L29">			n = deck.size()+discard.size();</span>
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		for(int i=0;i&lt;n;i++)</span>
+		{
+<span class="fc bfc" id="L33" title="All 2 branches covered.">			if(deck.size() == 0)</span>
+<span class="fc" id="L34">				shuffleDiscard();</span>
+
+<span class="fc" id="L36">			hand.add(deck.get(0));</span>
+<span class="fc" id="L37">			deck.remove(0);</span>
+		}
+<span class="fc" id="L39">	}</span>
+
+	//shuffles the discard pile into the deck
+	public void shuffleDiscard()
+	{
+<span class="fc" id="L44">		int j=0;</span>
+<span class="fc" id="L45">		int size = discard.size();</span>
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">		for(int i=0;i&lt;size; i++)</span>
+		{
+<span class="fc" id="L49">			j = rand.nextInt(discard.size());</span>
+<span class="fc" id="L50">			deck.add(discard.get(j));</span>
+<span class="fc" id="L51">			discard.remove(j);</span>
+		}	
+<span class="fc" id="L53">	}</span>
+
+	//called at the end of each players turn to prepare them for their next turn
+	public void cleanup()
+	{
+<span class="fc" id="L58">		actions = 1;</span>
+<span class="fc" id="L59">		buys = 1;</span>
+<span class="fc" id="L60">		money = 0;</span>
+
+<span class="fc" id="L62">		discard.addAll(hand);</span>
+<span class="fc" id="L63">		hand.clear();</span>
+
+<span class="fc" id="L65">		draw(5);</span>
+<span class="fc" id="L66">	}</span>
+
+	//returns list of action cards in a players hand
+	public ArrayList&lt;Card&gt; actionCards()
+	{
+<span class="fc" id="L71">		ArrayList&lt;Card&gt; cards = new ArrayList&lt;Card&gt;();</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		for(int i=0;i&lt;hand.size();i++)</span>
+		{
+<span class="fc bfc" id="L74" title="All 2 branches covered.">			if(hand.get(i).type == Card.Type.action)</span>
+<span class="fc" id="L75">				cards.add(hand.get(i));</span>
+		}
+<span class="fc" id="L77">		return cards;</span>
+	}
+
+	//setters and getters for players
+	public ArrayList&lt;Card&gt; gethand()
+	{
+<span class="fc" id="L83">		return hand;</span>
+	}
+
+	public ArrayList&lt;Card&gt; getdeck()
+	{
+<span class="fc" id="L88">		return deck;</span>
+	}
+
+	public ArrayList&lt;Card&gt; getdiscard()
+	{
+<span class="fc" id="L93">		return discard;</span>
+	}
+
+	public int getmoney()
+	{
+<span class="fc" id="L98">		return money;</span>
+	}
+
+	public void setmoney(int num)
+	{
+<span class="fc" id="L103">		money = num;</span>
+<span class="fc" id="L104">	}</span>
+
+	public int getactions()
+	{
+<span class="fc" id="L108">		return actions;</span>
+	}
+
+	public void setactions(int num){
+<span class="fc" id="L112">		actions = num;</span>
+<span class="fc" id="L113">	}</span>
+
+	public int getbuys(){
+<span class="fc" id="L116">		return buys;</span>
+	}
+
+	public void setbuys(int num){
+<span class="fc" id="L120">		buys = num;</span>
+<span class="fc" id="L121">	}</span>
+
+	public int getvp(){
+<span class="fc" id="L124">		return vp;</span>
+	}
+
+	public void setvp(int num){
+<span class="fc" id="L128">		vp = num;</span>
+<span class="fc" id="L129">	}</span>
+
+	public Random getrand(){
+<span class="fc" id="L132">		return rand;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>unitTests (Feb 12, 2017 5:32:59 PM)</div></body></html>

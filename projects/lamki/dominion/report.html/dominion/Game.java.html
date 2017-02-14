@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;dominion&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">package dominion;
+import java.util.*;
+
+public class Game
+{
+	Player[] player;
+	int[] curse;
+<span class="fc" id="L8">	int[] bcc = {0, 0, 0, 30, 40, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //board card count</span>
+	//0-2 = victory, 3-5 = treasure, 6-15 = kingdom
+<span class="fc" id="L10">        boolean winnokc = false;</span>
+	public Game()
+<span class="fc" id="L12">	{</span>
+
+<span class="fc" id="L14">	}</span>
+
+	public void initilize_game(int num_players, int num_kingdom_cards)
+	{
+<span class="fc" id="L18">		player = new Player[num_players];</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">                if(num_kingdom_cards == 0)</span>
+                {
+<span class="fc" id="L21">                    winnokc = true;</span>
+                }
+                
+<span class="fc" id="L24">		set_cards(6, 15, num_kingdom_cards);</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">		if (num_players == 2)</span>
+		{	
+<span class="fc" id="L27">			set_cards(0, 2, 8);</span>
+			//curse = set_cards(10, 1);
+		}
+		else
+		{
+<span class="fc" id="L32">			set_cards(0, 2, 12);</span>
+			//curse = set_cards(30, 1);
+		}
+<span class="fc bfc" id="L35" title="All 2 branches covered.">		for(int i = 0; i &lt; num_players; i++)</span>
+		{
+<span class="fc" id="L37">			player[i] = new Player(&quot;Player&quot;+i);</span>
+		}
+<span class="fc" id="L39">	}</span>
+
+	public void set_cards(int imin, int imax, int val)
+	{
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		for(int i = imin; i != imax + 1; i++)</span>
+		{
+<span class="fc" id="L45">			bcc[i] = val;</span>
+		}
+<span class="fc" id="L47">	}</span>
+
+	public void print_bcc()
+	{
+<span class="fc" id="L51">		System.out.print(&quot;\t\t&quot;+bcc.length + &quot;: &quot;);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">		for (int i = 0; i &lt; bcc.length; i++)</span>
+		{
+<span class="fc" id="L54">			System.out.print(&quot;'&quot;+bcc[i]+ &quot;' &quot;);</span>
+		}
+<span class="fc" id="L56">		System.out.println(&quot;\n&quot;);</span>
+<span class="fc" id="L57">	}</span>
+
+	public int randInt(Random rnd, int max)
+	{
+<span class="fc" id="L61">		int random = rnd.nextInt(max + 1);</span>
+<span class="fc" id="L62">		return random;</span>
+	}
+
+	public int set_turn(int prev_player)
+	{
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		if (prev_player + 1 &lt; player.length)</span>
+		{
+<span class="fc" id="L69">			return prev_player + 1;</span>
+		}
+		else
+<span class="fc" id="L72">			return 0;</span>
+	}
+
+	public void get_winner()
+	{
+		int vp;
+<span class="fc" id="L78">		int winner = 0;</span>
+<span class="fc" id="L79">		vp = player[0].vp;</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">		for (int i = 1; i &lt; player.length; i++)</span>
+		{
+<span class="fc bfc" id="L82" title="All 2 branches covered.">			if(player[i].vp &gt; vp)</span>
+			{
+<span class="fc" id="L84">				vp = player[i].vp;</span>
+<span class="fc" id="L85">				winner = i;</span>
+			}
+<span class="fc bfc" id="L87" title="All 2 branches covered.">			else if(player[i].vp == vp)</span>
+			{
+<span class="fc" id="L89">				vp = player[i].vp;</span>
+<span class="fc" id="L90">				winner = -1;</span>
+			}
+		}
+
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		if (winner &lt; 0)</span>
+		{
+<span class="fc" id="L96">			System.out.println(&quot;Tie!&quot;);</span>
+		}
+		else
+		{
+<span class="fc" id="L100">			System.out.println(player[winner].name + &quot; Wins!&quot;);</span>
+		}
+
+<span class="fc bfc" id="L103" title="All 2 branches covered.">            for (Player player1 : player) {</span>
+<span class="fc" id="L104">                System.out.println(player1.name + &quot; VP: &quot; + player1.vp);</span>
+            }
+<span class="fc" id="L106">	}</span>
+
+	public boolean check_win()
+	{
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">		if(bcc[2]== 0)</span>
+		{
+<span class="nc" id="L112">			System.out.println(&quot;Game Ended. Providence Supply Depleted.&quot;);</span>
+<span class="nc" id="L113">			get_winner();</span>
+<span class="nc" id="L114">			return true;</span>
+		}
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">                if (!winnokc)</span>
+                {
+<span class="fc" id="L118">                    int empty_count = 0;</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">                    for(int i = 6; i &lt; 15; i++)</span>
+                    {
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                            if (bcc[i] == 0)</span>
+                            {
+<span class="fc" id="L123">                                    empty_count++;</span>
+                            }
+                    }
+
+<span class="fc bfc" id="L127" title="All 2 branches covered.">                    if (empty_count &gt;= 3)</span>
+                    {
+<span class="fc" id="L129">                            System.out.println(&quot;Game Ended. Three Kingdom Supply Piles Depleted.&quot;);</span>
+<span class="fc" id="L130">                            get_winner();</span>
+<span class="fc" id="L131">                            return true;</span>
+                    }
+                }
+<span class="fc" id="L134">		return false;</span>
+	}
+
+	public boolean can_buy(int t)
+	{
+<span class="fc bfc" id="L139" title="All 4 branches covered.">		return player[t].buy_turns != 0 &amp;&amp; player[t].played_value &gt;= 3;</span>
+	}
+
+	public boolean can_play(int t)
+	{
+<span class="fc bfc" id="L144" title="All 4 branches covered.">		return player[t].action_turns != 0 &amp;&amp; player[t].ac_hand &gt; 0;</span>
+	}
+
+	public boolean player_play(int t, int hand, Random rand, Game g)
+	{
+<span class="fc" id="L149">		player[t].play_action(hand, rand, player[t], g);</span>
+<span class="fc" id="L150">		return true;</span>
+	}
+
+	public boolean player_buy(int t, int card)
+	{
+		Card temp_card;
+<span class="fc bfc" id="L156" title="All 2 branches covered.">		if (bcc[card]&gt; 0)</span>
+		{
+			//0-2 = victory, 3-5 = treasure, 6-15 = kingdom
+<span class="fc bfc" id="L159" title="All 2 branches covered.">			if (card &lt;= 2)</span>
+			{
+<span class="fc" id="L161">				temp_card = new Victory(card);</span>
+			}
+<span class="pc bpc" id="L163" title="1 of 4 branches missed.">			else if (card &gt;= 3 &amp;&amp; card &lt;= 5)</span>
+			{
+<span class="fc" id="L165">				temp_card = new Treasure(card);</span>
+			}
+			else 
+			{
+<span class="fc" id="L169">				temp_card = new Adventure(card);</span>
+			}
+
+<span class="fc bfc" id="L172" title="All 2 branches covered.">			if(player[t].played_value &gt;= temp_card.price)</span>
+			{
+<span class="fc" id="L174">				player[t].buy(temp_card);</span>
+<span class="fc" id="L175">				player[t].played_value = player[t].played_value - temp_card.price;</span>
+<span class="fc" id="L176">				bcc[card] = bcc[card]- 1;</span>
+<span class="fc" id="L177">				System.out.println(&quot;\tBuys &quot; + temp_card.name);	</span>
+<span class="fc" id="L178">				return true;</span>
+			}
+		}
+<span class="fc" id="L181">		return false;</span>
+	}
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

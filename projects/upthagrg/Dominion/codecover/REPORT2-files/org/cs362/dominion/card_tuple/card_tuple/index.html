@@ -1,0 +1,1089 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>card_tuple - Feb 12, 2017 8:17:06 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        Feb 12, 2017 8:17:06 PM
+    </div>
+    <div class="sessionDate">
+        measured on February 12, 2017 8:17:06 PM PST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../REPORT2">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../index.html">
+        org</a>
+    .
+    <a href="../../../index.html">
+        cs362</a>
+    .
+    <a href="../../index.html">
+        dominion</a>
+    .
+    <a href="../index.html">
+        card_tuple</a>
+    .
+    card_tuple
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Synchronized Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+            <th class="methodInfo" colspan="3">?-Operator Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public card_tuple(String in)
+            </td>  
+                                    <td class="methodInfo">
+                        40&nbsp;/&nbsp;43
+                </td>
+                <td class="methodInfo">
+                        93&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:93%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        39&nbsp;/&nbsp;40
+                </td>
+                <td class="methodInfo">
+                        97&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:97%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        39&nbsp;/&nbsp;40
+                </td>
+                <td class="methodInfo">
+                        97&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:97%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">dominion.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L916">
+             <td class="code lineNumber">
+                  <a href="#L916">916</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;public card_tuple(String in){
+              </td>
+          </tr>
+                      <tr class="code" id="L917">
+             <td class="code lineNumber">
+                  <a href="#L917">917</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">in == &quot;COPPER&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L918">
+             <td class="code lineNumber">
+                  <a href="#L918">918</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new card(in, card.Type.TREASURE, 0, 1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L919">
+             <td class="code lineNumber">
+                  <a href="#L919">919</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 46;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L920">
+             <td class="code lineNumber">
+                  <a href="#L920">920</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L921">
+             <td class="code lineNumber">
+                  <a href="#L921">921</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">in == &quot;SILVER&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L922">
+             <td class="code lineNumber">
+                  <a href="#L922">922</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new card(in, card.Type.TREASURE, 3, 2);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L923">
+             <td class="code lineNumber">
+                  <a href="#L923">923</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 40;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L924">
+             <td class="code lineNumber">
+                  <a href="#L924">924</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L925">
+             <td class="code lineNumber">
+                  <a href="#L925">925</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">in == &quot;GOLD&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L926">
+             <td class="code lineNumber">
+                  <a href="#L926">926</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new card(in, card.Type.TREASURE, 6, 3);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L927">
+             <td class="code lineNumber">
+                  <a href="#L927">927</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 30;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L928">
+             <td class="code lineNumber">
+                  <a href="#L928">928</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L929">
+             <td class="code lineNumber">
+                  <a href="#L929">929</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">in == &quot;ESTATE&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L930">
+             <td class="code lineNumber">
+                  <a href="#L930">930</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new card(in, card.Type.VICTORY, 2, 1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L931">
+             <td class="code lineNumber">
+                  <a href="#L931">931</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 12;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L932">
+             <td class="code lineNumber">
+                  <a href="#L932">932</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L933">
+             <td class="code lineNumber">
+                  <a href="#L933">933</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">in == &quot;DUCHY&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L934">
+             <td class="code lineNumber">
+                  <a href="#L934">934</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new card(in, card.Type.VICTORY, 5, 3);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L935">
+             <td class="code lineNumber">
+                  <a href="#L935">935</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 12;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L936">
+             <td class="code lineNumber">
+                  <a href="#L936">936</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L937">
+             <td class="code lineNumber">
+                  <a href="#L937">937</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">in == &quot;PROVINCE&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L938">
+             <td class="code lineNumber">
+                  <a href="#L938">938</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new card(in, card.Type.VICTORY, 8, 6);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L939">
+             <td class="code lineNumber">
+                  <a href="#L939">939</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 12;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L940">
+             <td class="code lineNumber">
+                  <a href="#L940">940</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L941">
+             <td class="code lineNumber">
+                  <a href="#L941">941</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">in == &quot;CURSE&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L942">
+             <td class="code lineNumber">
+                  <a href="#L942">942</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new card(in, card.Type.VICTORY, 0, -1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L943">
+             <td class="code lineNumber">
+                  <a href="#L943">943</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 30;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L944">
+             <td class="code lineNumber">
+                  <a href="#L944">944</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L945">
+             <td class="code lineNumber">
+                  <a href="#L945">945</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;ADVENTURER&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L946">
+             <td class="code lineNumber">
+                  <a href="#L946">946</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L947">
+             <td class="code lineNumber">
+                  <a href="#L947">947</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L948">
+             <td class="code lineNumber">
+                  <a href="#L948">948</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L949">
+             <td class="code lineNumber">
+                  <a href="#L949">949</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;AMBASSADOR&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L950">
+             <td class="code lineNumber">
+                  <a href="#L950">950</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L951">
+             <td class="code lineNumber">
+                  <a href="#L951">951</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L952">
+             <td class="code lineNumber">
+                  <a href="#L952">952</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L953">
+             <td class="code lineNumber">
+                  <a href="#L953">953</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;BARON&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L954">
+             <td class="code lineNumber">
+                  <a href="#L954">954</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L955">
+             <td class="code lineNumber">
+                  <a href="#L955">955</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L956">
+             <td class="code lineNumber">
+                  <a href="#L956">956</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L957">
+             <td class="code lineNumber">
+                  <a href="#L957">957</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;COUNCIL_ROOM&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L958">
+             <td class="code lineNumber">
+                  <a href="#L958">958</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L959">
+             <td class="code lineNumber">
+                  <a href="#L959">959</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L960">
+             <td class="code lineNumber">
+                  <a href="#L960">960</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L961">
+             <td class="code lineNumber">
+                  <a href="#L961">961</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;CUTPURSE&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L962">
+             <td class="code lineNumber">
+                  <a href="#L962">962</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L963">
+             <td class="code lineNumber">
+                  <a href="#L963">963</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L964">
+             <td class="code lineNumber">
+                  <a href="#L964">964</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L965">
+             <td class="code lineNumber">
+                  <a href="#L965">965</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;FEAST&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L966">
+             <td class="code lineNumber">
+                  <a href="#L966">966</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L967">
+             <td class="code lineNumber">
+                  <a href="#L967">967</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L968">
+             <td class="code lineNumber">
+                  <a href="#L968">968</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L969">
+             <td class="code lineNumber">
+                  <a href="#L969">969</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;GREAT_HALL&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L970">
+             <td class="code lineNumber">
+                  <a href="#L970">970</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L971">
+             <td class="code lineNumber">
+                  <a href="#L971">971</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L972">
+             <td class="code lineNumber">
+                  <a href="#L972">972</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L973">
+             <td class="code lineNumber">
+                  <a href="#L973">973</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;MINE&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L974">
+             <td class="code lineNumber">
+                  <a href="#L974">974</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L975">
+             <td class="code lineNumber">
+                  <a href="#L975">975</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L976">
+             <td class="code lineNumber">
+                  <a href="#L976">976</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L977">
+             <td class="code lineNumber">
+                  <a href="#L977">977</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;MINION&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L978">
+             <td class="code lineNumber">
+                  <a href="#L978">978</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L979">
+             <td class="code lineNumber">
+                  <a href="#L979">979</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L980">
+             <td class="code lineNumber">
+                  <a href="#L980">980</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L981">
+             <td class="code lineNumber">
+                  <a href="#L981">981</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;SMITHY&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L982">
+             <td class="code lineNumber">
+                  <a href="#L982">982</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L983">
+             <td class="code lineNumber">
+                  <a href="#L983">983</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L984">
+             <td class="code lineNumber">
+                  <a href="#L984">984</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L985">
+             <td class="code lineNumber">
+                  <a href="#L985">985</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;STEWARD&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L986">
+             <td class="code lineNumber">
+                  <a href="#L986">986</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L987">
+             <td class="code lineNumber">
+                  <a href="#L987">987</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L988">
+             <td class="code lineNumber">
+                  <a href="#L988">988</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L989">
+             <td class="code lineNumber">
+                  <a href="#L989">989</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Term_Coverage">in == &quot;TRIBUTE&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L990">
+             <td class="code lineNumber">
+                  <a href="#L990">990</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L991">
+             <td class="code lineNumber">
+                  <a href="#L991">991</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L992">
+             <td class="code lineNumber">
+                  <a href="#L992">992</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L993">
+             <td class="code lineNumber">
+                  <a href="#L993">993</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: else">if</span> (<span class="covered partlyCovered Term_Coverage">in == &quot;VILLAGE&quot;</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L994">
+             <td class="code lineNumber">
+                  <a href="#L994">994</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">deck_card = new action_card(in);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L995">
+             <td class="code lineNumber">
+                  <a href="#L995">995</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">remaining = 10;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L996">
+             <td class="code lineNumber">
+                  <a href="#L996">996</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L997">
+             <td class="code lineNumber">
+                  <a href="#L997">997</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered notCovered Branch_Coverage">else</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L998">
+             <td class="code lineNumber">
+                  <a href="#L998">998</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered notCovered Statement_Coverage">System.out.println(&quot;NO SUCH CARD TUPLE&quot;);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L999">
+             <td class="code lineNumber">
+                  <a href="#L999">999</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered notCovered Statement_Coverage">deck_card = new card();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1000">
+             <td class="code lineNumber">
+                  <a href="#L1000">1000</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered notCovered Statement_Coverage">remaining = 0;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1001">
+             <td class="code lineNumber">
+                  <a href="#L1001">1001</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1002">
+             <td class="code lineNumber">
+                  <a href="#L1002">1002</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on February 12, 2017 8:18:30 PM PST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

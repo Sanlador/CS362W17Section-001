@@ -1,0 +1,253 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>discard_hand - Feb 12, 2017 8:17:06 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        Feb 12, 2017 8:17:06 PM
+    </div>
+    <div class="sessionDate">
+        measured on February 12, 2017 8:17:06 PM PST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../REPORT2">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../index.html">
+        org</a>
+    .
+    <a href="../../../index.html">
+        cs362</a>
+    .
+    <a href="../../index.html">
+        dominion</a>
+    .
+    <a href="../index.html">
+        player</a>
+    .
+    discard_hand
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Synchronized Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+            <th class="methodInfo" colspan="3">?-Operator Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public void discard_hand()
+            </td>  
+                                    <td class="methodInfo">
+                        4&nbsp;/&nbsp;4
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        1&nbsp;/&nbsp;3
+                </td>
+                <td class="methodInfo">
+                        33&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:33%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">dominion.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L1381">
+             <td class="code lineNumber">
+                  <a href="#L1381">1381</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;public void discard_hand(){
+              </td>
+          </tr>
+                      <tr class="code" id="L1382">
+             <td class="code lineNumber">
+                  <a href="#L1382">1382</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Loop_Coverage" title="Missing execution(s): ZERO ONE time(s).">for</span>(int i=0; <span class="covered fullyCovered Term_Coverage">i&lt;hand.size()</span>; i = i+1){
+              </td>
+          </tr>
+                      <tr class="code" id="L1383">
+             <td class="code lineNumber">
+                  <a href="#L1383">1383</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.add(hand.get(i));</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1384">
+             <td class="code lineNumber">
+                  <a href="#L1384">1384</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1385">
+             <td class="code lineNumber">
+                  <a href="#L1385">1385</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;print_discard();
+              </td>
+          </tr>
+                      <tr class="code" id="L1386">
+             <td class="code lineNumber">
+                  <a href="#L1386">1386</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;print_hand();
+              </td>
+          </tr>
+                      <tr class="code" id="L1387">
+             <td class="code lineNumber">
+                  <a href="#L1387">1387</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">action_cards.clear();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1388">
+             <td class="code lineNumber">
+                  <a href="#L1388">1388</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">hand.clear();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1389">
+             <td class="code lineNumber">
+                  <a href="#L1389">1389</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;print_hand();
+              </td>
+          </tr>
+                      <tr class="code" id="L1390">
+             <td class="code lineNumber">
+                  <a href="#L1390">1390</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">draw(5);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1391">
+             <td class="code lineNumber">
+                  <a href="#L1391">1391</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on February 12, 2017 8:18:30 PM PST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

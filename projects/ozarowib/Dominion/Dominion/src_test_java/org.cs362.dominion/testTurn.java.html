@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>testTurn.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">org.cs362.dominion (Feb 11, 2017 3:43:29 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">testTurn.java</span></div><h1>testTurn.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Test;
+
+<span class="fc" id="L8">public class testTurn</span>
+{
+	@Test
+	// Tests the Player functions for choosing and using cards
+	public void test() throws Throwable {
+		// Set up a test game
+<span class="fc" id="L14">		Randomness.reset(System.currentTimeMillis());</span>
+		GameState state, startstate;
+		List&lt;Card&gt; cards;
+<span class="fc" id="L17">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L18">		state = new GameState(cards);</span>
+		// Set up test players
+<span class="fc" id="L20">		Player p = new Player(state, &quot;test-player-1&quot;);</span>
+    	// Simulate a starting hand of 1 Action card and 4 Treasure
+<span class="fc" id="L22">    	p.hand.add(Card.getCard(cards,Card.CardName.Smithy));</span>
+<span class="fc" id="L23">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L24">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L25">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L26">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L27">		state.addPlayer(p);</span>
+<span class="fc" id="L28">		p = new Player(state, &quot;test-player-2&quot;);</span>
+<span class="fc" id="L29">    	p.hand.add(Card.getCard(cards,Card.CardName.Smithy));</span>
+<span class="fc" id="L30">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L31">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L32">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L33">    	p.hand.add(Card.getCard(cards,Card.CardName.Copper));</span>
+<span class="fc" id="L34">		state.addPlayer(p);</span>
+<span class="fc" id="L35">		state.initializeTest();</span>
+		// Original state to compare results against
+<span class="fc" id="L37">		startstate=(GameState) state.clone();</span>
+		// state.players.get(0);	// player1
+		// state.players.get(1);	// player2
+
+		// Each player will take one turn
+<span class="fc bfc" id="L42" title="All 2 branches covered.">		for (Player player : state.players)</span>
+		{
+<span class="fc" id="L44">			int i = 0;</span>
+			// Test that player hand was drawn correctly
+<span class="fc" id="L46">			assertEquals( player.hand.size(), 5 );</span>
+			// Run action phase
+<span class="fc" id="L48">			player.playKingdomCard();</span>
+			// Player should use the Smithy card
+			// Hand should go -1 from use then +3 from draw, or +2 from original size
+<span class="fc" id="L51">			assertEquals( player.hand.size(), startstate.players.get(i).hand.size()+2 );</span>
+			// Deck should go -3 from original size
+<span class="fc" id="L53">			assertEquals( player.deck.size(), startstate.players.get(i).deck.size()-3 );</span>
+			// Smithy should go to discard pile
+<span class="fc" id="L55">			assertEquals( player.discard.size(), startstate.players.get(i).discard.size()+1 );</span>
+<span class="fc" id="L56">			assertEquals( player.discard.get(0).getCardName(), Card.CardName.Smithy );</span>
+			// Run treasure phase
+<span class="fc" id="L58">			player.playTreasureCard();</span>
+			// Player will have at least the 4 coin from starting hand
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">			assertFalse( player.coins &lt; 4 );</span>
+			// Note the current discard pile size
+<span class="fc" id="L62">			int discardsize = player.discard.size();</span>
+			// Run buy phase
+<span class="fc" id="L64">			player.buyCard();</span>
+			// Player has one buy and at least 4 coin
+			// So player should buy exactly one card and send it to discard pile
+<span class="fc" id="L67">			assertEquals( player.discard.size(), discardsize+1 );</span>
+			// Run cleanup
+<span class="fc" id="L69">			player.endTurn();</span>
+			// Hand should be redrawn to 5
+<span class="fc" id="L71">			assertEquals( player.hand.size(), 5 );</span>
+			// Because the starting hand was simulated, player did not have to shuffle discard yet
+			// So deck should still have 2 cards left to draw
+<span class="fc" id="L74">			assertEquals( player.deck.size(), 2 );</span>
+			// Verify player actions, coins, and buys all reset for next turn
+<span class="fc" id="L76">			assertEquals( player.numActions, 1 );</span>
+<span class="fc" id="L77">			assertEquals( player.coins, 0 );</span>
+<span class="fc" id="L78">			assertEquals( player.numBuys, 1 );</span>
+			// Turn complete, repeat for second player to finish round
+<span class="fc" id="L80">			i = 1;</span>
+		}
+<span class="fc" id="L82">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>org.cs362.dominion (Feb 11, 2017 3:43:29 PM)</div></body></html>

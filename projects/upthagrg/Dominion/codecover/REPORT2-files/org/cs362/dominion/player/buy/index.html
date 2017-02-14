@@ -1,0 +1,2079 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>buy - Feb 12, 2017 8:17:06 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        Feb 12, 2017 8:17:06 PM
+    </div>
+    <div class="sessionDate">
+        measured on February 12, 2017 8:17:06 PM PST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../REPORT2">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../index.html">
+        org</a>
+    .
+    <a href="../../../index.html">
+        cs362</a>
+    .
+    <a href="../../index.html">
+        dominion</a>
+    .
+    <a href="../index.html">
+        player</a>
+    .
+    buy
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Synchronized Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+            <th class="methodInfo" colspan="3">?-Operator Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public void buy(board b1)
+            </td>  
+                                    <td class="methodInfo">
+                        85&nbsp;/&nbsp;85
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        64&nbsp;/&nbsp;84
+                </td>
+                <td class="methodInfo">
+                        76&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:76%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;6
+                </td>
+                <td class="methodInfo">
+                        33&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:33%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        107&nbsp;/&nbsp;130
+                </td>
+                <td class="methodInfo">
+                        82&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:82%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">dominion.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L1179">
+             <td class="code lineNumber">
+                  <a href="#L1179">1179</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;public void buy(board b1){
+              </td>
+          </tr>
+                      <tr class="code" id="L1180">
+             <td class="code lineNumber">
+                  <a href="#L1180">1180</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">int i=0;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1181">
+             <td class="code lineNumber">
+                  <a href="#L1181">1181</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int decide;
+              </td>
+          </tr>
+                      <tr class="code" id="L1182">
+             <td class="code lineNumber">
+                  <a href="#L1182">1182</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int r1;
+              </td>
+          </tr>
+                      <tr class="code" id="L1183">
+             <td class="code lineNumber">
+                  <a href="#L1183">1183</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Loop_Coverage" title="Missing execution(s): ZERO ONE time(s).">for</span>(int j=0; <span class="covered fullyCovered Term_Coverage">j&lt;hand.size()</span>; j = j+1){//get money
+              </td>
+          </tr>
+                      <tr class="code" id="L1184">
+             <td class="code lineNumber">
+                  <a href="#L1184">1184</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">hand.get(j).getType1() == card.Type.TREASURE</span>) || (<span class="covered partlyCovered Term_Coverage">hand.get(j).getType2() == card.Type.TREASURE</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1185">
+             <td class="code lineNumber">
+                  <a href="#L1185">1185</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money + hand.get(j).getTV();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1186">
+             <td class="code lineNumber">
+                  <a href="#L1186">1186</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1187">
+             <td class="code lineNumber">
+                  <a href="#L1187">1187</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1188">
+             <td class="code lineNumber">
+                  <a href="#L1188">1188</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Loop_Coverage" title="Missing execution(s): ZERO ONE time(s).">while</span>(<span class="covered fullyCovered Term_Coverage">i&lt;buys</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1189">
+             <td class="code lineNumber">
+                  <a href="#L1189">1189</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">decide = rand.nextInt(2);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1190">
+             <td class="code lineNumber">
+                  <a href="#L1190">1190</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">decide == 1</span>){//if decide to buy
+              </td>
+          </tr>
+                      <tr class="code" id="L1191">
+             <td class="code lineNumber">
+                  <a href="#L1191">1191</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; decided to try to buy a card&quot;);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1192">
+             <td class="code lineNumber">
+                  <a href="#L1192">1192</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">r1 = rand.nextInt(20);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1193">
+             <td class="code lineNumber">
+                  <a href="#L1193">1193</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 0</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 6</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1194">
+             <td class="code lineNumber">
+                  <a href="#L1194">1194</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_adventurer().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1195">
+             <td class="code lineNumber">
+                  <a href="#L1195">1195</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_adventurer().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1196">
+             <td class="code lineNumber">
+                  <a href="#L1196">1196</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_adventurer().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1197">
+             <td class="code lineNumber">
+                  <a href="#L1197">1197</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 6;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1198">
+             <td class="code lineNumber">
+                  <a href="#L1198">1198</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1199">
+             <td class="code lineNumber">
+                  <a href="#L1199">1199</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1200">
+             <td class="code lineNumber">
+                  <a href="#L1200">1200</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1201">
+             <td class="code lineNumber">
+                  <a href="#L1201">1201</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 1</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 3</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1202">
+             <td class="code lineNumber">
+                  <a href="#L1202">1202</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_ambassador().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1203">
+             <td class="code lineNumber">
+                  <a href="#L1203">1203</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_ambassador().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1204">
+             <td class="code lineNumber">
+                  <a href="#L1204">1204</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_ambassador().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1205">
+             <td class="code lineNumber">
+                  <a href="#L1205">1205</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 3;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1206">
+             <td class="code lineNumber">
+                  <a href="#L1206">1206</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1207">
+             <td class="code lineNumber">
+                  <a href="#L1207">1207</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1208">
+             <td class="code lineNumber">
+                  <a href="#L1208">1208</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1209">
+             <td class="code lineNumber">
+                  <a href="#L1209">1209</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 2</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 4</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1210">
+             <td class="code lineNumber">
+                  <a href="#L1210">1210</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_baron().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1211">
+             <td class="code lineNumber">
+                  <a href="#L1211">1211</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_baron().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1212">
+             <td class="code lineNumber">
+                  <a href="#L1212">1212</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_baron().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1213">
+             <td class="code lineNumber">
+                  <a href="#L1213">1213</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 4;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1214">
+             <td class="code lineNumber">
+                  <a href="#L1214">1214</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1215">
+             <td class="code lineNumber">
+                  <a href="#L1215">1215</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1216">
+             <td class="code lineNumber">
+                  <a href="#L1216">1216</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1217">
+             <td class="code lineNumber">
+                  <a href="#L1217">1217</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 3</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 5</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1218">
+             <td class="code lineNumber">
+                  <a href="#L1218">1218</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_council_room().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1219">
+             <td class="code lineNumber">
+                  <a href="#L1219">1219</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_council_room().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1220">
+             <td class="code lineNumber">
+                  <a href="#L1220">1220</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_council_room().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1221">
+             <td class="code lineNumber">
+                  <a href="#L1221">1221</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 5;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1222">
+             <td class="code lineNumber">
+                  <a href="#L1222">1222</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1223">
+             <td class="code lineNumber">
+                  <a href="#L1223">1223</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1224">
+             <td class="code lineNumber">
+                  <a href="#L1224">1224</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1225">
+             <td class="code lineNumber">
+                  <a href="#L1225">1225</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 4</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 4</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1226">
+             <td class="code lineNumber">
+                  <a href="#L1226">1226</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_cutpurse().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1227">
+             <td class="code lineNumber">
+                  <a href="#L1227">1227</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_cutpurse().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1228">
+             <td class="code lineNumber">
+                  <a href="#L1228">1228</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_cutpurse().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1229">
+             <td class="code lineNumber">
+                  <a href="#L1229">1229</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 4;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1230">
+             <td class="code lineNumber">
+                  <a href="#L1230">1230</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1231">
+             <td class="code lineNumber">
+                  <a href="#L1231">1231</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1232">
+             <td class="code lineNumber">
+                  <a href="#L1232">1232</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1233">
+             <td class="code lineNumber">
+                  <a href="#L1233">1233</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 5</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 4</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1234">
+             <td class="code lineNumber">
+                  <a href="#L1234">1234</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_feast().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1235">
+             <td class="code lineNumber">
+                  <a href="#L1235">1235</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_feast().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1236">
+             <td class="code lineNumber">
+                  <a href="#L1236">1236</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_feast().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1237">
+             <td class="code lineNumber">
+                  <a href="#L1237">1237</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 4;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1238">
+             <td class="code lineNumber">
+                  <a href="#L1238">1238</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1239">
+             <td class="code lineNumber">
+                  <a href="#L1239">1239</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1240">
+             <td class="code lineNumber">
+                  <a href="#L1240">1240</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1241">
+             <td class="code lineNumber">
+                  <a href="#L1241">1241</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 6</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 5</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1242">
+             <td class="code lineNumber">
+                  <a href="#L1242">1242</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_mine().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1243">
+             <td class="code lineNumber">
+                  <a href="#L1243">1243</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_mine().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1244">
+             <td class="code lineNumber">
+                  <a href="#L1244">1244</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_mine().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1245">
+             <td class="code lineNumber">
+                  <a href="#L1245">1245</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 5;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1246">
+             <td class="code lineNumber">
+                  <a href="#L1246">1246</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1247">
+             <td class="code lineNumber">
+                  <a href="#L1247">1247</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1248">
+             <td class="code lineNumber">
+                  <a href="#L1248">1248</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1249">
+             <td class="code lineNumber">
+                  <a href="#L1249">1249</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 7</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 4</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1250">
+             <td class="code lineNumber">
+                  <a href="#L1250">1250</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_great_hall().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1251">
+             <td class="code lineNumber">
+                  <a href="#L1251">1251</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_great_hall().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1252">
+             <td class="code lineNumber">
+                  <a href="#L1252">1252</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_great_hall().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1253">
+             <td class="code lineNumber">
+                  <a href="#L1253">1253</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 4;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1254">
+             <td class="code lineNumber">
+                  <a href="#L1254">1254</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1255">
+             <td class="code lineNumber">
+                  <a href="#L1255">1255</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1256">
+             <td class="code lineNumber">
+                  <a href="#L1256">1256</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1257">
+             <td class="code lineNumber">
+                  <a href="#L1257">1257</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 8</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 5</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1258">
+             <td class="code lineNumber">
+                  <a href="#L1258">1258</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_minion().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1259">
+             <td class="code lineNumber">
+                  <a href="#L1259">1259</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_minion().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1260">
+             <td class="code lineNumber">
+                  <a href="#L1260">1260</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_minion().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1261">
+             <td class="code lineNumber">
+                  <a href="#L1261">1261</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 5;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1262">
+             <td class="code lineNumber">
+                  <a href="#L1262">1262</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1263">
+             <td class="code lineNumber">
+                  <a href="#L1263">1263</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1264">
+             <td class="code lineNumber">
+                  <a href="#L1264">1264</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1265">
+             <td class="code lineNumber">
+                  <a href="#L1265">1265</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 9</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 4</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1266">
+             <td class="code lineNumber">
+                  <a href="#L1266">1266</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_smithy().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1267">
+             <td class="code lineNumber">
+                  <a href="#L1267">1267</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_smithy().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1268">
+             <td class="code lineNumber">
+                  <a href="#L1268">1268</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_smithy().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1269">
+             <td class="code lineNumber">
+                  <a href="#L1269">1269</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 4;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1270">
+             <td class="code lineNumber">
+                  <a href="#L1270">1270</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1271">
+             <td class="code lineNumber">
+                  <a href="#L1271">1271</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1272">
+             <td class="code lineNumber">
+                  <a href="#L1272">1272</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1273">
+             <td class="code lineNumber">
+                  <a href="#L1273">1273</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 10</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 3</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1274">
+             <td class="code lineNumber">
+                  <a href="#L1274">1274</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_village().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1275">
+             <td class="code lineNumber">
+                  <a href="#L1275">1275</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_village().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1276">
+             <td class="code lineNumber">
+                  <a href="#L1276">1276</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_village().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1277">
+             <td class="code lineNumber">
+                  <a href="#L1277">1277</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 3;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1278">
+             <td class="code lineNumber">
+                  <a href="#L1278">1278</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1279">
+             <td class="code lineNumber">
+                  <a href="#L1279">1279</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1280">
+             <td class="code lineNumber">
+                  <a href="#L1280">1280</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1281">
+             <td class="code lineNumber">
+                  <a href="#L1281">1281</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 11</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 5</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1282">
+             <td class="code lineNumber">
+                  <a href="#L1282">1282</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_tribute().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1283">
+             <td class="code lineNumber">
+                  <a href="#L1283">1283</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_tribute().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1284">
+             <td class="code lineNumber">
+                  <a href="#L1284">1284</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_tribute().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1285">
+             <td class="code lineNumber">
+                  <a href="#L1285">1285</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 5;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1286">
+             <td class="code lineNumber">
+                  <a href="#L1286">1286</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1287">
+             <td class="code lineNumber">
+                  <a href="#L1287">1287</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1288">
+             <td class="code lineNumber">
+                  <a href="#L1288">1288</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1289">
+             <td class="code lineNumber">
+                  <a href="#L1289">1289</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 12</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 3</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1290">
+             <td class="code lineNumber">
+                  <a href="#L1290">1290</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_steward().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1291">
+             <td class="code lineNumber">
+                  <a href="#L1291">1291</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_steward().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1292">
+             <td class="code lineNumber">
+                  <a href="#L1292">1292</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_steward().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1293">
+             <td class="code lineNumber">
+                  <a href="#L1293">1293</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 3;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1294">
+             <td class="code lineNumber">
+                  <a href="#L1294">1294</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1295">
+             <td class="code lineNumber">
+                  <a href="#L1295">1295</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1296">
+             <td class="code lineNumber">
+                  <a href="#L1296">1296</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1297">
+             <td class="code lineNumber">
+                  <a href="#L1297">1297</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 13</span>) &amp;&amp; (<span class="covered partlyCovered Term_Coverage">money &gt;= 0</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1298">
+             <td class="code lineNumber">
+                  <a href="#L1298">1298</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_copper().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1299">
+             <td class="code lineNumber">
+                  <a href="#L1299">1299</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_copper().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1300">
+             <td class="code lineNumber">
+                  <a href="#L1300">1300</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_copper().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1301">
+             <td class="code lineNumber">
+                  <a href="#L1301">1301</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1302">
+             <td class="code lineNumber">
+                  <a href="#L1302">1302</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1303">
+             <td class="code lineNumber">
+                  <a href="#L1303">1303</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1304">
+             <td class="code lineNumber">
+                  <a href="#L1304">1304</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 14</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 3</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1305">
+             <td class="code lineNumber">
+                  <a href="#L1305">1305</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_silver().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1306">
+             <td class="code lineNumber">
+                  <a href="#L1306">1306</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_silver().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1307">
+             <td class="code lineNumber">
+                  <a href="#L1307">1307</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_silver().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1308">
+             <td class="code lineNumber">
+                  <a href="#L1308">1308</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 3;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1309">
+             <td class="code lineNumber">
+                  <a href="#L1309">1309</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1310">
+             <td class="code lineNumber">
+                  <a href="#L1310">1310</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1311">
+             <td class="code lineNumber">
+                  <a href="#L1311">1311</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1312">
+             <td class="code lineNumber">
+                  <a href="#L1312">1312</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 15</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 6</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1313">
+             <td class="code lineNumber">
+                  <a href="#L1313">1313</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_gold().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1314">
+             <td class="code lineNumber">
+                  <a href="#L1314">1314</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_gold().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1315">
+             <td class="code lineNumber">
+                  <a href="#L1315">1315</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_gold().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1316">
+             <td class="code lineNumber">
+                  <a href="#L1316">1316</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 6;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1317">
+             <td class="code lineNumber">
+                  <a href="#L1317">1317</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1318">
+             <td class="code lineNumber">
+                  <a href="#L1318">1318</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1319">
+             <td class="code lineNumber">
+                  <a href="#L1319">1319</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1320">
+             <td class="code lineNumber">
+                  <a href="#L1320">1320</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 16</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 2</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1321">
+             <td class="code lineNumber">
+                  <a href="#L1321">1321</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_estate().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1322">
+             <td class="code lineNumber">
+                  <a href="#L1322">1322</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_estate().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1323">
+             <td class="code lineNumber">
+                  <a href="#L1323">1323</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_estate().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1324">
+             <td class="code lineNumber">
+                  <a href="#L1324">1324</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 2;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1325">
+             <td class="code lineNumber">
+                  <a href="#L1325">1325</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1326">
+             <td class="code lineNumber">
+                  <a href="#L1326">1326</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1327">
+             <td class="code lineNumber">
+                  <a href="#L1327">1327</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1328">
+             <td class="code lineNumber">
+                  <a href="#L1328">1328</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 17</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 5</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1329">
+             <td class="code lineNumber">
+                  <a href="#L1329">1329</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_duchy().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1330">
+             <td class="code lineNumber">
+                  <a href="#L1330">1330</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_duchy().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1331">
+             <td class="code lineNumber">
+                  <a href="#L1331">1331</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_duchy().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1332">
+             <td class="code lineNumber">
+                  <a href="#L1332">1332</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 5;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1333">
+             <td class="code lineNumber">
+                  <a href="#L1333">1333</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1334">
+             <td class="code lineNumber">
+                  <a href="#L1334">1334</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1335">
+             <td class="code lineNumber">
+                  <a href="#L1335">1335</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1336">
+             <td class="code lineNumber">
+                  <a href="#L1336">1336</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 18</span>) &amp;&amp; (<span class="covered fullyCovered Term_Coverage">money &gt;= 8</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1337">
+             <td class="code lineNumber">
+                  <a href="#L1337">1337</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_province().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1338">
+             <td class="code lineNumber">
+                  <a href="#L1338">1338</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_province().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1339">
+             <td class="code lineNumber">
+                  <a href="#L1339">1339</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_province().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1340">
+             <td class="code lineNumber">
+                  <a href="#L1340">1340</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">money = money - 8;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1341">
+             <td class="code lineNumber">
+                  <a href="#L1341">1341</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1342">
+             <td class="code lineNumber">
+                  <a href="#L1342">1342</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1343">
+             <td class="code lineNumber">
+                  <a href="#L1343">1343</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1344">
+             <td class="code lineNumber">
+                  <a href="#L1344">1344</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">else</span> <span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">r1 == 19</span>) &amp;&amp; (<span class="covered partlyCovered Term_Coverage">money &gt;= 0</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1345">
+             <td class="code lineNumber">
+                  <a href="#L1345">1345</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(<span class="covered partlyCovered Term_Coverage">b1.get_curse().getrem() &gt; 0</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L1346">
+             <td class="code lineNumber">
+                  <a href="#L1346">1346</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">discard.addElement(b1.get_curse().getdc());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1347">
+             <td class="code lineNumber">
+                  <a href="#L1347">1347</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">b1.get_curse().dec(b1);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1348">
+             <td class="code lineNumber">
+                  <a href="#L1348">1348</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">System.out.println(name + &quot; bought: &quot; + discard.lastElement().getName());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1349">
+             <td class="code lineNumber">
+                  <a href="#L1349">1349</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1350">
+             <td class="code lineNumber">
+                  <a href="#L1350">1350</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1351">
+             <td class="code lineNumber">
+                  <a href="#L1351">1351</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1352">
+             <td class="code lineNumber">
+                  <a href="#L1352">1352</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">i = i+1;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1353">
+             <td class="code lineNumber">
+                  <a href="#L1353">1353</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1354">
+             <td class="code lineNumber">
+                  <a href="#L1354">1354</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">reset();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1355">
+             <td class="code lineNumber">
+                  <a href="#L1355">1355</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on February 12, 2017 8:18:30 PM PST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

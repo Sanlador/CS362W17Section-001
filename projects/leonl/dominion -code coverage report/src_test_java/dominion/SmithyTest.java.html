@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>SmithyTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">dominion (3) (Feb 13, 2017 3:20:26 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">SmithyTest.java</span></div><h1>SmithyTest.java</h1><pre class="source lang-java linenums">package dominion;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+<span class="fc" id="L11">public class SmithyTest {</span>
+
+	//   public  static void main(String args[]) throws CloneNotSupportedException{
+	  @Test
+	  public void test0()  throws Throwable  {	   
+		    List&lt;Card&gt; cards;
+		    GameState state,testState;
+<span class="fc" id="L18">			Randomness.reset(10);	   </span>
+
+<span class="fc" id="L20">		    int newCards = 3;  </span>
+//		 // initialize a game state and player cards
+<span class="fc" id="L22">			cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L23">			 state = new GameState(cards);  </span>
+//			
+<span class="fc" id="L25">		      Player player = new Player(state, &quot;player-1&quot;);</span>
+<span class="fc" id="L26">		         player.hand.add(Card.getCard(cards,Card.CardName.Smithy));</span>
+
+<span class="fc" id="L28">		         state.addPlayer(player);</span>
+<span class="fc" id="L29">		       player = new Player(state, &quot;player-2&quot;);</span>
+<span class="fc" id="L30">		         state.addPlayer(player);</span>
+		         
+		      //Initialize the game!
+<span class="fc" id="L33">		      state.initializeGame();</span>
+		      
+<span class="fc" id="L35">		      System.out.println(&quot;hand count = &quot; + state.players.get(0).hand.size());</span>
+<span class="fc" id="L36">		      System.out.println(&quot;hand deck = &quot; + state.players.get(0).deck.size());</span>
+<span class="fc" id="L37">		      System.out.println(&quot;hand coins = &quot; + state.players.get(0).coins);</span>
+<span class="fc" id="L38">		      System.out.println(&quot;hand numActions = &quot; + state.players.get(0).numActions);</span>
+<span class="fc" id="L39">		      System.out.println(&quot;hand numBuys = &quot; + state.players.get(0).numBuys);</span>
+	      
+<span class="fc" id="L41">		      System.out.println(&quot;hand hand = &quot; + state.players.get(0).hand.size());</span>
+<span class="fc" id="L42">		      System.out.println(&quot;hand deck = &quot; + state.players.get(0).deck.size());</span>
+		      //copy or clone the game state to a test case
+<span class="fc" id="L44">		      testState=(GameState) state.clone();</span>
+
+  		     //	play the game 
+<span class="fc" id="L47">		      HashMap&lt;Player, Integer&gt; winners=state.play();</span>
+		      
+<span class="fc" id="L49">		      System.out.println(&quot;  *****    Player-1 Status ***** &quot; );</span>
+<span class="fc" id="L50">		      System.out.println(&quot;hand count = &quot; + state.players.get(0).hand.size() + &quot;, expected = &quot;+ ( testState.players.get(0).hand.size() + newCards ) );</span>
+<span class="fc" id="L51">		      System.out.println(&quot;deck count = &quot; + state.players.get(0).deck.size() + &quot;, expected = &quot;+ ( testState.players.get(0).deck.size() - newCards ) );</span>
+<span class="fc" id="L52">		      System.out.println(&quot;numActions = &quot; + state.players.get(0).numActions + &quot;, expected = &quot;+ ( testState.players.get(0).numActions - 1 ) );</span>
+		      
+<span class="fc" id="L54">		      System.out.println(&quot;  *****    Player-2 Status *****&quot; );</span>
+<span class="fc" id="L55">		      System.out.println(&quot;hand count = &quot; + state.players.get(1).hand.size() + &quot;, expected = &quot;+ ( testState.players.get(1).hand.size()  ) );</span>
+<span class="fc" id="L56">		      System.out.println(&quot;deck count = &quot; + state.players.get(1).deck.size() + &quot;, expected = &quot;+ ( testState.players.get(1).deck.size()  ) );</span>
+<span class="fc" id="L57">		      System.out.println(&quot;numActions = &quot; + state.players.get(1).numActions + &quot;, expected = &quot;+ ( testState.players.get(1).numActions  ) );</span>
+<span class="fc" id="L58">		      assertEquals(state.players.get(0).hand.size(),( testState.players.get(0).hand.size() -1  ))      ;</span>
+		     // assertEquals(state.players.get(0).deck.size(),( testState.players.get(0).deck.size() -3 ))      ;
+	      
+<span class="fc" id="L61">		      assertEquals(state.players.get(1).hand.size(),( testState.players.get(1).hand.size()))      ;</span>
+<span class="fc" id="L62">		      assertEquals(state.players.get(1).deck.size(),( testState.players.get(1).deck.size() +2))      ;</span>
+
+		      
+		      
+
+<span class="fc" id="L67">	   }</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>dominion (3) (Feb 13, 2017 3:20:26 PM)</div></body></html>

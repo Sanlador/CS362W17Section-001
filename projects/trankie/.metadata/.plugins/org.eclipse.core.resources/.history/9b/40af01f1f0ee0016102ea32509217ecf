@@ -1,0 +1,6 @@
+
+public class DominionBoard {
+	int num_Duchy;
+	int num_Estate;
+	int num_Province;
+}

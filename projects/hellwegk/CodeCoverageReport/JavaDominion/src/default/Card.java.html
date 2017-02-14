@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">UnitTests (Feb 11, 2017 10:26:44 PM)</a> &gt; <a href="../../index.html" class="el_group">JavaDominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums"><span class="pc" id="L1">import java.util.Arrays;</span>
+import java.util.List;
+
+<span class="fc" id="L4">public enum Card {</span>
+	
+<span class="fc" id="L6">	/*something(&quot;type&quot;, cost, coins, victorypoints, embargotokens); */</span>
+	
+	/*TREASURES*/
+<span class="fc" id="L9">	copper(&quot;treasure&quot;, 0, 1, 0, 0),</span>
+<span class="fc" id="L10">	silver(&quot;treasure&quot;, 3, 2, 0, 0),</span>
+<span class="fc" id="L11">	gold(&quot;treasure&quot;, 6, 3, 0, 0),</span>
+	
+<span class="fc" id="L13">	/*VICTORY*/</span>
+<span class="fc" id="L14">	estate(&quot;victory&quot;, 2, 1, 1, 0),</span>
+<span class="fc" id="L15">	duchy(&quot;victory&quot;, 5, 0, 3, 0),</span>
+<span class="fc" id="L16">	province(&quot;victory&quot;, 8, 0, 6, 0),</span>
+<span class="fc" id="L17">	curse(&quot;victory&quot;, 0, 0, -1, 0),</span>
+<span class="fc" id="L18">	gardens(&quot;victory&quot;, 4, 0, 0, 0), </span>
+	
+<span class="fc" id="L20">	/*ACTIONS*/</span>
+<span class="fc" id="L21">	adventurer(&quot;action&quot;, 6, 0, 0, 0),</span>
+<span class="fc" id="L22">	ambassador(&quot;action,attack&quot;, 3, 0, 0, 0),</span>
+<span class="fc" id="L23">	baron(&quot;action&quot;, 4, 0, 0, 0),</span>
+<span class="fc" id="L24">	council_room(&quot;action&quot;, 4, 0, 3, 0),</span>
+<span class="fc" id="L25">	cutpurse(&quot;action,attack&quot;, 4, 0, 0, 0),</span>
+<span class="fc" id="L26">	embargo(&quot;action&quot;, 2, 0, 0, 0),</span>
+<span class="fc" id="L27">	feast(&quot;action&quot;, 4, 0, 0, 0),</span>
+<span class="fc" id="L28">	great_hall(&quot;action,victory&quot;, 3, 0, 1, 0),</span>
+<span class="fc" id="L29">	mine(&quot;action&quot;, 5, 0, 0, 0),</span>
+<span class="fc" id="L30">	smithy(&quot;action,&quot;, 4, 0, 0, 0),</span>
+<span class="fc" id="L31">	village(&quot;action&quot;, 3, 0, 0, 0),</span>
+<span class="fc" id="L32">	seahag(&quot;action,attack&quot;, 4, 0, 0, 0);</span>
+	
+	
+	private String type;
+	private int cost;
+	private int coins;
+	private int victory;
+	private int embargotokens;
+	
+<span class="fc" id="L41">	Card(String type, int cost, int coins, int victory, int embargotokens)</span>
+	{
+<span class="fc" id="L43">		this.type = type;</span>
+<span class="fc" id="L44">		this.cost = cost;</span>
+<span class="fc" id="L45">		this.coins = coins;</span>
+<span class="fc" id="L46">		this.victory = victory;</span>
+<span class="fc" id="L47">		this.embargotokens = embargotokens;</span>
+<span class="fc" id="L48">	}</span>
+	
+<span class="fc" id="L50">	public int getCost() { return this.cost; }</span>
+<span class="fc" id="L51">    public int getCoins() { return this.coins; }</span>
+<span class="fc" id="L52">    public int getVictory() { return this.victory; }</span>
+<span class="fc" id="L53">    public void setVictory(int v) {this.victory = v;}</span>
+<span class="fc" id="L54">    public int getEmbargo() { return this.embargotokens; }</span>
+<span class="fc" id="L55">    public void addEmbargoToCard(){ this.embargotokens += 1; }</span>
+<span class="fc" id="L56">    public List&lt;String&gt; getTypes() { return Arrays.asList(this.type.split(&quot;,&quot;)); }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>UnitTests (Feb 11, 2017 10:26:44 PM)</div></body></html>

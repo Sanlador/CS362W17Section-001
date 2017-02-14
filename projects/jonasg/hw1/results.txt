@@ -1,0 +1,12 @@
+Results :
+
+Failed tests: 
+  MineTest.test0:57 expected:< 	Silver-TREASURE   	 Cost: 3 	 Score: 0 
+  Treasure Value: 2> but was:<null>
+  valuesTest.duchy:46 expected:<3> but was:<2>
+  GameStateTest.test0:26 expected:<17> but was:<18>
+  GameStateTest.test1:43 expected:<2> but was:<1>
+  BuyTest.test0:59 expected:<1> but was:<2>
+  BuyTest.test1:95 expected:<0> but was:<5>
+
+Tests run: 42, Failures: 6, Errors: 0, Skipped: 0

@@ -1,0 +1,74 @@
+import java.util.*;
+
+public class PlayGame {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int turn = 0, decision=0, cardnum, check, loopCtrl=0;
+		Card temp;
+		// TODO Auto-generated method stub
+		System.out.print("Welcome to Dominion!\nThis will be a 2-player game.");
+		
+		DominionBoard board = new DominionBoard();
+		board.initialize();
+		Player player = new Player("Kien", 1 , 1 , 0);
+		
+		
+		System.out.print("\nPlayer-1: " + player.player_name + " here is your info:");
+		player.buildDeck();
+		for(int i = 0; i < 5; i++){
+			player.drawCard();
+		}
+		
+		
+		while(turn == 0){
+			player.printHand();
+			player.printInfo();
+			System.out.print("\nWhat would you like to do:\n1. Action\n2. Buy\n3. End Turn\n");
+			decision = input.nextInt();
+			if(decision == 1 && player.getActions() != 0){
+				while(loopCtrl == 0){
+				System.out.print("\nWhich action card would you like to use (Enter 0 to exit this menu):\n ");
+				cardnum = input.nextInt();
+				if(cardnum == 0){
+					break;
+				}
+				System.out.print("You chose card number: " + cardnum);
+				check = player.checkTypeAction(cardnum);
+				if(check == 1){
+					loopCtrl = 1;
+					player.setActions(-1);
+				}
+				else
+					System.out.print("\nThe card you picked was not an ACTION card!");
+				}
+				loopCtrl = 0;
+			}
+			else if(decision == 2 && player.getBuys() != 0){
+				player.setCoins(player.checkTreasure());
+				System.out.print("\nYou have " + player.getCoins() +" coins to use!\nHere is the list of cards:");
+				board.printBoard();
+				System.out.print("\nWhat do you want to buy: ");
+				cardnum = input.nextInt();
+				temp = board.buyCards.get(cardnum-1);
+				if(player.getCoins() < temp.getCost()){
+					System.out.print("\nInsufficent funds!");
+				}
+				else if(board.buyingCard(cardnum) == 0){
+					System.out.print("\nThere are no more of those cards left");
+				}
+				else{
+					System.out.print("\nYou just bought " + temp.getCardName()+"!");
+					player.discard.add(temp);
+					player.setCoins(((-1)*temp.getCost()));
+					player.setBuys(-1);
+				//buy cards
+				}
+			}
+			else if(decision == 3)
+				break;
+		}
+		System.exit(0);
+	}
+
+}

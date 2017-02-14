@@ -1,0 +1,12 @@
+
+public class DominionBoard {
+	int num_Duchy;
+	int num_Estate;
+	int num_Province;
+	int num_Curse;
+	int num_Gold;
+	int num_Silver;
+	int num_Cooper;
+	
+	public void initialize
+}

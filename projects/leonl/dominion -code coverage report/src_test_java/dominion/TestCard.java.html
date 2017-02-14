@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>TestCard.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">dominion (3) (Feb 13, 2017 3:20:26 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">TestCard.java</span></div><h1>TestCard.java</h1><pre class="source lang-java linenums">package dominion; 
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+import java.util.List;
+import java.util.ArrayList;
+
+
+<span class="fc" id="L15">public class TestCard {</span>
+    private GameState state;
+    private Player player1;
+    private Player player2;
+    private List&lt;Card&gt; cards;
+
+    @Before
+    public void initializePlayer() {
+<span class="fc" id="L23">        cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L24">        state = new GameState(cards);</span>
+<span class="fc" id="L25">        player1 = new Player(state, &quot;PLAYER1&quot;);</span>
+<span class="fc" id="L26">        state.addPlayer(player1);</span>
+<span class="fc" id="L27">        player2 = new Player(state, &quot;PLAYER2&quot;);</span>
+<span class="fc" id="L28">        state.addPlayer(player2);</span>
+<span class="fc" id="L29">    }</span>
+
+// TREASURE CARD TESTS
+
+    @Test
+    public void testValuesCopper() {
+<span class="fc" id="L35">        assertEquals(Card.getCard(cards, Card.CardName.Cooper).getCost(), 0);</span>
+<span class="fc" id="L36">        assertEquals(Card.getCard(cards, Card.CardName.Cooper).score(), 0);</span>
+<span class="fc" id="L37">        assertEquals(Card.getCard(cards, Card.CardName.Cooper).getType(), Card.Type.TREASURE);</span>
+<span class="fc" id="L38">    }</span>
+
+    @Test
+    public void testPlayCopper() {
+<span class="fc" id="L42">        assertEquals(player1.coins, 0);</span>
+<span class="fc" id="L43">        player1.hand.add(Card.getCard(cards, Card.CardName.Cooper));</span>
+<span class="fc" id="L44">        player1.playTreasureCard();</span>
+<span class="fc" id="L45">        assertEquals(player1.coins, 1);</span>
+<span class="fc" id="L46">    }</span>
+
+    @Test
+    public void testValuesSilver() {
+<span class="fc" id="L50">        assertEquals(Card.getCard(cards, Card.CardName.Silver).getCost(), 3);</span>
+<span class="fc" id="L51">        assertEquals(Card.getCard(cards, Card.CardName.Silver).score(), 0);</span>
+<span class="fc" id="L52">        assertEquals(Card.getCard(cards, Card.CardName.Silver).getType(), Card.Type.TREASURE);</span>
+<span class="fc" id="L53">    }</span>
+
+    @Test
+    public void testPlaySilver() {
+<span class="fc" id="L57">        assertEquals(player1.coins, 0);</span>
+<span class="fc" id="L58">        player1.hand.add(Card.getCard(cards, Card.CardName.Silver));</span>
+<span class="fc" id="L59">        player1.playTreasureCard();</span>
+<span class="fc" id="L60">        assertEquals(player1.coins, 2);</span>
+<span class="fc" id="L61">    }</span>
+
+    @Test
+    public void testValuesGold() {
+<span class="fc" id="L65">        assertEquals(Card.getCard(cards, Card.CardName.Gold).getCost(), 6);</span>
+<span class="fc" id="L66">        assertEquals(Card.getCard(cards, Card.CardName.Gold).score(), 0);</span>
+<span class="fc" id="L67">        assertEquals(Card.getCard(cards, Card.CardName.Gold).getType(), Card.Type.TREASURE);</span>
+<span class="fc" id="L68">    }</span>
+
+    @Test
+    public void testPlayGold() {
+<span class="fc" id="L72">        assertEquals(player1.coins, 0);</span>
+<span class="fc" id="L73">        player1.hand.add(Card.getCard(cards, Card.CardName.Gold));</span>
+<span class="fc" id="L74">        player1.playTreasureCard();</span>
+<span class="fc" id="L75">        assertEquals(player1.coins, 3);</span>
+<span class="fc" id="L76">    }</span>
+
+
+// ACTION CARD TESTS
+
+
+    @Test
+    public void testValuesSmithy() {
+<span class="fc" id="L84">        assertEquals(Card.getCard(cards, Card.CardName.Smithy).getCost(), 4);</span>
+<span class="fc" id="L85">        assertEquals(Card.getCard(cards, Card.CardName.Smithy).score(), 0);</span>
+<span class="fc" id="L86">        assertEquals(Card.getCard(cards, Card.CardName.Smithy).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L87">    }</span>
+
+    @Test
+    public void testPlaySmithy() {
+<span class="fc" id="L91">        player1.numActions = 1;</span>
+<span class="fc" id="L92">        assertEquals(player1.hand.size(), 0);</span>
+<span class="fc" id="L93">        assertEquals(player1.deck.size(), 0);</span>
+<span class="fc" id="L94">        assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L95">        assertEquals(player1.playedCards.size(), 0);</span>
+<span class="fc" id="L96">        player1.deck.add(Card.getCard(cards, Card.CardName.Estate)); //random cards to run past and discard</span>
+<span class="fc" id="L97">        player1.deck.add(Card.getCard(cards, Card.CardName.Estate));</span>
+<span class="fc" id="L98">        player1.deck.add(Card.getCard(cards, Card.CardName.Cooper));</span>
+<span class="fc" id="L99">        player1.deck.add(Card.getCard(cards, Card.CardName.Cooper));</span>
+<span class="fc" id="L100">        player1.hand.add(Card.getCard(cards, Card.CardName.Smithy));</span>
+<span class="fc" id="L101">        System.out.println(player1);</span>
+<span class="fc" id="L102">        player1.playKingdomCard();</span>
+<span class="fc" id="L103">        assertEquals(player1.hand.size(), 3);</span>
+<span class="fc" id="L104">        assertEquals(player1.deck.size(), 1);</span>
+<span class="fc" id="L105">        assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L106">        assertEquals(player1.playedCards.size(), 1);</span>
+<span class="fc" id="L107">        System.out.println(player1);</span>
+<span class="fc" id="L108">    }</span>
+
+    @Test
+    public void testValuesAdventurer() {
+<span class="fc" id="L112">        assertEquals(Card.getCard(cards, Card.CardName.Adventurer).getCost(), 6);</span>
+<span class="fc" id="L113">        assertEquals(Card.getCard(cards, Card.CardName.Adventurer).score(), 0);</span>
+<span class="fc" id="L114">        assertEquals(Card.getCard(cards, Card.CardName.Adventurer).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L115">    }</span>
+
+    @Test
+    public void testPlayAdventurer() {
+<span class="fc" id="L119">        player1.numActions = 1;</span>
+<span class="fc" id="L120">        assertEquals(player1.coins, 0);</span>
+<span class="fc" id="L121">        assertEquals(player1.hand.size(), 0);</span>
+<span class="fc" id="L122">        player1.deck.add(Card.getCard(cards, Card.CardName.Estate)); //random cards to run past and discard</span>
+<span class="fc" id="L123">        player1.deck.add(Card.getCard(cards, Card.CardName.Estate));</span>
+<span class="fc" id="L124">        player1.deck.add(Card.getCard(cards, Card.CardName.Cooper));</span>
+<span class="fc" id="L125">        player1.deck.add(Card.getCard(cards, Card.CardName.Cooper));</span>
+<span class="fc" id="L126">        player1.hand.add(Card.getCard(cards, Card.CardName.Adventurer));</span>
+<span class="fc" id="L127">        System.out.println(player1);</span>
+<span class="fc" id="L128">        player1.playKingdomCard();</span>
+<span class="fc" id="L129">        assertEquals(player1.hand.size(), 2);</span>
+<span class="fc" id="L130">        assertEquals(player1.discard.size(), 2);</span>
+<span class="fc" id="L131">        assertEquals(player1.playedCards.size(), 1);</span>
+<span class="fc" id="L132">        player1.playTreasureCard();</span>
+<span class="fc" id="L133">        System.out.println(player1);</span>
+<span class="fc" id="L134">        assertEquals(player1.hand.size(), 0);</span>
+<span class="fc" id="L135">        assertEquals(player1.discard.size(), 2);</span>
+<span class="fc" id="L136">        assertEquals(player1.playedCards.size(), 3);</span>
+<span class="fc" id="L137">        assertEquals(player1.coins, 2);</span>
+<span class="fc" id="L138">    }</span>
+    
+    @Test
+    public void testValuesVillage() {
+<span class="fc" id="L142">        assertEquals(Card.getCard(cards, Card.CardName.Village).getCost(), 3);</span>
+<span class="fc" id="L143">        assertEquals(Card.getCard(cards, Card.CardName.Village).score(), 0);</span>
+<span class="fc" id="L144">        assertEquals(Card.getCard(cards, Card.CardName.Village).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L145">    }</span>
+
+    @Test
+    public void testPlayVillage() {
+<span class="fc" id="L149">        assertEquals(player1.hand.size(), 0);</span>
+<span class="fc" id="L150">        assertEquals(player1.deck.size(), 0);</span>
+<span class="fc" id="L151">        assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L152">        assertEquals(player1.playedCards.size(), 0);</span>
+<span class="fc" id="L153">        player1.hand.add(Card.getCard(cards, Card.CardName.Village));</span>
+<span class="fc" id="L154">        System.out.println(player1);</span>
+<span class="fc" id="L155">        player1.playKingdomCard();</span>
+<span class="fc" id="L156">        assertEquals(player1.hand.size(), 1);</span>
+<span class="fc" id="L157">        assertEquals(player1.deck.size(), 0);</span>
+<span class="fc" id="L158">        assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L159">        assertEquals(player1.playedCards.size(), 0);</span>
+<span class="fc" id="L160">        System.out.println(player1);</span>
+<span class="fc" id="L161">    }</span>
+    @Test
+    public void testValuesBaron() {
+<span class="fc" id="L164">        assertEquals(Card.getCard(cards, Card.CardName.Baron).getCost(), 4);</span>
+<span class="fc" id="L165">        assertEquals(Card.getCard(cards, Card.CardName.Baron).score(), 0);</span>
+<span class="fc" id="L166">        assertEquals(Card.getCard(cards, Card.CardName.Baron).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L167">    }</span>
+
+    @Test
+    public void testPlayBaron() {
+<span class="fc" id="L171">        assertEquals(player1.numBuys, 0);</span>
+<span class="fc" id="L172">        assertEquals(player1.coins, 0);</span>
+<span class="fc" id="L173">        player1.hand.add(Card.getCard(cards, Card.CardName.Baron));</span>
+<span class="fc" id="L174">        System.out.println(player1);</span>
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">        if(Card.getCard(player1.hand, Card.CardName.Estate) != null){</span>
+<span class="nc" id="L176">            player1.playKingdomCard();</span>
+<span class="nc" id="L177">            assertEquals(player1.hand.size(), 4);</span>
+<span class="nc" id="L178">            assertEquals(player1.deck.size(), 5);</span>
+<span class="nc" id="L179">            assertEquals(player1.discard.size(), 1);</span>
+<span class="nc" id="L180">            assertEquals(player1.playedCards.size(), 1);</span>
+<span class="nc" id="L181">            assertEquals(player1.numBuys, 2);</span>
+<span class="nc" id="L182">            assertEquals(player1.coins, 4);</span>
+<span class="nc" id="L183">        } else {</span>
+<span class="fc" id="L184">            player1.playKingdomCard();</span>
+<span class="fc" id="L185">            assertEquals(player1.hand.size(), 1);</span>
+<span class="fc" id="L186">            assertEquals(player1.deck.size(), 0);</span>
+<span class="fc" id="L187">            assertEquals(player1.coins, 0);</span>
+        }
+
+
+<span class="fc" id="L191">        System.out.println(player1);</span>
+<span class="fc" id="L192">    }</span>
+    @Test
+    public void testValuesFeast() {
+<span class="fc" id="L195">        assertEquals(Card.getCard(cards, Card.CardName.Feast).getCost(), 4);</span>
+<span class="fc" id="L196">        assertEquals(Card.getCard(cards, Card.CardName.Feast).score(), 0);</span>
+<span class="fc" id="L197">        assertEquals(Card.getCard(cards, Card.CardName.Feast).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L198">    }</span>
+
+    @Test
+    public void testPlayFeast() {
+<span class="fc" id="L202">        assertEquals(player1.hand.size(), 0);</span>
+<span class="fc" id="L203">        assertEquals(player1.deck.size(), 0);</span>
+<span class="fc" id="L204">        assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L205">        assertEquals(player1.playedCards.size(), 0);</span>
+<span class="fc" id="L206">        assertEquals(player1.coins, 0);</span>
+<span class="fc" id="L207">        player1.hand.add(Card.getCard(cards, Card.CardName.Feast));</span>
+<span class="fc" id="L208">        System.out.println(player1);</span>
+<span class="fc" id="L209">        player1.playKingdomCard();</span>
+<span class="fc" id="L210">        assertEquals(player1.deck.size(), 0);</span>
+<span class="fc" id="L211">        assertEquals(player1.discard.size(), 0);</span>
+<span class="fc" id="L212">        System.out.println(player1);</span>
+<span class="fc" id="L213">    }  </span>
+    @Test
+    public void testValuesMine() {
+<span class="fc" id="L216">        assertEquals(Card.getCard(cards, Card.CardName.Mine).getCost(), 5);</span>
+<span class="fc" id="L217">        assertEquals(Card.getCard(cards, Card.CardName.Mine).score(), 0);</span>
+<span class="fc" id="L218">        assertEquals(Card.getCard(cards, Card.CardName.Mine).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L219">    }</span>
+    @Test
+    public void testValuesGreatHall() {
+<span class="fc" id="L222">        assertEquals(Card.getCard(cards, Card.CardName.Great_Hall).getCost(), 3);</span>
+<span class="fc" id="L223">        assertEquals(Card.getCard(cards, Card.CardName.Great_Hall).score(), 0);</span>
+<span class="fc" id="L224">        assertEquals(Card.getCard(cards, Card.CardName.Great_Hall).getType(), Card.Type.ACTION);</span>
+<span class="fc" id="L225">    }</span>
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>dominion (3) (Feb 13, 2017 3:20:26 PM)</div></body></html>

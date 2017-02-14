@@ -1,0 +1,127 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.*;
+
+public class DominionBoard {
+	List<Card> buyCards;
+	
+	int num_Duchy;
+	int num_Estate;
+	int num_Province;
+	int num_Curse;
+	int num_Gold;
+	int num_Silver;
+	int num_Cooper;
+	int num_Adventurer;
+	int num_Bureaucrat;
+	int num_Cellar;
+	int num_Chancellor;
+	int num_Laboratory;
+	
+	public void initialize(){
+		this.num_Duchy = 8;
+		this.num_Estate = 8;
+		this.num_Province = 8;
+		this.num_Curse = 10;
+		this.num_Gold = 30;
+		this.num_Silver = 40;
+		this.num_Cooper = 46;
+		this.num_Adventurer = 10;
+		this.num_Bureaucrat = 10;
+		this.num_Cellar = 10;
+		this.num_Chancellor = 10;
+		this.num_Laboratory = 10;
+		buyCards = new ArrayList<Card>(Card.addAllCards());
+	}
+	public void printBoard(){
+		int i = 1;
+		for (Card card:this.buyCards){
+			System.out.print(card.toStringShort(i));
+			i++;
+		}
+	}
+	public int checkEnd(){
+		int counter=0;
+		if(this.num_Duchy == 0)
+			counter++;
+		if(this.num_Estate == 0)
+			counter++;
+		if(this.num_Curse == 0)
+			counter++;
+		if(this.num_Gold == 0)
+			counter++;
+		if(this.num_Silver == 0)
+			counter++;
+		if(this.num_Cooper == 0)
+			counter++;
+		if(this.num_Adventurer == 0)
+			counter++;
+		if(this.num_Bureaucrat == 0)
+			counter++;
+		if(this.num_Cellar == 0)
+			counter++;
+		if(this.num_Chancellor == 0)
+			counter++;
+		if(this.num_Laboratory == 0)
+			counter++;
+		if(counter >= 3)
+			return 1;
+		else
+			return 0;
+	}
+	public int buyingCard(int num){
+		if(num == 1 && this.num_Province != 0){
+			this.num_Province--;
+			return 1;
+		}
+		else if(num == 2 && this.num_Estate != 0){
+			this.num_Estate--;
+			return 1;
+		}
+		else if(num == 3 && this.num_Duchy != 0){
+			this.num_Duchy--;
+			return 1;
+		}
+		else if(num == 4 && this.num_Curse != 0){
+			this.num_Curse--;
+			return 1;
+		}
+		else if(num == 5 && this.num_Gold != 0){
+			this.num_Gold--;
+			return 1;
+		}
+		else if(num == 6 && this.num_Silver != 0){
+			this.num_Silver--;
+			return 1;
+		}
+		else if(num == 7 && this.num_Cooper != 0){
+			this.num_Cooper--;
+			return 1;
+		}
+		else if(num == 8 && this.num_Adventurer != 0){
+			this.num_Adventurer--;
+			return 1;
+		}
+		else if(num == 9 && this.num_Bureaucrat != 0){
+			this.num_Bureaucrat--;
+			return 1;
+		}
+		else if(num == 10 && this.num_Cellar != 0){
+			this.num_Cellar--;
+			return 1;
+		}
+		else if(num == 11 && this.num_Chancellor != 0){
+			this.num_Chancellor--;
+			return 1;
+		}
+		else if(num == 12 && this.num_Laboratory != 0){
+			this.num_Laboratory--;
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
+}

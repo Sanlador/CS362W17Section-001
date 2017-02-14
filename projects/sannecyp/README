@@ -1,1 +1,18 @@
-Hi
+Written by Prathik Sannecy for CS362 at OSU.
+
+This program implements the Dominion game in Java.
+
+How to compile and run the unit tests:
+
+1. Go to command prompt
+2. Navigate to the project directory
+
+Compile:
+3. Enter command: mvn compile
+
+Run without code coverage:
+3. Enter command: mvn test
+
+Run with code coverage
+3. Enter command: mvn clean jacoco:prepare-agent install jacoco:report
+4. Enter command: mvn jacoco:report

@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlayDominion</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlayDominion (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlayDominion</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.ArrayList;
+<i>2</i>&nbsp;import java.util.HashMap;
+<i>3</i>&nbsp;import java.util.List;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<b class="nc"><i>6</i>&nbsp;public class PlayDominion {</b>
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;	   public  static void main(String args[]){
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;		    List&lt;Card&gt; cards;
+<i>11</i>&nbsp;		    GameState state;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;//INITIALIZE CARDS AND STATE
+<i>14</i>&nbsp;			//the cards are achieved by each element/constant in the enum class
+<b class="nc"><i>15</i>&nbsp;			cards = new ArrayList&lt;Card&gt;(Card.createCards());</b>
+<b class="nc"><i>16</i>&nbsp;			state = new GameState(cards);</b>
+<i>17</i>&nbsp;			//System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString());
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;//INITIALIZE PLAYERS
+<b class="nc"><i>20</i>&nbsp;            Player player = new Player(state, &quot;PLAYER 1&quot;);</b>
+<b class="nc"><i>21</i>&nbsp;		    state.addPlayer(player);</b>
+<i>22</i>&nbsp;
+<b class="nc"><i>23</i>&nbsp;		    player = new Player(state, &quot;PLAYER 2&quot;);</b>
+<b class="nc"><i>24</i>&nbsp;		    state.addPlayer(player);</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;//INITIALIZE GAME
+<b class="nc"><i>27</i>&nbsp;           state.initializeGame();</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;//PRINT PLAYER DECKS
+<b class="nc"><i>30</i>&nbsp;           System.out.println(&quot;\nInitialization of Dominion Board:\n\n&quot; + state.toString());</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;//ACTUALLY PLAY THE GAME HERE!!!
+<b class="nc"><i>33</i>&nbsp;           HashMap&lt;Player, Integer&gt; winners = state.play();</b>
+<b class="nc"><i>34</i>&nbsp;		   System.out.println (&quot;Finished game.\n\n&quot;);</b>
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;//PRINT WINNERS
+<b class="nc"><i>37</i>&nbsp;           for(Player p: winners.keySet()){</b>
+<b class="nc"><i>38</i>&nbsp;               System.out.println (&quot;Player name: &quot; + p.player_username + &quot; , Score: &quot; + winners.get(p) );</b>
+<b class="nc"><i>39</i>&nbsp;           }</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;//PRINT PLAYER&#39;S CARDS AND GAMEBOARD
+<b class="nc"><i>42</i>&nbsp;           player.printStateGame();</b>
+<i>43</i>&nbsp;		      
+<i>44</i>&nbsp;		      
+<b class="nc"><i>45</i>&nbsp;			System.exit(0);  </b>
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;	   }
+<i>48</i>&nbsp;	
+<i>49</i>&nbsp;	
+<i>50</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-12 18:59</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>TestDeck.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">(default package) (Feb 12, 2017 2:28:21 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">tests</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TestDeck.java</span></div><h1>TestDeck.java</h1><pre class="source lang-java linenums">import org.junit.Test;
+
+import java.util.Vector;
+
+<span class="pc bpc" id="L5" title="1 of 2 branches missed.">public class TestDeck {</span>
+	
+	@Test
+	public void testDeck() {
+<span class="fc" id="L9">		Deck deck = new Deck();</span>
+<span class="pc bpc" id="L10" title="2 of 4 branches missed.">		assert deck.GetCardCount() == 10;</span>
+<span class="pc bpc" id="L11" title="2 of 4 branches missed.">		assert deck.GetHand().size() == 0;</span>
+<span class="pc bpc" id="L12" title="2 of 4 branches missed.">		assert deck.PlayTreasures() == 0;</span>
+<span class="pc bpc" id="L13" title="2 of 4 branches missed.">		assert deck.GetScore() == 3;</span>
+		
+		//test drawing cards to hand
+<span class="fc" id="L16">		deck.DrawCards(12);</span>
+<span class="fc" id="L17">		Vector&lt;Card&gt; hand = deck.GetHand();</span>
+<span class="pc bpc" id="L18" title="2 of 4 branches missed.">		assert hand.size() == deck.GetCardCount();</span>
+		
+<span class="fc" id="L20">		deck.DiscardHand();</span>
+<span class="fc" id="L21">		hand = deck.GetHand();</span>
+<span class="pc bpc" id="L22" title="2 of 4 branches missed.">		assert hand.size() ==  0;</span>
+		
+<span class="fc" id="L24">		hand = deck.DrawCards(5);</span>
+<span class="pc bpc" id="L25" title="2 of 4 branches missed.">		assert hand.size() == 5;</span>
+		
+<span class="fc" id="L27">		deck.DrawCards(10);</span>
+<span class="fc" id="L28">		hand = deck.GetHand();</span>
+<span class="pc bpc" id="L29" title="2 of 4 branches missed.">		assert hand.size() == 10;</span>
+		
+		//testing playTreasures
+<span class="pc bpc" id="L32" title="2 of 4 branches missed.">		assert deck.PlayTreasures() == 7;</span>
+		
+<span class="fc" id="L34">		int size = deck.GetHand().size();</span>
+<span class="fc" id="L35">		deck.DiscardFromHand(hand.get(hand.size()-1));</span>
+<span class="pc bpc" id="L36" title="2 of 4 branches missed.">		assert deck.GetHand().size() != size;</span>
+		
+		//test AddCard
+<span class="fc" id="L39">		int cc = deck.GetCardCount();</span>
+<span class="fc" id="L40">		int score = deck.GetScore();</span>
+<span class="fc" id="L41">		Card card1 = new VictoryCard(VictoryCard.VictoryType.CURSE);</span>
+<span class="fc" id="L42">		deck.AddCard(card1);</span>
+<span class="pc bpc" id="L43" title="2 of 4 branches missed.">		assert deck.GetCardCount() &gt; cc;</span>
+<span class="pc bpc" id="L44" title="2 of 4 branches missed.">		assert deck.GetScore() &lt; score;</span>
+		
+<span class="fc" id="L46">		Card card2 = new VictoryCard(VictoryCard.VictoryType.GARDENS);</span>
+<span class="fc" id="L47">		deck.AddCard(card2);</span>
+<span class="pc bpc" id="L48" title="2 of 4 branches missed.">		assert deck.GetScore() == 3;</span>
+		
+		//test TrashCard
+<span class="fc" id="L51">		cc = deck.GetCardCount();</span>
+<span class="fc" id="L52">		deck.TrashCard(card2);</span>
+<span class="pc bpc" id="L53" title="2 of 4 branches missed.">		assert cc &gt; deck.GetCardCount();</span>
+<span class="pc bpc" id="L54" title="2 of 4 branches missed.">		assert deck.GetScore() == 2;</span>
+		
+<span class="fc" id="L56">		cc = deck.GetCardCount();</span>
+<span class="fc" id="L57">		deck.TrashCard(card1);</span>
+<span class="pc bpc" id="L58" title="2 of 4 branches missed.">		assert cc &gt; deck.GetCardCount();</span>
+<span class="pc bpc" id="L59" title="2 of 4 branches missed.">		assert deck.GetScore() == 3;</span>
+<span class="fc" id="L60">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>(default package) (Feb 12, 2017 2:28:21 AM)</div></body></html>

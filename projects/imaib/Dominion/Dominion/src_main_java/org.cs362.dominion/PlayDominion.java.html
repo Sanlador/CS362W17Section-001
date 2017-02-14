@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>PlayDominion.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">org.cs362.dominion (Feb 10, 2017 11:10:50 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">PlayDominion.java</span></div><h1>PlayDominion.java</h1><pre class="source lang-java linenums">//*************************
+//Name: Bradley Imai
+//Project: Assignment 1
+//File: PlayDominioin.java
+//Class: CS362
+//*************************
+package org.cs362.dominion;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+//import java.util.LinkedList;
+import java.util.List;
+//import java.util.Collections;
+
+
+/*
+*From professors notes on playDominion game
+*/ 
+<span class="nc" id="L19">public class PlayDominion {</span>
+
+	   public  static void main(String args[]){
+		   
+		    List&lt;Card&gt; cards;
+		    GameState state;
+		    //Randomness.reset(10);
+<span class="nc" id="L26">			Randomness.reset(System.currentTimeMillis());</span>
+			
+			//the cards  are achieved by each element/constant in the enum class 
+<span class="nc" id="L29">			cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="nc" id="L30">			state = new GameState(cards);</span>
+//			 System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString()); 
+			
+<span class="nc" id="L33">		      Player player = new Player(state, &quot;player-1&quot;);</span>
+//		      player.printStateGame();
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+
+<span class="nc" id="L38">		      state.addPlayer(player);</span>
+<span class="nc" id="L39">		       player = new Player(state, &quot;player-2&quot;);</span>
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Village));
+<span class="nc" id="L42">		      state.addPlayer(player);		      </span>
+		      //Initialize the game!
+<span class="nc" id="L44">		      state.initializeGame();</span>
+		      
+<span class="nc" id="L46">		      System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString());</span>
+		      
+<span class="nc" id="L48">		      HashMap&lt;Player, Integer&gt; winners=state.play();</span>
+<span class="nc" id="L49">		      System.out.println (&quot;Game over.\n&quot;);</span>
+		    
+<span class="nc bnc" id="L51" title="All 2 branches missed.">		      for(Player p: winners.keySet()){</span>
+<span class="nc" id="L52">		    	  System.out.println (p.player_username + &quot; Score: &quot;+ winners.get(p) );</span>
+		      }
+		      
+		      //player.printStateGame();
+		      
+<span class="nc" id="L57">			System.exit(0);  </span>
+<span class="nc" id="L58">	   }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>org.cs362.dominion (Feb 10, 2017 11:10:50 PM)</div></body></html>

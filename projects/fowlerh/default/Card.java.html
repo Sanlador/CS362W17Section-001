@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dominion</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums">import java.util.Arrays;
+import java.util.List;
+
+<span class="pc" id="L4">public enum Card {</span>
+
+<span class="fc" id="L6">	   curse(&quot;victory&quot;, 10, 0, -1),</span>
+<span class="fc" id="L7">	   estate(&quot;victory&quot;, 2, 0, 1),</span>
+<span class="fc" id="L8">	   duchy(&quot;victory&quot;, 5, 0, 3),</span>
+<span class="fc" id="L9">	   province(&quot;victory&quot;, 8, 1, 6),</span>
+
+<span class="fc" id="L11">	   copper(&quot;treasure&quot;, 0, 1, 0),</span>
+<span class="fc" id="L12">	   silver(&quot;treasure&quot;, 3, 2, 0),</span>
+<span class="fc" id="L13">	   gold(&quot;treasure&quot;, 6, 3, 0),</span>
+
+<span class="fc" id="L15">	   adventurer(&quot;action&quot;, 6, 0, 0),</span>
+	   /* If no/only 1 treasure found, stop when full deck seen */
+<span class="fc" id="L17">	   ambassador(&quot;action,attack&quot;, 3, 0, 0), /* choice1 = hand#, choice2 = number to return to supply */</span>
+<span class="fc" id="L18">	   baron(&quot;action&quot;, 4, 0, 0), /* choice1: boolean for discard of estate */</span>
+	   /* Discard is always of first (lowest index) estate */
+<span class="fc" id="L20">	   council_room(&quot;action&quot;, 5, 0, 0),</span>
+<span class="fc" id="L21">	   cutpurse(&quot;action,attack&quot;, 4, 0, 0),</span>
+<span class="fc" id="L22">	   embargo(&quot;action&quot;, 2, 0, 0), /* choice1 = supply# */</span>
+<span class="fc" id="L23">	   feast(&quot;action&quot;, 4, 0, 0), /* choice1 is supply # of card gained) */</span>
+<span class="fc" id="L24">	   gardens(&quot;victory&quot;, 4, 0, 0),</span>
+<span class="fc" id="L25">	   great_hall(&quot;action,victory&quot;, 3, 0, 1),</span>
+<span class="fc" id="L26">	   mine(&quot;action&quot;, 5, 0, 0), /* choice1 is hand# of money to trash, choice2 is supply# of</span>
+		    money to put in hand */
+<span class="fc" id="L28">	   remodel(&quot;action&quot;, 4, 0, 0), /* choice1 is hand# of card to remodel, choice2 is supply# */</span>
+<span class="fc" id="L29">	   smithy(&quot;action&quot;, 4, 0, 0),</span>
+<span class="fc" id="L30">	   salvager(&quot;action&quot;, 3, 0, 0);</span>
+
+	   private String type;
+	   private int cost;
+	   private int treasure;
+	   private int victory;
+	   Card(String type, int cost, int treasure, int victory) 
+<span class="fc" id="L37">	   {</span>
+<span class="fc" id="L38">		   this.type = type; </span>
+<span class="fc" id="L39">		   this.cost = cost;</span>
+<span class="fc" id="L40">		   this.treasure = treasure;</span>
+<span class="fc" id="L41">		   this.victory = victory;</span>
+<span class="fc" id="L42">	   }</span>
+<span class="fc" id="L43">       public int getCost() { return this.cost; }</span>
+<span class="fc" id="L44">       public int getTreasure() { return this.treasure; }</span>
+<span class="fc" id="L45">       public int getVictory() { return this.victory; }</span>
+<span class="fc" id="L46">       public List&lt;String&gt; getTypes() { return Arrays.asList(this.type.split(&quot;,&quot;)); }</span>
+<span class="fc" id="L47">       public void setVictory(int t) { this.victory = t; }</span>
+} 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,8 @@
+Readme
+
+I used Intellij IDEA instead of Eclipse because I have already been using it for other classes and am more familiar with it.
+As far as I am aware it will still work the same on Eclipse.
+
+In order to run the code with test coverage I run the files in test\java which will execute all  the test cases.
+Intellij has an option to automatically include the test coverage from maven+junit by clicking "Run tests with code coverage."
+In my PDF I will go into detail on how the code covereage percents are displayed.

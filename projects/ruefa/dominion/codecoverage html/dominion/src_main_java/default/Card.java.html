@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">unitTests (Feb 12, 2017 5:32:59 PM)</a> &gt; <a href="../../index.html" class="el_group">dominion</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums"><span class="pc" id="L1">import java.util.Map;</span>
+import java.util.HashMap;
+import java.util.Random;
+import java.util.ArrayList;
+
+public class Card
+{
+	public final Type type;
+	public final Name name;
+	public final int cost;
+	public static Map&lt;Name, Card&gt; cardList;//maps the cards name with the card
+
+	//3 types of dominion cards
+<span class="fc" id="L14">	public enum Type</span>
+	{
+<span class="fc" id="L16">		victory, treasure, action</span>
+	};
+
+<span class="fc" id="L19">	public Card(Type type, Name name, int cost)</span>
+	{
+<span class="fc" id="L21">		this.type = type;</span>
+<span class="fc" id="L22">		this.name = name;</span>
+<span class="fc" id="L23">		this.cost = cost;</span>
+<span class="fc" id="L24">	}</span>
+
+	//Name enum for cards
+	//contains the &quot;actions&quot; for each card
+<span class="fc" id="L28">	public enum Name</span>
+	{
+<span class="fc" id="L30">		//Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand</span>
+		//and discard the other revealed cards.
+<span class="fc" id="L32">		adventurer{</span>
+			public void action(){
+<span class="fc" id="L34">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L35">				int treasureCount = 0;</span>
+
+<span class="fc bfc" id="L37" title="All 2 branches covered.">				while(treasureCount &lt; 2)</span>
+				{
+<span class="fc bfc" id="L39" title="All 2 branches covered.">					if(player.deck.get(0).type == Card.Type.treasure)</span>
+					{
+<span class="fc" id="L41">						player.gethand().add(player.deck.get(0));</span>
+<span class="fc" id="L42">						player.getdeck().remove(0);</span>
+<span class="fc" id="L43">						treasureCount++;</span>
+<span class="fc" id="L44">					}</span>
+					else
+					{
+<span class="fc" id="L47">						player.getdiscard().add(player.deck.get(0));</span>
+<span class="fc" id="L48">						player.getdeck().remove(0);</span>
+					}
+				}
+<span class="fc" id="L51">			}</span>
+		},
+<span class="fc" id="L53">		//Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply.</span>
+		//Then each other player gains a copy of it.
+<span class="fc" id="L55">		ambassador{</span>
+			public void action(){
+<span class="fc" id="L57">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L58">				Player otherPlayer = dominionBoard.otherPlayer();</span>
+<span class="fc" id="L59">				int cardNum = player.getrand().nextInt(player.gethand().size());</span>
+
+<span class="fc" id="L61">				Card card = player.gethand().get(cardNum);</span>
+<span class="fc" id="L62">				player.gethand().remove(cardNum);</span>
+<span class="fc" id="L63">				dominionBoard.pool.put(card, dominionBoard.pool.get(card)+2);</span>
+<span class="fc" id="L64">				dominionBoard.addCard(otherPlayer, card);</span>
+<span class="fc" id="L65">			}</span>
+		},
+<span class="fc" id="L67">		//+1 Buy, You may discard an Estate card. If you do, +4 Coins. Otherwise, gain an Estate card.</span>
+<span class="fc" id="L68">		baron{</span>
+			public void action(){
+<span class="fc" id="L70">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L71">				player.buys += 1;</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">				if(player.hand.contains(dominionBoard.cardList.get(Card.Name.estate)))</span>
+				{
+<span class="fc" id="L74">					player.discard.add(cardList.get(Card.Name.estate));</span>
+<span class="fc" id="L75">					player.hand.remove(cardList.get(Card.Name.estate));</span>
+<span class="fc" id="L76">					player.money += 4;</span>
+<span class="fc" id="L77">				}</span>
+				else
+<span class="fc" id="L79">					dominionBoard.addCard(player, dominionBoard.cardList.get(Card.Name.estate));</span>
+<span class="fc" id="L80">			}</span>
+		},
+<span class="fc" id="L82">		//+4 Cards, +1 Buy, Each other player draws a card.</span>
+<span class="fc" id="L83">		council_room{</span>
+			public void action(){
+<span class="fc" id="L85">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L86">				Player otherPlayer = dominionBoard.otherPlayer();</span>
+
+<span class="fc" id="L88">				player.draw(4);</span>
+<span class="fc" id="L89">				player.buys += 1;</span>
+<span class="fc" id="L90">				otherPlayer.draw(1);</span>
+<span class="fc" id="L91">			}</span>
+		},
+<span class="fc" id="L93">		//+2 Coins, Each other player discards a Copper card (or reveals a hand with no Copper).</span>
+<span class="fc" id="L94">		cutpurse{</span>
+			public void action(){
+<span class="fc" id="L96">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L97">				Player otherPlayer = dominionBoard.otherPlayer();</span>
+<span class="fc" id="L98">				Card copper = dominionBoard.cardList.get(Card.Name.copper);</span>
+
+<span class="fc" id="L100">				player.setmoney(player.getmoney()+2);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">				if(otherPlayer.gethand().contains(copper))</span>
+				{
+<span class="fc" id="L103">					otherPlayer.getdiscard().add(copper);</span>
+<span class="fc" id="L104">					otherPlayer.gethand().remove(copper);</span>
+				}
+<span class="fc" id="L106">			}</span>
+		},
+<span class="fc" id="L108">		//+2 Coins, Trash this card. Put an Embargo token on top of a Supply pile.</span>
+		//When a player buys a card, he gains a Curse card per Embargo token on that pile.
+<span class="fc" id="L110">		embargo{</span>
+			public void action(){
+<span class="fc" id="L112">				Player player = dominionBoard.whosTurn();</span>
+				
+<span class="fc" id="L114">				player.setmoney(player.getmoney()+2);</span>
+
+<span class="fc" id="L116">				ArrayList&lt;Card&gt; cards = new ArrayList&lt;Card&gt;(dominionBoard.pool.keySet());</span>
+<span class="fc" id="L117">				int numCard = player.getrand().nextInt(cards.size());</span>
+<span class="fc" id="L118">				Card card = cards.get(numCard);</span>
+<span class="fc" id="L119">				dominionBoard.embargo.put(card, dominionBoard.embargo.get(card)+1);</span>
+<span class="fc" id="L120">			}</span>
+		},
+<span class="fc" id="L122">		//Trash this card. Gain a card costing up to 5 Coins.</span>
+<span class="fc" id="L123">		feast{</span>
+			public void action(){
+<span class="fc" id="L125">				Player player = dominionBoard.whosTurn();</span>
+
+<span class="fc" id="L127">				Card thisCard = dominionBoard.cardList.get(Card.Name.feast);</span>
+<span class="fc" id="L128">				dominionBoard.trash.add(thisCard);</span>
+<span class="fc" id="L129">				player.getdiscard().remove(thisCard);</span>
+
+<span class="fc" id="L131">				ArrayList&lt;Card&gt; options = dominionBoard.cardOptions(5);</span>
+<span class="fc" id="L132">				Card pickedCard = options.get(player.getrand().nextInt(5));</span>
+<span class="fc" id="L133">				dominionBoard.addCard(player, pickedCard);</span>
+<span class="fc" id="L134">			}</span>
+		},
+<span class="fc" id="L136">		//Variable, Worth 1 Victory for every 10 cards in your deck (rounded down).</span>
+<span class="fc" id="L137">		gardens{</span>
+			public void action(){
+<span class="fc" id="L139">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L140">				int cards = player.gethand().size();</span>
+<span class="fc" id="L141">				cards += player.getdiscard().size();</span>
+<span class="fc" id="L142">				cards += player.getdeck().size();</span>
+<span class="fc" id="L143">				player.setvp(player.getvp()+cards/10);</span>
+<span class="fc" id="L144">			}</span>
+		},
+<span class="fc" id="L146">		//1 Victory, +1 Card, +1 Action.</span>
+<span class="fc" id="L147">		great_hall{</span>
+			public void action(){
+<span class="fc" id="L149">				Player player = dominionBoard.whosTurn();</span>
+
+<span class="fc" id="L151">				player.setvp(player.getvp()+1);</span>
+<span class="fc" id="L152">				player.setactions(player.getactions()+1);</span>
+<span class="fc" id="L153">				player.draw(1);</span>
+<span class="fc" id="L154">			}</span>
+		},
+<span class="fc" id="L156">		//Trash a Treasure card from your hand. Gain a Treasure card costing up to 3 Coins more; </span>
+		//put it into your hand.
+<span class="fc" id="L158">		mine{</span>
+			public void action(){
+<span class="fc" id="L160">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L161">				int value = 0;</span>
+
+<span class="fc bfc" id="L163" title="All 2 branches covered.">				for(int i=0;i&lt;player.gethand().size();i++)</span>
+				{
+<span class="fc bfc" id="L165" title="All 2 branches covered.">					if(player.gethand().get(i).type == Card.Type.treasure)</span>
+					{
+<span class="fc" id="L167">						value = player.gethand().get(i).cost;</span>
+<span class="fc" id="L168">						dominionBoard.trash.add(player.gethand().get(i));</span>
+<span class="fc" id="L169">						player.gethand().remove(i);</span>
+					}
+				}
+
+<span class="fc" id="L173">				ArrayList&lt;Card&gt; options = dominionBoard.cardOptions(value+3);</span>
+				Card card;
+				int cardNum;
+				do{
+<span class="fc" id="L177">					cardNum = player.getrand().nextInt(options.size());</span>
+<span class="fc" id="L178">					card = options.get(cardNum);</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">				}while(card.type != Card.Type.treasure);</span>
+<span class="fc" id="L180">				player.gethand().add(card);</span>
+<span class="fc" id="L181">				dominionBoard.pool.put(card, dominionBoard.pool.get(card)-1);</span>
+<span class="fc" id="L182">			}</span>
+		},
+<span class="fc" id="L184">		//Trash a card from your hand. Gain a card costing up to 2 Coins more than the trashed card.</span>
+<span class="fc" id="L185">		remodel{</span>
+			public void action(){
+<span class="fc" id="L187">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L188">				int value = 0;</span>
+
+<span class="fc" id="L190">				int cardNum = player.getrand().nextInt(player.gethand().size());</span>
+<span class="fc" id="L191">				value = player.gethand().get(cardNum).cost;</span>
+<span class="fc" id="L192">				dominionBoard.trash.add(player.gethand().get(cardNum));</span>
+<span class="fc" id="L193">				player.gethand().remove(cardNum);</span>
+
+<span class="fc" id="L195">				ArrayList&lt;Card&gt; options = dominionBoard.cardOptions(value+2);</span>
+<span class="fc" id="L196">				cardNum = player.getrand().nextInt(options.size());</span>
+<span class="fc" id="L197">				dominionBoard.addCard(player, options.get(cardNum));</span>
+<span class="fc" id="L198">			}</span>
+		},
+<span class="fc" id="L200">		//+1 Buy, Trash a card from your hand. +Coins equal to its cost.</span>
+<span class="fc" id="L201">		salvager{</span>
+			public void action(){
+<span class="fc" id="L203">				Player player = dominionBoard.whosTurn();</span>
+
+<span class="fc" id="L205">				player.setbuys(player.getbuys()+1);</span>
+
+<span class="fc" id="L207">				int cardNum = player.getrand().nextInt(player.gethand().size());</span>
+<span class="fc" id="L208">				player.setmoney(player.getmoney()+player.gethand().get(cardNum).cost);</span>
+<span class="fc" id="L209">				dominionBoard.trash.add(player.gethand().get(cardNum));</span>
+<span class="fc" id="L210">				player.gethand().remove(cardNum);</span>
+<span class="fc" id="L211">			}</span>
+		},
+<span class="fc" id="L213">		//draw 3 cards</span>
+<span class="fc" id="L214">		smithy{</span>
+			public void action(){
+<span class="fc" id="L216">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L217">				player.draw(3);</span>
+<span class="fc" id="L218">			}</span>
+		},
+
+<span class="fc" id="L221">		//+1 money</span>
+<span class="fc" id="L222">		copper{</span>
+			public void action(){
+<span class="fc" id="L224">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L225">				player.setmoney(player.getmoney() + 1);</span>
+<span class="fc" id="L226">			}</span>
+		},
+<span class="fc" id="L228">		//+2 money</span>
+<span class="fc" id="L229">		silver{</span>
+			public void action(){
+<span class="fc" id="L231">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L232">				player.money += 2;</span>
+<span class="fc" id="L233">			}</span>
+		},
+<span class="fc" id="L235">		//+3 money</span>
+<span class="fc" id="L236">		gold{</span>
+			public void action(){
+<span class="fc" id="L238">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L239">				player.setmoney(player.getmoney()+3);</span>
+<span class="fc" id="L240">			}</span>
+		},
+<span class="fc" id="L242">		//-1 vp</span>
+<span class="fc" id="L243">		curse{</span>
+			public void action(){
+<span class="fc" id="L245">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L246">				player.setvp(player.getvp()-1);</span>
+<span class="fc" id="L247">			}</span>
+		},
+<span class="fc" id="L249">		//+1 vp</span>
+<span class="fc" id="L250">		estate{</span>
+			public void action(){
+<span class="fc" id="L252">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L253">				player.setvp(player.getvp()+1);</span>
+<span class="fc" id="L254">			}</span>
+		},
+<span class="fc" id="L256">		//+3 vp</span>
+<span class="fc" id="L257">		duchy{</span>
+			public void action(){
+<span class="fc" id="L259">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L260">				player.setvp(player.getvp()+3);</span>
+<span class="fc" id="L261">			}</span>
+		},
+<span class="fc" id="L263">		//+6 vp</span>
+<span class="fc" id="L264">		province{</span>
+			public void action(){
+<span class="fc" id="L266">				Player player = dominionBoard.whosTurn();</span>
+<span class="fc" id="L267">				player.setvp(player.getvp()+6);</span>
+<span class="fc" id="L268">			}</span>
+		};
+
+		public abstract void action();
+	}
+
+	//creates all the cards
+	//returns a hashmap used to reference cards by Name
+	public static Map&lt;Name, Card&gt; createCards()
+	{
+<span class="fc" id="L278">		cardList = new HashMap&lt;Name, Card&gt;();</span>
+		
+<span class="fc" id="L280">		cardList.put(Name.adventurer, new Card(Type.action, Name.adventurer, 6));</span>
+<span class="fc" id="L281">		cardList.put(Name.ambassador, new Card(Type.action, Name.ambassador, 3));</span>
+<span class="fc" id="L282">		cardList.put(Name.baron, new Card(Type.action, Name.baron, 4));</span>
+<span class="fc" id="L283">		cardList.put(Name.council_room, new Card(Type.action, Name.council_room, 5));</span>
+<span class="fc" id="L284">		cardList.put(Name.cutpurse, new Card(Type.action, Name.cutpurse, 4));</span>
+<span class="fc" id="L285">		cardList.put(Name.embargo, new Card(Type.action, Name.embargo, 2));</span>
+<span class="fc" id="L286">		cardList.put(Name.feast, new Card(Type.action, Name.feast, 4));</span>
+<span class="fc" id="L287">		cardList.put(Name.gardens, new Card(Type.victory, Name.gardens, 4));</span>
+<span class="fc" id="L288">		cardList.put(Name.great_hall, new Card(Type.action, Name.great_hall, 3));</span>
+<span class="fc" id="L289">		cardList.put(Name.mine, new Card(Type.action, Name.mine, 5));</span>
+<span class="fc" id="L290">		cardList.put(Name.remodel, new Card(Type.action, Name.remodel, 4));</span>
+<span class="fc" id="L291">		cardList.put(Name.salvager, new Card(Type.action, Name.salvager, 4));</span>
+<span class="fc" id="L292">		cardList.put(Name.smithy, new Card(Type.action, Name.smithy, 4));</span>
+
+<span class="fc" id="L294">		cardList.put(Name.copper, new Card(Type.treasure, Name.copper, 0));</span>
+<span class="fc" id="L295">		cardList.put(Name.silver, new Card(Type.treasure, Name.silver, 3));</span>
+<span class="fc" id="L296">		cardList.put(Name.gold, new Card(Type.treasure, Name.gold, 6));</span>
+
+<span class="fc" id="L298">		cardList.put(Name.curse, new Card(Type.victory, Name.curse, 0));</span>
+<span class="fc" id="L299">		cardList.put(Name.estate, new Card(Type.victory, Name.estate, 2));</span>
+<span class="fc" id="L300">		cardList.put(Name.duchy, new Card(Type.victory, Name.duchy, 5));</span>
+<span class="fc" id="L301">		cardList.put(Name.province, new Card(Type.victory, Name.province, 8));</span>
+<span class="fc" id="L302">		return cardList;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>unitTests (Feb 12, 2017 5:32:59 PM)</div></body></html>

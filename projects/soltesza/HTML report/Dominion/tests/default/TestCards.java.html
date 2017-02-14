@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>TestCards.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">(default package) (Feb 12, 2017 2:28:21 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">tests</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TestCards.java</span></div><h1>TestCards.java</h1><pre class="source lang-java linenums">import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
+
+<span class="fc" id="L10">public class TestCards {</span>
+	@Test
+	public void testActionCards() {
+		int count;
+		
+<span class="fc" id="L15">		DominionBoard board = new DominionBoard();</span>
+<span class="fc" id="L16">		GameState state = new GameState(board);</span>
+		
+<span class="fc" id="L18">		Card testCard = new ActionCard(ActionCard.ActionType.ADVENTURER);</span>
+<span class="fc" id="L19">		assertEquals(&quot;Card name incorrect&quot;, &quot;Adventurer&quot;, testCard.GetName());</span>
+<span class="fc" id="L20">		assertEquals(&quot;Cost incorrect&quot;, 6, testCard.GetValue());</span>
+<span class="fc" id="L21">		count = state.currentPlayer.deck.GetHand().size();</span>
+<span class="fc" id="L22">		((ActionCard)testCard).PlayAction(state);</span>
+<span class="fc" id="L23">		assertEquals(&quot;not enough cards drawn&quot;, count+2, state.currentPlayer.deck.GetHand().size());</span>
+		
+<span class="fc" id="L25">		testCard = new ActionCard(ActionCard.ActionType.CUTPURSE);</span>
+<span class="fc" id="L26">		state.otherPlayer.deck.DrawCards(10);</span>
+<span class="fc" id="L27">		count = state.otherPlayer.deck.GetHand().size();</span>
+<span class="fc" id="L28">		((ActionCard)testCard).PlayAction(state);</span>
+<span class="fc" id="L29">		assertEquals(&quot;Copper was not discarded&quot;, count-1, state.otherPlayer.deck.GetHand().size());</span>
+		
+<span class="fc" id="L31">		testCard = new ActionCard(ActionCard.ActionType.EMBARGO);</span>
+<span class="fc" id="L32">		state.currentPlayer.deck.AddCard(testCard);</span>
+<span class="fc" id="L33">		count = state.currentPlayer.deck.GetCardCount();	</span>
+<span class="fc" id="L34">		((ActionCard)testCard).PlayAction(state);</span>
+<span class="fc" id="L35">		assertEquals(&quot;Player did not trash card after playing&quot;, count-1, state.currentPlayer.deck.GetCardCount());</span>
+		
+<span class="fc" id="L37">		testCard = new ActionCard(ActionCard.ActionType.FEAST);</span>
+<span class="fc" id="L38">		state.currentPlayer.deck.AddCard(testCard);</span>
+<span class="fc" id="L39">		count = state.currentPlayer.deck.GetCardCount();	</span>
+<span class="fc" id="L40">		((ActionCard)testCard).PlayAction(state);</span>
+<span class="fc" id="L41">		assertEquals(&quot;Player gained or lost a card while playing a Feast&quot;, count, state.currentPlayer.deck.GetCardCount());</span>
+		
+<span class="fc" id="L43">		testCard = new ActionCard(ActionCard.ActionType.MINE);</span>
+<span class="fc" id="L44">		count = state.currentPlayer.deck.GetCardCount();</span>
+<span class="fc" id="L45">		((ActionCard)testCard).PlayAction(state);</span>
+<span class="fc" id="L46">		assertEquals(&quot;Player gained or lost a card while playing a Mine&quot;, count, state.currentPlayer.deck.GetCardCount());</span>
+		
+<span class="fc" id="L48">		testCard = new ActionCard(ActionCard.ActionType.REMODEL);</span>
+<span class="fc" id="L49">		count = state.currentPlayer.deck.GetCardCount();</span>
+<span class="fc" id="L50">		((ActionCard)testCard).PlayAction(state);</span>
+<span class="fc" id="L51">		assertEquals(&quot;Player gained or lost a card while playing a Remodel&quot;, count, state.currentPlayer.deck.GetCardCount());</span>
+<span class="fc" id="L52">	}</span>
+	
+	@Test
+	public void testVictoryCards() {
+		
+<span class="fc" id="L57">	}</span>
+	
+	@Test
+	public void testTreasureCards() {
+		
+<span class="fc" id="L62">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>(default package) (Feb 12, 2017 2:28:21 AM)</div></body></html>

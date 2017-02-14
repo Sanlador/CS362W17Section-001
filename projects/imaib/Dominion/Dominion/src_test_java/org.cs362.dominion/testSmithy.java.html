@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>testSmithy.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">org.cs362.dominion (Feb 10, 2017 11:10:50 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">org.cs362.dominion</a> &gt; <span class="el_source">testSmithy.java</span></div><h1>testSmithy.java</h1><pre class="source lang-java linenums">package org.cs362.dominion;
+
+import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Test;
+
+<span class="fc" id="L8">public class testSmithy</span>
+{
+	@Test
+	public void test() throws Throwable {
+<span class="fc" id="L12">		Randomness.reset(System.currentTimeMillis());</span>
+		GameState state, originalState;
+		List&lt;Card&gt; cards;
+<span class="fc" id="L15">		cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="fc" id="L16">		state = new GameState(cards);</span>
+<span class="fc" id="L17">		Player testPlayer = new Player(state, &quot;test-player-1&quot;);</span>
+<span class="fc" id="L18">		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Smithy));</span>
+<span class="fc" id="L19">		state.addPlayer(testPlayer);</span>
+<span class="fc" id="L20">		testPlayer = new Player(state, &quot;test-player-2&quot;);</span>
+<span class="fc" id="L21">		testPlayer.hand.add(Card.getCard(cards,Card.CardName.Smithy));</span>
+<span class="fc" id="L22">		state.addPlayer(testPlayer);</span>
+<span class="fc" id="L23">		state.prepTestGame();</span>
+<span class="fc" id="L24">		originalState=(GameState) state.clone();</span>
+		
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (Player player : state.players)</span>
+        {
+<span class="fc" id="L28">    	 	Card c = Card.getCard(state.cards,Card.CardName.Smithy);</span>
+<span class="fc" id="L29">    	 	c.play(player, state);</span>
+        }
+<span class="fc" id="L31">    	 	assertEquals( state.players.get(0).hand.size(), originalState.players.get(0).hand.size()+3 );</span>
+<span class="fc" id="L32">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>org.cs362.dominion (Feb 10, 2017 11:10:50 PM)</div></body></html>

@@ -1,0 +1,233 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GameState</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GameState (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GameState</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    55.6%
+  </span>
+  <span class="absValue">
+    (5/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    49.4%
+  </span>
+  <span class="absValue">
+    (43/ 87)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.ArrayList;
+<i>2</i>&nbsp;import java.util.HashMap;
+<i>3</i>&nbsp;import java.util.Map;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;import java.util.TreeMap;
+<i>6</i>&nbsp;import java.util.Random;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;public class GameState{
+<b class="fc"><i>9</i>&nbsp;    List&lt;Player&gt; players = new ArrayList&lt;Player&gt;();</b>
+<i>10</i>&nbsp;    List&lt;Card&gt; cards;
+<b class="fc"><i>11</i>&nbsp;	HashMap&lt;Card, Integer&gt; gameBoard = new HashMap&lt;Card, Integer&gt;();</b>
+<b class="fc"><i>12</i>&nbsp;	List&lt;Card&gt; embargoTokens = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>13</i>&nbsp;	private Random gen = new Random();</b>
+<i>14</i>&nbsp;
+<b class="fc"><i>15</i>&nbsp;	GameState(List&lt;Card&gt; cards) {</b>
+<b class="fc"><i>16</i>&nbsp;		   this.cards = cards;</b>
+<b class="fc"><i>17</i>&nbsp;	   }</b>
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;	void addPlayer(Player player) {
+<b class="fc"><i>20</i>&nbsp;		      players.add(player);</b>
+<b class="fc"><i>21</i>&nbsp;	   }</b>
+<i>22</i>&nbsp;	   
+<i>23</i>&nbsp;	void initializeGame(){
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;//CHECK NUMBER OF PLAYERS
+<b class="fc"><i>26</i>&nbsp;        if (players.size() &gt; 4 || players.size() &lt; 2) {</b>
+<b class="nc"><i>27</i>&nbsp;		    System.err.println(&quot;the number of players must be between 2 and 4 &quot;);</b>
+<b class="nc"><i>28</i>&nbsp;			return ;</b>
+<i>29</i>&nbsp;        }
+<i>30</i>&nbsp;//INITIALIZE SUPPLY
+<b class="fc"><i>31</i>&nbsp;		int selectedKingdom = 0;</b>
+<b class="fc"><i>32</i>&nbsp;		int Kingdom_Cards_Selected = 10;</b>
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;//INITIALIZE ACTION CARDS
+<b class="fc"><i>35</i>&nbsp;        while (selectedKingdom &lt; Kingdom_Cards_Selected) {</b>
+<b class="fc"><i>36</i>&nbsp;		    int random = gen.nextInt(cards.size());//</b>
+<b class="fc"><i>37</i>&nbsp;			Card tmp = cards.get(random);</b>
+<b class="fc"><i>38</i>&nbsp;			if(tmp.getType() != Card.Type.ACTION) continue;</b>
+<b class="fc"><i>39</i>&nbsp;			if(gameBoard.containsKey(tmp)) continue;</b>
+<b class="fc"><i>40</i>&nbsp;			gameBoard.put(tmp, 10);</b>
+<b class="fc"><i>41</i>&nbsp;			selectedKingdom++;</b>
+<b class="fc"><i>42</i>&nbsp;        }</b>
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    //set number of Curse cards the default number of players is 2
+<b class="fc"><i>45</i>&nbsp;		gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);</b>
+<i>46</i>&nbsp;		      
+<i>47</i>&nbsp;//INITIALIZE VICTORY CARDS
+<b class="fc"><i>48</i>&nbsp;		gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);</b>
+<b class="fc"><i>49</i>&nbsp;		gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);</b>
+<b class="fc"><i>50</i>&nbsp;		gameBoard.put(Card.getCard(cards, Card.CardName.Estate), 8);</b>
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;//INITIALIZE TREASURE CARDS
+<b class="fc"><i>53</i>&nbsp;		gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);</b>
+<b class="fc"><i>54</i>&nbsp;		gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);</b>
+<b class="fc"><i>55</i>&nbsp;		gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);</b>
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;//INITIALIZE PLAYER&#39;S CARDS
+<b class="fc"><i>58</i>&nbsp;		for (Player player : players) {</b>
+<b class="fc"><i>59</i>&nbsp;		    System.out.println(&quot;\n&quot; + player.player_username + &quot;&#39;s Initial Card Draw: &quot;);</b>
+<b class="fc"><i>60</i>&nbsp;		    for (int i = 0; i &lt; 7; i++)</b>
+<b class="fc"><i>61</i>&nbsp;			    player.gain(Card.getCard(cards, Card.CardName.Copper));</b>
+<b class="fc"><i>62</i>&nbsp;            for (int i = 0; i &lt; 3; i++)</b>
+<b class="fc"><i>63</i>&nbsp;			    player.gain(Card.getCard(cards,Card.CardName.Estate));</b>
+<b class="fc"><i>64</i>&nbsp;        }</b>
+<b class="fc"><i>65</i>&nbsp;    }</b>
+<i>66</i>&nbsp;	   
+<i>67</i>&nbsp;	HashMap&lt;Player, Integer&gt;  play() {
+<i>68</i>&nbsp;			 
+<b class="nc"><i>69</i>&nbsp;		   	  int turn = 0;</b>
+<b class="nc"><i>70</i>&nbsp;		      while (!isGameOver()) {</b>
+<b class="nc"><i>71</i>&nbsp;		    	  turn++;</b>
+<b class="nc"><i>72</i>&nbsp;		         for (Player player : players) {</b>
+<b class="nc"><i>73</i>&nbsp;		        	 	System.out.println(&quot;\n--- &quot; + player.player_username + &quot; IS PLAYING ---&quot;);</b>
+<b class="nc"><i>74</i>&nbsp;		        	 	player.initializePlayerTurn();</b>
+<i>75</i>&nbsp;		   				//player plays action card
+<b class="nc"><i>76</i>&nbsp;		        	 	player.playKingdomCard();</b>
+<i>77</i>&nbsp;		        	 	//player plays treasure card
+<b class="nc"><i>78</i>&nbsp;		   			    player.playTreasureCard();</b>
+<i>79</i>&nbsp;		   			    //player buy cards
+<b class="nc"><i>80</i>&nbsp;		        	    player.buyCard(this);</b>
+<i>81</i>&nbsp;		        	  //player ends turn
+<b class="nc"><i>82</i>&nbsp;		        	    player.endTurn();</b>
+<b class="nc"><i>83</i>&nbsp;		         }</b>
+<b class="nc"><i>84</i>&nbsp;		         if(turn == 100)</b>
+<b class="nc"><i>85</i>&nbsp;		        	break;</b>
+<i>86</i>&nbsp;		      }
+<b class="nc"><i>87</i>&nbsp;		      System.out.println(&quot;\nTURNS PLAYED\n&quot; + turn);</b>
+<b class="nc"><i>88</i>&nbsp;		      return this.getWinners();</b>
+<i>89</i>&nbsp;		   }
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;	boolean isGameOver() {
+<i>92</i>&nbsp;		 //if stack of Province cards is empty, the game ends
+<b class="fc"><i>93</i>&nbsp;		   if((this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))==null)||(this.gameBoard.get(Card.getCard(cards, Card.CardName.Province))== 0))</b>
+<b class="fc"><i>94</i>&nbsp;			   return true;</b>
+<i>95</i>&nbsp;		 //if three supply pile are at 0, the game ends
+<b class="nc"><i>96</i>&nbsp;		      int emptySupplyPile = 0;</b>
+<b class="nc"><i>97</i>&nbsp;		      for (int i : gameBoard.values()){</b>
+<b class="nc"><i>98</i>&nbsp;		         if (i == 0)</b>
+<b class="nc"><i>99</i>&nbsp;		        	 emptySupplyPile++;</b>
+<b class="nc"><i>100</i>&nbsp;		         if ( emptySupplyPile &gt;= 3)</b>
+<i>101</i>&nbsp;		         {
+<b class="nc"><i>102</i>&nbsp;		           return true;</b>
+<i>103</i>&nbsp;		         }
+<b class="nc"><i>104</i>&nbsp;		      }</b>
+<b class="nc"><i>105</i>&nbsp;		         return false;</b>
+<i>106</i>&nbsp;		   }
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;	HashMap&lt;Player, Integer&gt;  getWinners() {
+<i>109</i>&nbsp;    //Set HashMap  of each player and the score (remember ties!)
+<b class="fc"><i>110</i>&nbsp;	    HashMap&lt;Player, Integer&gt; playerScore = new HashMap&lt;Player, Integer&gt;();</b>
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;		//get score for each player
+<b class="fc"><i>113</i>&nbsp;		for (Player p : players) {</b>
+<b class="fc"><i>114</i>&nbsp;		    int score = p.scoreFor();</b>
+<b class="fc"><i>115</i>&nbsp;		    playerScore.put(p, score);</b>
+<b class="fc"><i>116</i>&nbsp;        }</b>
+<i>117</i>&nbsp;
+<b class="fc"><i>118</i>&nbsp;        return playerScore;</b>
+<i>119</i>&nbsp;    }
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;	static void addEmbargo(Card card)
+<i>122</i>&nbsp;    {
+<b class="nc"><i>123</i>&nbsp;        System.out.println(&quot;Token Added.&quot;);</b>
+<b class="nc"><i>124</i>&nbsp;    }</b>
+<i>125</i>&nbsp;
+<i>126</i>&nbsp;	@Override
+<i>127</i>&nbsp;	public String toString() {
+<i>128</i>&nbsp;
+<b class="nc"><i>129</i>&nbsp;		StringBuilder sb = new StringBuilder();</b>
+<b class="nc"><i>130</i>&nbsp;		if (gameBoard.isEmpty())</b>
+<b class="nc"><i>131</i>&nbsp;			sb.append(&quot;The board game is empty you need to intialize the game!!!!&quot;);</b>
+<i>132</i>&nbsp;		else {
+<b class="nc"><i>133</i>&nbsp;			for (Player player : players)</b>
+<b class="nc"><i>134</i>&nbsp;				sb.append(&quot; --- &quot;).append(player.toString()).append(&quot;\n&quot;);</b>
+<b class="nc"><i>135</i>&nbsp;			sb.append(&quot; --- gameBoard --- \n&quot;);</b>
+<b class="nc"><i>136</i>&nbsp;			sb.append(&quot;Cards on the table: \n&quot;);</b>
+<b class="nc"><i>137</i>&nbsp;			sb.append(&quot;Card Name: \t\t NumberCards: \n&quot;);</b>
+<b class="nc"><i>138</i>&nbsp;			Map&lt;Card, Integer&gt; treeMap = new TreeMap&lt;Card, Integer&gt;(gameBoard);</b>
+<b class="nc"><i>139</i>&nbsp;			for (Card card : treeMap.keySet())</b>
+<b class="nc"><i>140</i>&nbsp;				sb.append(&quot;\t&quot;).append(card.getCardName()).append(&quot;\t\t\t&quot;).append(treeMap.get(card)).append(&quot;\n&quot;);</b>
+<i>141</i>&nbsp;		}
+<b class="nc"><i>142</i>&nbsp;		return sb.toString();</b>
+<i>143</i>&nbsp;	}   
+<i>144</i>&nbsp;	   
+<b class="nc"><i>145</i>&nbsp;	private GameState(List&lt;Card&gt; cards, List&lt;Player&gt; players, HashMap&lt;Card, Integer&gt; gameBoard) {</b>
+<b class="nc"><i>146</i>&nbsp;		   this.cards=cards;</b>
+<b class="nc"><i>147</i>&nbsp;		   this.players=players;</b>
+<b class="nc"><i>148</i>&nbsp;		   this.gameBoard=gameBoard;</b>
+<b class="nc"><i>149</i>&nbsp;	   }</b>
+<i>150</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-12 18:59</div>
+</div>
+</body>
+</html>

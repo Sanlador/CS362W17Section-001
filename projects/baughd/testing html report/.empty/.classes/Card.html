@@ -1,0 +1,444 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Card</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Card (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Card</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    89.8%
+  </span>
+  <span class="absValue">
+    (158/ 176)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Card$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Card$CardName</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Card$Type</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (16/ 16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.2%
+  </span>
+  <span class="absValue">
+    (165/ 183)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.*;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;public final class Card implements Comparable&lt;Card&gt;{
+<b class="fc"><i>4</i>&nbsp;	public enum Type {</b>
+<b class="fc"><i>5</i>&nbsp;		ACTION, TREASURE, VICTORY</b>
+<i>6</i>&nbsp;	}
+<i>7</i>&nbsp;
+<b class="fc"><i>8</i>&nbsp;	public enum CardName {</b>
+<i>9</i>&nbsp;		/** The Treasure cards */
+<b class="fc"><i>10</i>&nbsp;		Gold, Silver, Copper,</b>
+<i>11</i>&nbsp;		/** The Victory cards */
+<b class="fc"><i>12</i>&nbsp;		Province,Duchy,Estate,Curse,</b>
+<i>13</i>&nbsp;		/** The Kingdom cards */
+<b class="fc"><i>14</i>&nbsp;		Adventurer, Ambassador, Baron, Council_Room, Cutpurse, Embargo, Feast, Gardens, Great_Hall, Mine, Smithy, Village, Remodel</b>
+<i>15</i>&nbsp;    }
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;	/**
+<i>18</i>&nbsp;	// * @param enum CardName the name of the card (GOLD, SILVER, COPPER,
+<i>19</i>&nbsp;	// * @param enum Type the type of the card (Victory, Treasure, or Kingdom
+<i>20</i>&nbsp;	// * @param int cost the cost of the card
+<i>21</i>&nbsp;	// * @param int score the score of the card, when the game is finished
+<i>22</i>&nbsp;	// * @param treasureValue  the treasure value of the treasure cards (cooper, silver, and gold cards)
+<i>23</i>&nbsp;	 */
+<i>24</i>&nbsp;	final Type realType;
+<i>25</i>&nbsp;	private final CardName cardName;
+<i>26</i>&nbsp;	int cost, score, treasureValue;
+<b class="fc"><i>27</i>&nbsp;	private Random gen = new Random();</b>
+<i>28</i>&nbsp;
+<b class="fc"><i>29</i>&nbsp;	private Card(CardName cardName, Type type, int cost, int score, int treasureValue) {</b>
+<b class="fc"><i>30</i>&nbsp;		this.cost = cost;</b>
+<b class="fc"><i>31</i>&nbsp;		this.score = score;</b>
+<b class="fc"><i>32</i>&nbsp;		this.treasureValue = treasureValue;</b>
+<b class="fc"><i>33</i>&nbsp;		this.realType = type;</b>
+<b class="fc"><i>34</i>&nbsp;		this.cardName = cardName;</b>
+<b class="fc"><i>35</i>&nbsp;	}</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;	Type getType() {
+<b class="fc"><i>38</i>&nbsp;		return realType;</b>
+<i>39</i>&nbsp;	}
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;	CardName getCardName() {
+<b class="fc"><i>42</i>&nbsp;		return cardName;</b>
+<i>43</i>&nbsp;	}
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    int getTreasureValue() {
+<b class="fc"><i>46</i>&nbsp;		return treasureValue; </b>
+<i>47</i>&nbsp;	}
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;	int getCost() {
+<b class="fc"><i>50</i>&nbsp;	    return cost;</b>
+<i>51</i>&nbsp;	}
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;	int score() {
+<b class="fc"><i>54</i>&nbsp;			return score; </b>
+<i>55</i>&nbsp;		}
+<i>56</i>&nbsp;	
+<i>57</i>&nbsp;	static List&lt;Card&gt; createCards() {
+<b class="fc"><i>58</i>&nbsp;		List&lt;Card&gt; ret = new LinkedList&lt;Card&gt;();</b>
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;        // The Treasure cards
+<b class="fc"><i>61</i>&nbsp;		Card o = new Card(CardName.Gold, Type.TREASURE, 6, 0, 3);</b>
+<b class="fc"><i>62</i>&nbsp;		ret.add(o);</b>
+<b class="fc"><i>63</i>&nbsp;		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2);</b>
+<b class="fc"><i>64</i>&nbsp;		ret.add(o);</b>
+<b class="fc"><i>65</i>&nbsp;		o = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);</b>
+<b class="fc"><i>66</i>&nbsp;		ret.add(o);</b>
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;        // The Victory cards
+<b class="fc"><i>69</i>&nbsp;		o = new Card(CardName.Province,Type.VICTORY, 	8, 6, 0);</b>
+<b class="fc"><i>70</i>&nbsp;		ret.add(o);</b>
+<b class="fc"><i>71</i>&nbsp;		o = new Card(CardName.Duchy,Type.VICTORY,		5, 3, 0);</b>
+<b class="fc"><i>72</i>&nbsp;		ret.add(o);		</b>
+<b class="fc"><i>73</i>&nbsp;		o = new Card(CardName.Estate,Type.VICTORY,		2, 1, 0);</b>
+<b class="fc"><i>74</i>&nbsp;		ret.add(o);		</b>
+<b class="fc"><i>75</i>&nbsp;		o = new Card(CardName.Curse,Type.VICTORY,		0, -1, 0);</b>
+<b class="fc"><i>76</i>&nbsp;		ret.add(o);</b>
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;        // The Kingdom cards
+<b class="fc"><i>79</i>&nbsp;		o = new Card(CardName.Adventurer,Type.ACTION,6,0,0);</b>
+<b class="fc"><i>80</i>&nbsp;		ret.add(o);</b>
+<b class="fc"><i>81</i>&nbsp;		o = new Card(CardName.Smithy,Type.ACTION,4,0,0);</b>
+<b class="fc"><i>82</i>&nbsp;		ret.add(o);</b>
+<b class="fc"><i>83</i>&nbsp;		o = new Card(CardName.Village,Type.ACTION,3,0,0);</b>
+<b class="fc"><i>84</i>&nbsp;		ret.add(o);</b>
+<b class="fc"><i>85</i>&nbsp;        o = new Card(CardName.Ambassador,Type.ACTION,3,0,0);</b>
+<b class="fc"><i>86</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>87</i>&nbsp;        o = new Card(CardName.Baron,Type.ACTION,4,0,0);</b>
+<b class="fc"><i>88</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>89</i>&nbsp;        o = new Card(CardName.Council_Room,Type.ACTION,5,0,0);</b>
+<b class="fc"><i>90</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>91</i>&nbsp;        o = new Card(CardName.Cutpurse,Type.ACTION,4,0,2);</b>
+<b class="fc"><i>92</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>93</i>&nbsp;        o = new Card(CardName.Embargo,Type.ACTION,2,0,2);</b>
+<b class="fc"><i>94</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>95</i>&nbsp;        o = new Card(CardName.Feast,Type.ACTION,4,0,0);</b>
+<b class="fc"><i>96</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>97</i>&nbsp;        o = new Card(CardName.Gardens,Type.ACTION,4,0,0);</b>
+<b class="fc"><i>98</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>99</i>&nbsp;        o = new Card(CardName.Great_Hall,Type.ACTION,3,1,0);//</b>
+<b class="fc"><i>100</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>101</i>&nbsp;        o = new Card(CardName.Mine,Type.ACTION,5,0,0);</b>
+<b class="fc"><i>102</i>&nbsp;        ret.add(o);</b>
+<b class="fc"><i>103</i>&nbsp;        o = new Card(CardName.Remodel,Type.ACTION,4,0,0);</b>
+<b class="fc"><i>104</i>&nbsp;        ret.add(o);</b>
+<i>105</i>&nbsp;
+<b class="fc"><i>106</i>&nbsp;        return ret;</b>
+<i>107</i>&nbsp;	}
+<i>108</i>&nbsp;	
+<i>109</i>&nbsp;	void play(Player player, GameState state) {
+<i>110</i>&nbsp;		
+<b class="fc"><i>111</i>&nbsp;		switch(this.cardName) {</b>
+<i>112</i>&nbsp;		    case Adventurer: //DONE
+<b class="fc"><i>113</i>&nbsp;	    	    System.out.println(&quot;+2 TREASURE Cards.&quot;);</b>
+<b class="fc"><i>114</i>&nbsp;	    	    int cardCount = 0;</b>
+<i>115</i>&nbsp;                //get two treasure cards from deck
+<b class="fc"><i>116</i>&nbsp;                Iterator&lt;Card&gt; it = player.deck.iterator();</b>
+<b class="fc"><i>117</i>&nbsp;                while(it.hasNext()){</b>
+<b class="fc"><i>118</i>&nbsp;                    Card c = it.next();</b>
+<b class="fc"><i>119</i>&nbsp;                    if(c == getCard(state.cards, CardName.Copper) || c == getCard(state.cards, CardName.Silver) || c == getCard(state.cards, CardName.Gold))</b>
+<i>120</i>&nbsp;                    {
+<b class="fc"><i>121</i>&nbsp;                        cardCount++;</b>
+<b class="fc"><i>122</i>&nbsp;                        player.hand.add(c);</b>
+<b class="fc"><i>123</i>&nbsp;                        it.remove();</b>
+<b class="fc"><i>124</i>&nbsp;                        if(cardCount == 2) break;</b>
+<i>125</i>&nbsp;                    } else {
+<b class="fc"><i>126</i>&nbsp;                        player.discard(c);</b>
+<b class="fc"><i>127</i>&nbsp;                        it.remove();</b>
+<i>128</i>&nbsp;                    }
+<b class="fc"><i>129</i>&nbsp;                }</b>
+<b class="fc"><i>130</i>&nbsp;			return;</b>
+<i>131</i>&nbsp;
+<i>132</i>&nbsp;            case Smithy: //DONE
+<b class="fc"><i>133</i>&nbsp;                System.out.println(&quot;+3 Cards.&quot;);</b>
+<b class="fc"><i>134</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>135</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>136</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>137</i>&nbsp;                return;</b>
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;            case Village: //DONE
+<b class="fc"><i>140</i>&nbsp;                System.out.println(&quot;+1 Card. +2 Actions.&quot;);</b>
+<b class="fc"><i>141</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>142</i>&nbsp;                player.numActions = player.numActions + 2;</b>
+<b class="fc"><i>143</i>&nbsp;                return;</b>
+<i>144</i>&nbsp;
+<i>145</i>&nbsp;            case Ambassador: //DONE
+<b class="fc"><i>146</i>&nbsp;                System.out.println(&quot;Give every other player a copy of a Card&quot;);</b>
+<i>147</i>&nbsp;                //Reveal a card from your hand.
+<i>148</i>&nbsp;                //Return up to 2 copies of it from your hand to the Supply.
+<i>149</i>&nbsp;                //Then each other player gains a copy of it.
+<b class="fc"><i>150</i>&nbsp;                if(getCard(player.hand, CardName.Curse) != null){</b>
+<b class="nc"><i>151</i>&nbsp;                    player.hand.remove(getCard(player.hand, CardName.Curse));</b>
+<b class="nc"><i>152</i>&nbsp;                    if(getCard(player.hand, CardName.Curse) != null){</b>
+<b class="nc"><i>153</i>&nbsp;                        player.hand.remove(getCard(player.hand, CardName.Curse));</b>
+<b class="nc"><i>154</i>&nbsp;                        state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Curse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) + 1 );</b>
+<i>155</i>&nbsp;                    }
+<b class="nc"><i>156</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Curse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) + 1 );</b>
+<b class="nc"><i>157</i>&nbsp;                    for(Player p : state.players){</b>
+<b class="nc"><i>158</i>&nbsp;                        if(state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) &gt; 0) {</b>
+<b class="nc"><i>159</i>&nbsp;                            state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Curse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Curse)) - 1 );</b>
+<b class="nc"><i>160</i>&nbsp;                            if(p != player) {</b>
+<b class="nc"><i>161</i>&nbsp;                                p.gain(getCard(player.hand, CardName.Curse));</b>
+<i>162</i>&nbsp;                            }
+<i>163</i>&nbsp;                        }
+<b class="nc"><i>164</i>&nbsp;                    }</b>
+<i>165</i>&nbsp;                } else {
+<b class="fc"><i>166</i>&nbsp;                    Card chosen = player.hand.get(0);</b>
+<b class="fc"><i>167</i>&nbsp;                    state.gameBoard.put(chosen, state.gameBoard.get(chosen) + 1);</b>
+<b class="fc"><i>168</i>&nbsp;                    for(Player p : state.players)</b>
+<i>169</i>&nbsp;                    {
+<b class="fc"><i>170</i>&nbsp;                        if(p != player) {</b>
+<b class="fc"><i>171</i>&nbsp;                            p.gain(chosen);</b>
+<b class="fc"><i>172</i>&nbsp;                            state.gameBoard.put(chosen, state.gameBoard.get(chosen) - 1);</b>
+<i>173</i>&nbsp;                        }
+<b class="fc"><i>174</i>&nbsp;                    }</b>
+<b class="fc"><i>175</i>&nbsp;                    player.hand.remove(chosen);</b>
+<i>176</i>&nbsp;                }
+<b class="fc"><i>177</i>&nbsp;                return;</b>
+<i>178</i>&nbsp;
+<i>179</i>&nbsp;            case Baron: //DONE
+<b class="fc"><i>180</i>&nbsp;                System.out.println(&quot;+1 Card. +2 Buys.&quot;);</b>
+<b class="fc"><i>181</i>&nbsp;                System.out.println(&quot;+4 coins or gains Estate.&quot;);</b>
+<b class="fc"><i>182</i>&nbsp;                player.numBuys = player.numBuys + 1;</b>
+<b class="fc"><i>183</i>&nbsp;                if(getCard(player.hand, CardName.Estate) != null) {</b>
+<b class="fc"><i>184</i>&nbsp;                    player.discard(getCard(player.hand, CardName.Estate));</b>
+<b class="fc"><i>185</i>&nbsp;                    player.coins = player.coins + 4;</b>
+<b class="nc"><i>186</i>&nbsp;                } else player.gain(getCard(state.cards, CardName.Estate));</b>
+<b class="fc"><i>187</i>&nbsp;                return;</b>
+<i>188</i>&nbsp;
+<i>189</i>&nbsp;            case Council_Room: //DONE
+<b class="fc"><i>190</i>&nbsp;                System.out.println(&quot;+4 Card. +1 Buys. Every other player +1 Card.&quot;);</b>
+<b class="fc"><i>191</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>192</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>193</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>194</i>&nbsp;                player.numBuys++;</b>
+<b class="fc"><i>195</i>&nbsp;                for (Player players : state.players)</b>
+<i>196</i>&nbsp;                {
+<b class="fc"><i>197</i>&nbsp;                    players.drawCard();</b>
+<b class="fc"><i>198</i>&nbsp;                }</b>
+<b class="fc"><i>199</i>&nbsp;                return;</b>
+<i>200</i>&nbsp;
+<i>201</i>&nbsp;            case Cutpurse: //DONE
+<b class="fc"><i>202</i>&nbsp;                System.out.println(&quot;+2 Coins. Every other player discards Copper.&quot;);</b>
+<b class="fc"><i>203</i>&nbsp;                player.coins = player.coins + 2;</b>
+<b class="fc"><i>204</i>&nbsp;                for (Player players : state.players)</b>
+<i>205</i>&nbsp;                {
+<b class="fc"><i>206</i>&nbsp;                    if(players != player &amp;&amp; getCard(players.hand, CardName.Copper) != null) players.discard(getCard(player.hand, CardName.Copper));</b>
+<b class="fc"><i>207</i>&nbsp;                }</b>
+<b class="fc"><i>208</i>&nbsp;                return;</b>
+<i>209</i>&nbsp;
+<i>210</i>&nbsp;            case Embargo: //DONE - GameState.addEmbargo not working
+<b class="fc"><i>211</i>&nbsp;                System.out.println(&quot;+2 Coins. Trash this Card. Place Embargo Token on Supply Pile&quot;);</b>
+<b class="fc"><i>212</i>&nbsp;                System.out.println(&quot;When a player buys a card, he gains a Curse card per Embargo token on that pile&quot;);</b>
+<b class="fc"><i>213</i>&nbsp;                player.coins = player.coins + 2;</b>
+<b class="fc"><i>214</i>&nbsp;                player.playedCards.remove(getCard(player.playedCards, CardName.Embargo));//trashes the Embargo card</b>
+<b class="fc"><i>215</i>&nbsp;                int rand = gen.nextInt(10);</b>
+<b class="fc"><i>216</i>&nbsp;                int card = 0;</b>
+<b class="fc"><i>217</i>&nbsp;                for(Card c : filter(state.cards, Type.ACTION)){</b>
+<b class="fc"><i>218</i>&nbsp;                    if(card == rand) {</b>
+<b class="nc"><i>219</i>&nbsp;                        GameState.addEmbargo(c);</b>
+<i>220</i>&nbsp;                    }
+<b class="fc"><i>221</i>&nbsp;                }</b>
+<b class="fc"><i>222</i>&nbsp;                return;</b>
+<i>223</i>&nbsp;
+<i>224</i>&nbsp;            case Feast: //DONE - doesn&#39;t buy card just adds 5 coins
+<b class="fc"><i>225</i>&nbsp;                System.out.println(&quot;Trash this Card. Gain a card costing up to 5 coins.&quot;);</b>
+<b class="fc"><i>226</i>&nbsp;                player.playedCards.remove(getCard(player.playedCards, CardName.Feast));</b>
+<b class="fc"><i>227</i>&nbsp;                player.playTreasureCard();</b>
+<b class="fc"><i>228</i>&nbsp;                player.coins = player.coins + 5;</b>
+<i>229</i>&nbsp;                //buy card up to 5 coins.
+<i>230</i>&nbsp;                //Player.buyCard(state);
+<b class="fc"><i>231</i>&nbsp;                return;</b>
+<i>232</i>&nbsp;
+<i>233</i>&nbsp;            case Great_Hall: //DONE
+<b class="fc"><i>234</i>&nbsp;                System.out.println(&quot;+1 Card. +1 Action. Worth 1 VICTORY point.&quot;);</b>
+<b class="fc"><i>235</i>&nbsp;                player.drawCard();</b>
+<b class="fc"><i>236</i>&nbsp;                player.numActions++;</b>
+<b class="fc"><i>237</i>&nbsp;                return;</b>
+<i>238</i>&nbsp;
+<i>239</i>&nbsp;            case Mine: //DONE
+<b class="fc"><i>240</i>&nbsp;                System.out.println(&quot;Trash a Treasure Card. Gain Next Level of Treasure Card &quot;);</b>
+<b class="fc"><i>241</i>&nbsp;                if(getCard(player.hand, CardName.Silver) != null) {</b>
+<b class="nc"><i>242</i>&nbsp;                    player.hand.remove(getCard(player.hand, CardName.Silver));</b>
+<b class="nc"><i>243</i>&nbsp;                    player.gain(getCard(state.cards, CardName.Gold));</b>
+<b class="fc"><i>244</i>&nbsp;                } else if(getCard(player.hand, CardName.Copper) != null) {</b>
+<b class="fc"><i>245</i>&nbsp;                    player.hand.remove(getCard(player.hand, CardName.Copper));</b>
+<b class="fc"><i>246</i>&nbsp;                    player.gain(getCard(state.cards, CardName.Silver));</b>
+<i>247</i>&nbsp;                    //decrement from gameBoard lolz
+<i>248</i>&nbsp;                }
+<b class="fc"><i>249</i>&nbsp;                return;</b>
+<i>250</i>&nbsp;
+<i>251</i>&nbsp;            case Remodel: //DONE --- only adds coins, doesn&#39;t buy a card right away (will probably need to make another buyCard(coin)
+<b class="fc"><i>252</i>&nbsp;                System.out.println(&quot;Trash a Card. Gain Card costing up to 2 more than Trashed Card&quot;);</b>
+<b class="fc"><i>253</i>&nbsp;                int cost = player.hand.get(0).getCost();</b>
+<b class="fc"><i>254</i>&nbsp;                System.out.println(&quot;Player trashes: &quot; + player.hand.get(0));</b>
+<b class="fc"><i>255</i>&nbsp;                player.hand.remove(0);</b>
+<b class="fc"><i>256</i>&nbsp;                player.playTreasureCard();</b>
+<b class="fc"><i>257</i>&nbsp;                player.coins = player.coins + 2 + cost;</b>
+<i>258</i>&nbsp;                //player buys card (cost + 2);
+<b class="fc"><i>259</i>&nbsp;                return;</b>
+<i>260</i>&nbsp;
+<i>261</i>&nbsp;            default:
+<i>262</i>&nbsp;        }
+<b class="nc"><i>263</i>&nbsp;	}</b>
+<i>264</i>&nbsp;
+<i>265</i>&nbsp;	static Card getCard(List&lt;Card&gt; cards,CardName cardName) {
+<b class="fc"><i>266</i>&nbsp;        for (Card card : cards) {</b>
+<b class="fc"><i>267</i>&nbsp;            if (card.cardName.equals(cardName))</b>
+<b class="fc"><i>268</i>&nbsp;                return card;</b>
+<b class="fc"><i>269</i>&nbsp;        }</b>
+<b class="fc"><i>270</i>&nbsp;		return null;</b>
+<i>271</i>&nbsp;	}
+<i>272</i>&nbsp;
+<i>273</i>&nbsp;	static List&lt;Card&gt; filter(Iterable&lt;Card&gt; cards, Type target) {
+<b class="fc"><i>274</i>&nbsp;	      List&lt;Card&gt; out = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>275</i>&nbsp;	      for (Card c : cards)</b>
+<b class="fc"><i>276</i>&nbsp;	         if (c.getType() == target)</b>
+<b class="fc"><i>277</i>&nbsp;	            out.add(c);</b>
+<b class="fc"><i>278</i>&nbsp;	      return out;</b>
+<i>279</i>&nbsp;	}
+<i>280</i>&nbsp;
+<i>281</i>&nbsp;	@Override
+<i>282</i>&nbsp;	public String toString() {
+<b class="fc"><i>283</i>&nbsp;        return (&quot;\t&quot; + this.getCardName());</b>
+<i>284</i>&nbsp;	}
+<i>285</i>&nbsp;
+<i>286</i>&nbsp;	@Override
+<i>287</i>&nbsp;	public boolean equals(Object obj) {
+<b class="fc"><i>288</i>&nbsp;        if (this == obj) return true;</b>
+<b class="fc"><i>289</i>&nbsp;        if (!super.equals(obj)) return false;</b>
+<b class="nc"><i>290</i>&nbsp;        if (obj instanceof Card) if (cardName.equals(((Card) obj).cardName)) return true;</b>
+<b class="nc"><i>291</i>&nbsp;        return false;</b>
+<i>292</i>&nbsp;    }
+<i>293</i>&nbsp;
+<i>294</i>&nbsp;	public int compareTo(Card o) {
+<b class="fc"><i>295</i>&nbsp;		return cardName.compareTo(o.cardName);</b>
+<i>296</i>&nbsp;	}
+<i>297</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-12 18:59</div>
+</div>
+</body>
+</html>

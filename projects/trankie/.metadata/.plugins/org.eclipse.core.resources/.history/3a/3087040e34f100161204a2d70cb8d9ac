@@ -1,0 +1,137 @@
+import java.util.*;
+
+public class Player {
+	long seed = System.nanoTime();
+	List<Card> hand = new ArrayList<Card>();
+	LinkedList<Card> deck = new LinkedList<Card>();
+	List<Card> discard = new ArrayList<Card>();
+	List<Card> playedCards = new ArrayList<Card>();
+	
+	String player_name;
+	int Actions;
+	int Buys;
+	int Coins;
+	
+	public Player(String name, int a, int b, int c){
+		this.player_name = name;
+		this.Actions = a;
+		this.Buys = b;
+		this.Coins = c;
+	}
+	public int getActions(){
+		return this.Actions;
+	}
+	public int getBuys(){
+		return this.Buys;
+	}
+	public int getCoins(){
+		return this.Coins;
+	}
+	public void setActions(int num){
+		this.Actions = this.Actions + num;
+	}
+	public void setBuys(int num){
+		this.Buys = this.Buys + num;
+	}
+	public void setCoins(int num){
+		this.Coins = this.Coins + num;
+	}
+	public void buildDeck(){
+		this.deck = new LinkedList<Card>(Card.createCards());
+	}
+	// Testing 
+	public void printDeck(){
+		System.out.print("\nGoing to print the Deck now");
+		for (Card card:this.deck)
+			System.out.print(card.toString());
+	}
+	// Testing
+	public void printHand(){
+		int i = 1;
+		System.out.print("\nHand: ");
+		for (Card card:this.hand){
+			System.out.print(card.toString(i));
+			i++;
+		}
+	}
+	public void drawCard(){
+		if(this.deck.isEmpty() && this.discard.isEmpty()){
+			System.out.print("\nYou have no more cards to draw from your deck!");
+			return;
+		}
+		else if(this.deck.isEmpty()){
+			Collections.shuffle(this.discard, new Random(this.seed));
+			for (Card card:this.discard){
+				this.deck.add(card);
+			}
+			this.discard.clear();
+		}
+		Card drawn = deck.removeFirst();
+		this.hand.add(drawn);
+	}
+	public void printInfo(){
+		System.out.print("\n Actions: " + this.Actions);
+		System.out.print("\n Buys: " + this.Buys);
+		//System.out.print("\n Coins: " + this.Coins);
+	}
+	public int checkTypeAction(int num){
+		int answer;
+		Card temp = this.hand.get(num-1);
+		answer = temp.checkTypeAction();
+		if(answer == 1){
+			System.out.print("\nYou played " + temp.getCardName());
+		}
+		return answer;
+	}
+	public int checkTreasure(){
+		int total = 0;
+		for (Card card:this.hand){
+			total = total + card.calcTreasure();
+		}
+		return total;
+	}
+	public void removeHand(){
+		for(Card card:this.hand){
+			this.discard.add(card);
+		}
+		this.hand.clear();
+	}
+	public void resetStats(){
+		this.Actions = 1;
+		this.Buys = 1;
+		this.Coins = 0;
+	}
+	public void activateCard(int num){
+		Card temp = this.hand.get(num-1);
+		this.hand.remove(num-1);
+		if(temp.getCardName() == Card.CardName.Laboratory){
+			if(this.deck.isEmpty() && this.discard.isEmpty()){
+				System.out.print("\nYou have no more cards to draw from your deck!");
+				this.setActions(1);
+				return;
+			}
+			for(int i = 0; i < 2; i++)
+				this.drawCard();
+			this.setActions(1);
+			this.discard.add(temp);
+		}
+	}
+	public int checkVictory(){
+		int total = 0;
+		for(Card card:this.deck){
+			total = total + card.calcVictory();
+		}
+		return total;
+	}
+	public void cleanUp(){
+		for (Card card:this.hand){
+			this.deck.add(card);
+		}
+		for (Card card:this.discard){
+			this.deck.add(card);
+		}
+		this.discard.clear();
+		this.hand.clear();
+	}
+	
+}

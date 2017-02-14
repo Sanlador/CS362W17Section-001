@@ -1,0 +1,341 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>get_total - Feb 12, 2017 8:17:06 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        Feb 12, 2017 8:17:06 PM
+    </div>
+    <div class="sessionDate">
+        measured on February 12, 2017 8:17:06 PM PST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../REPORT2">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../index.html">
+        org</a>
+    .
+    <a href="../../../index.html">
+        cs362</a>
+    .
+    <a href="../../index.html">
+        dominion</a>
+    .
+    <a href="../index.html">
+        player</a>
+    .
+    get_total
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Synchronized Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+            <th class="methodInfo" colspan="3">?-Operator Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public int get_total()
+            </td>  
+                                    <td class="methodInfo">
+                        4&nbsp;/&nbsp;5
+                </td>
+                <td class="methodInfo">
+                        80&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:80%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        4&nbsp;/&nbsp;6
+                </td>
+                <td class="methodInfo">
+                        66&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:66%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        3&nbsp;/&nbsp;9
+                </td>
+                <td class="methodInfo">
+                        33&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:33%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        11&nbsp;/&nbsp;18
+                </td>
+                <td class="methodInfo">
+                        61&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:61%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">dominion.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L1362">
+             <td class="code lineNumber">
+                  <a href="#L1362">1362</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;public int get_total(){
+              </td>
+          </tr>
+                      <tr class="code" id="L1363">
+             <td class="code lineNumber">
+                  <a href="#L1363">1363</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">int count = 0;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1364">
+             <td class="code lineNumber">
+                  <a href="#L1364">1364</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Loop_Coverage" title="Missing execution(s): ZERO ONE time(s).">for</span>(int i=0; <span class="covered fullyCovered Term_Coverage">i&lt;hand.size()</span>; i = i+1){
+              </td>
+          </tr>
+                      <tr class="code" id="L1365">
+             <td class="code lineNumber">
+                  <a href="#L1365">1365</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">hand.get(i).getType1() == card.Type.VICTORY</span>) || (<span class="covered partlyCovered Term_Coverage">hand.get(i).getType2() == card.Type.VICTORY</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1366">
+             <td class="code lineNumber">
+                  <a href="#L1366">1366</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">count = count + hand.get(i).getVV();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1367">
+             <td class="code lineNumber">
+                  <a href="#L1367">1367</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1368">
+             <td class="code lineNumber">
+                  <a href="#L1368">1368</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1369">
+             <td class="code lineNumber">
+                  <a href="#L1369">1369</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Loop_Coverage" title="Missing execution(s): ZERO ONE time(s).">for</span>(int i=0; <span class="covered fullyCovered Term_Coverage">i&lt;deck.size()</span>; i = i+1){
+              </td>
+          </tr>
+                      <tr class="code" id="L1370">
+             <td class="code lineNumber">
+                  <a href="#L1370">1370</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Branch_Coverage">if</span>((<span class="covered fullyCovered Term_Coverage">deck.get(i).getType1() == card.Type.VICTORY</span>) || (<span class="covered partlyCovered Term_Coverage">deck.get(i).getType2() == card.Type.VICTORY</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1371">
+             <td class="code lineNumber">
+                  <a href="#L1371">1371</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">count = count + deck.get(i).getVV();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1372">
+             <td class="code lineNumber">
+                  <a href="#L1372">1372</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1373">
+             <td class="code lineNumber">
+                  <a href="#L1373">1373</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1374">
+             <td class="code lineNumber">
+                  <a href="#L1374">1374</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered partlyCovered Loop_Coverage" title="Missing execution(s): ONE MANY time(s).">for</span>(int i=0; <span class="covered partlyCovered Term_Coverage">i&lt;discard.size()</span>; i = i+1){
+              </td>
+          </tr>
+                      <tr class="code" id="L1375">
+             <td class="code lineNumber">
+                  <a href="#L1375">1375</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered notCovered Branch_Coverage" title="Unexecuted branches: then,  implicit (omitted) branch">if</span>((<span class="covered notCovered Term_Coverage">discard.get(i).getType1() == card.Type.VICTORY</span>) || (<span class="covered notCovered Term_Coverage">discard.get(i).getType2() == card.Type.VICTORY</span>)){
+              </td>
+          </tr>
+                      <tr class="code" id="L1376">
+             <td class="code lineNumber">
+                  <a href="#L1376">1376</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered notCovered Statement_Coverage">count = count + discard.get(i).getVV();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1377">
+             <td class="code lineNumber">
+                  <a href="#L1377">1377</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1378">
+             <td class="code lineNumber">
+                  <a href="#L1378">1378</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+                      <tr class="code" id="L1379">
+             <td class="code lineNumber">
+                  <a href="#L1379">1379</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="covered fullyCovered Statement_Coverage">return count;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L1380">
+             <td class="code lineNumber">
+                  <a href="#L1380">1380</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;}
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on February 12, 2017 8:18:30 PM PST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

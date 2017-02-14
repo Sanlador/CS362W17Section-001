@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Deck.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">(default package) (Feb 12, 2017 2:28:21 AM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Deck.java</span></div><h1>Deck.java</h1><pre class="source lang-java linenums">import java.util.Vector;
+import java.util.Stack;
+import java.util.Collections;
+
+public class Deck {
+	private Stack&lt;Card&gt; drawPile;
+	private Stack&lt;Card&gt; discardPile;
+	private Vector&lt;Card&gt; hand;
+	
+<span class="fc" id="L10">	private int cardCount = 0;</span>
+<span class="fc" id="L11">	private int gardenCount = 0;</span>
+<span class="fc" id="L12">	private int score = 0;</span>
+	
+<span class="fc" id="L14">	public Deck() {</span>
+<span class="fc" id="L15">		drawPile = new Stack&lt;Card&gt;();</span>
+<span class="fc" id="L16">		discardPile = new Stack&lt;Card&gt;();</span>
+<span class="fc" id="L17">		hand = new Vector&lt;Card&gt;();</span>
+		
+		//add starting cards to the deck
+<span class="fc bfc" id="L20" title="All 2 branches covered.">		for(int i=0; i&lt;7; i++) {</span>
+<span class="fc" id="L21">			AddCard(new TreasureCard(TreasureCard.TreasureType.COPPER));</span>
+		}
+<span class="fc bfc" id="L23" title="All 2 branches covered.">		for(int i=0; i&lt;3; i++) {</span>
+<span class="fc" id="L24">			AddCard(new VictoryCard(VictoryCard.VictoryType.ESTATE));</span>
+		}
+		
+<span class="fc" id="L27">		Shuffle();</span>
+<span class="fc" id="L28">	}</span>
+	
+<span class="fc" id="L30">	public int GetCardCount() { return cardCount; }</span>
+	
+	public int GetScore() {
+<span class="fc" id="L33">		return score + ((int)(cardCount/10))*gardenCount;</span>
+	}
+	
+	private void Shuffle() { //shuffle the deck
+<span class="fc bfc" id="L37" title="All 2 branches covered.">		while(!discardPile.empty()) {</span>
+<span class="fc" id="L38">			drawPile.push(discardPile.pop());</span>
+		}
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		for(int i = (drawPile.size()-1); i &gt; 0; i--) {</span>
+<span class="fc" id="L41">			int rand = (int)(Math.random() * i);</span>
+<span class="fc" id="L42">			Collections.swap(drawPile, i, rand);</span>
+		}
+		
+		
+<span class="fc" id="L46">	}</span>
+	
+	public void AddCard(Card card) { //add a card to the deck
+<span class="fc" id="L49">		discardPile.push(card);</span>
+<span class="fc" id="L50">		cardCount++;</span>
+		
+<span class="fc bfc" id="L52" title="All 2 branches covered.">		if(card.GetName() == &quot;Gardens&quot;) {</span>
+<span class="fc" id="L53">			gardenCount++;</span>
+<span class="fc" id="L54">		}</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">		else if(card instanceof VictoryCard) {</span>
+<span class="fc" id="L56">			score += ((VictoryCard)card).GetVPs();</span>
+		}
+<span class="fc" id="L58">	}</span>
+	
+<span class="fc" id="L60">	public Vector&lt;Card&gt; GetHand() { return hand; }</span>
+	
+	public int PlayTreasures() {
+<span class="fc" id="L63">		int total = 0;</span>
+		
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		for(int i=0; i&lt;hand.size(); i++) {</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">			if(hand.elementAt(i) instanceof TreasureCard) {</span>
+<span class="fc" id="L67">				total += hand.elementAt(i).GetValue();</span>
+			}
+		}
+		
+<span class="fc" id="L71">		return total;</span>
+	}
+	
+	public Vector&lt;Card&gt; DrawCards(int numCards) { //draw numCards cards from drawPile into hand, return cards drawn
+<span class="fc" id="L75">		Vector&lt;Card&gt; drawnCards = new Vector&lt;Card&gt;();</span>
+		
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		if(numCards &gt; cardCount-hand.size()) { </span>
+<span class="fc" id="L78">			numCards = cardCount-hand.size();</span>
+		}
+		
+		
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		for(int i=0; i&lt;numCards; i++) {</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">			if(drawPile.isEmpty()) {</span>
+<span class="fc" id="L84">				Shuffle();</span>
+			}
+<span class="fc" id="L86">			Card newCard = drawPile.pop();</span>
+<span class="fc" id="L87">			hand.addElement(newCard);</span>
+<span class="fc" id="L88">			drawnCards.add(newCard);</span>
+		}
+		
+		
+<span class="fc" id="L92">		return drawnCards;</span>
+	}
+	
+	public void TrashCard(Card card) { //make this work
+<span class="fc" id="L96">		cardCount--;</span>
+		
+<span class="fc bfc" id="L98" title="All 2 branches covered.">		if(card.GetName() == &quot;Gardens&quot;) {</span>
+<span class="fc" id="L99">			gardenCount--;</span>
+<span class="fc" id="L100">		}</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">		else if(card instanceof VictoryCard) {</span>
+<span class="fc" id="L102">			score -= ((VictoryCard)card).GetVPs();</span>
+		}
+		
+<span class="fc" id="L105">		card.SetTrashed(true);</span>
+		
+<span class="fc bfc" id="L107" title="All 2 branches covered.">		for(int i=0; i&lt;drawPile.size(); i++)  {</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">			if(drawPile.elementAt(i).GetTrashed()) {</span>
+<span class="nc" id="L109">				drawPile.remove(i);</span>
+			}
+		}
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		for(int i=0; i&lt;hand.size(); i++)  {</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">			if(hand.elementAt(i).GetTrashed()) {</span>
+<span class="fc" id="L114">				hand.remove(i);</span>
+			}
+		}
+<span class="fc bfc" id="L117" title="All 2 branches covered.">		for(int i=0; i&lt;discardPile.size(); i++)  {</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">			if(discardPile.elementAt(i).GetTrashed()) {</span>
+<span class="fc" id="L119">				discardPile.remove(i);</span>
+			}
+		}
+<span class="fc" id="L122">	}</span>
+	
+	public void DiscardHand() {
+<span class="fc bfc" id="L125" title="All 2 branches covered.">		for(int i=0; i&lt;hand.size(); i++) {</span>
+<span class="fc" id="L126">			discardPile.push(hand.get(i));</span>
+		}
+		
+<span class="fc" id="L129">		hand.clear();</span>
+<span class="fc" id="L130">	}</span>
+	
+	public void DiscardFromHand(Card card) {
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">		if(hand.remove(card)) {</span>
+<span class="fc" id="L134">			discardPile.push(card);</span>
+		}
+<span class="fc" id="L136">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>(default package) (Feb 12, 2017 2:28:21 AM)</div></body></html>

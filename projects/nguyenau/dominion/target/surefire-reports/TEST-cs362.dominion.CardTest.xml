@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="5" time="0.053" errors="0" skipped="0" tests="12" name="cs362.dominion.CardTest">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/amd64"/>
+    <property name="java.vm.version" value="24.121-b00"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion"/>
+    <property name="java.runtime.version" value="1.7.0_121-mockbuild_2016_11_11_19_18-b00"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="net.sourceforge.cobertura.datafile" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/cobertura/cobertura.ser"/>
+    <property name="classworlds.conf" value="/usr/local/apps/apache-maven-3.3.9/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="2.6.32-642.11.1.el6.x86_64"/>
+    <property name="user.home" value="/nfs/stak/students/n/nguyenau"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="nguyenau"/>
+    <property name="java.class.path" value="/usr/local/apps/apache-maven-3.3.9/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher cobertura:cobertura"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_121"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/rhino.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/local/apps/apache-maven-3.3.9"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="project.build.outputDirectory" value="/nfs/stak/students/n/nguyenau/CS362/dominion/dominion/target/generated-classes/cobertura"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test10">
+    <failure message="expected:&lt;4&gt; but was:&lt;6&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;6&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at cs362.dominion.CardTest.test10(CardTest.java:481)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+    <system-out>Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-1 to draw FIVE cards.
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-2 to draw FIVE cards.
+player-2 draws: Cooper. 
+player-2 draws: Estate. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+hand count = 6
+hand deck = 5
+hand coins = 0
+hand actions = 1
+hand buys = 1
+hand hand = 6
+hand discard = 0
+&gt;&gt;&gt; ACTION PHASE
+Auto: Playing all possible actions.
+player-1 plays action: Minion.
+
+[MINION]
+- player-1 gets +1 Action.
+- CHOICE:
+--- player-1 gets +2 Coins.
+--- player-1 discards their hand, draws +4 Cards, and all other players with 5 or more cards in their hand does the same.
+
+player-1 has discarded: Cooper.
+player-1 has discarded: Cooper.
+player-1 has discarded: Cooper.
+player-1 has discarded: Estate.
+player-1 has discarded: Estate.
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+player-1 draws: Cooper. 
+player-2 has discarded: Cooper.
+player-2 has discarded: Cooper.
+player-2 has discarded: Cooper.
+player-2 has discarded: Cooper.
+player-2 has discarded: Estate.
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+player-2 draws: Estate. 
+player-2 draws: Estate. 
+
+
+hand count = 4, expected = 6
+hand deck = 1
+hand coins = 0, expected = 1
+hand actions = 1, expected = 2
+hand buys = 1, expected = 2
+hand discard = 5
+</system-out>
+  </testcase>
+  <testcase time="0.003" classname="cs362.dominion.CardTest" name="test11"/>
+  <testcase time="0.003" classname="cs362.dominion.CardTest" name="test0"/>
+  <testcase time="0.003" classname="cs362.dominion.CardTest" name="test1"/>
+  <testcase time="0.004" classname="cs362.dominion.CardTest" name="test2"/>
+  <testcase time="0.004" classname="cs362.dominion.CardTest" name="test3">
+    <failure message="expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;2&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at cs362.dominion.CardTest.test3(CardTest.java:195)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+    <system-out>Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-1 to draw FIVE cards.
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-2 to draw FIVE cards.
+player-2 draws: Cooper. 
+player-2 draws: Estate. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+hand count = 6
+hand deck = 5
+hand coins = 0
+hand actions = 1
+hand buys = 1
+hand hand = 6
+hand discard = 0
+
+[BARON]
+- player-1 gets +1 Buy.
+- player-1 can discard an Estate for +4 Coins, or gain an Estate from the supply.
+
+player-1 has discarded: Estate.
+player-1 has gained +4 Coins.
+
+hand count = 5, expected = 5
+hand deck = 5
+hand coins = 4, expected = 4
+hand actions = 2
+hand buys = 1, expected= 2
+hand discard = 1
+</system-out>
+  </testcase>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test4">
+    <failure message="expected:&lt;5&gt; but was:&lt;4&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;5&gt; but was:&lt;4&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at cs362.dominion.CardTest.test4(CardTest.java:240)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+    <system-out>Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-1 to draw FIVE cards.
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-2 to draw FIVE cards.
+player-2 draws: Cooper. 
+player-2 draws: Estate. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+ player2 hand count = 5
+hand deck = 5
+hand coins = 0
+hand actions = 1
+hand buys = 1
+hand hand = 6
+hand discard = 0
+
+[CUTPURSE]
+- player-1 gets +2 Coins.
+- All other players discard 1 Copper if able.
+
+player-2: No Cooper cards in the hand, so could not discard.
+player 2 hand count = 5, expected = 4
+hand deck = 5
+hand coins = 2, expected = 2
+hand actions = 1
+hand buys = 1
+hand discard = 0
+</system-out>
+  </testcase>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test5"/>
+  <testcase time="0.006" classname="cs362.dominion.CardTest" name="test6">
+    <failure message="expected:&lt;11&gt; but was:&lt;10&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;11&gt; but was:&lt;10&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at cs362.dominion.CardTest.test6(CardTest.java:335)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+    <system-out>Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-1 to draw FIVE cards.
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-2 to draw FIVE cards.
+player-2 draws: Cooper. 
+player-2 draws: Estate. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+hand count = 6
+player 2 hand count = 5
+hand deck = 5
+hand coins = 0
+hand actions = 1
+hand buys = 1
+hand hand = 6
+hand discard = 0
+
+[COUNCIL ROOM]
+- player-1 draws +4 Cards.
+- player-1 gets +1 Buy.
+- Other players draw +1 Card.
+
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-2 draws: Cooper. 
+
+
+hand count = 11, expected = 10
+player 2 hand count = 6, expected = 6
+hand deck = 0
+hand coins = 0
+hand actions = 1
+hand buys = 2, expected = 2
+hand discard = 0
+</system-out>
+  </testcase>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test7"/>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test8"/>
+  <testcase time="0.005" classname="cs362.dominion.CardTest" name="test9">
+    <failure message="expected:&lt;0&gt; but was:&lt;2&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;2&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at cs362.dominion.CardTest.test9(CardTest.java:529)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+    <system-out>Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-1 to draw FIVE cards.
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+player-1 draws: Cooper. 
+player-1 draws: Cooper. 
+player-1 draws: Estate. 
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Cooper added to deck.
+Estate added to deck.
+Estate added to deck.
+Estate added to deck.
+Shuffling in the discard pile of player-2 to draw FIVE cards.
+player-2 draws: Cooper. 
+player-2 draws: Estate. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+player-2 draws: Cooper. 
+hand count = 6
+hand deck = 5
+hand coins = 0
+hand actions = 1
+hand buys = 1
+hand hand = 6
+hand discard = 0
+&gt;&gt;&gt; ACTION PHASE
+Auto: Playing all possible actions.
+player-1 plays action: Embargo.
+
+[EMBARGO]
+- Trash this card, putting am Embargo token on a stack in the supply.
+- If a player buys a card from that stack, they will also gain a curse per each Embargo token.
+
+GreatHall now has 1 Embargo tokens.
+
+hand count = 5, expected = 5
+hand deck = 5
+hand coins = 0, expected = 2
+hand actions = 0
+hand buys = 1
+hand discard = 0
+</system-out>
+  </testcase>
+</testsuite>

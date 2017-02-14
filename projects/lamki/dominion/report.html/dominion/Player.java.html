@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;dominion&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package dominion;
+
+import java.util.*;
+import java.util.ArrayList;
+
+public class Player
+{
+	String name; // default = Player X
+	int  action_turns; //default = 0
+	int  buy_turns; //default = 0
+<span class="fc" id="L11">	int  vp = 0; //default = 0</span>
+<span class="fc" id="L12">	int played_value = 0; //total value of cards played</span>
+<span class="fc" id="L13">	int ac_hand = 0; //number of action cards in hand</span>
+<span class="fc" id="L14">	Card[] deck = {new Victory(0), new Victory(0), new Victory(0), new Victory(3), new Victory(3), new Victory(3), new Victory(3), new Victory(3), new Victory(3), new Victory(3)};</span>
+<span class="fc" id="L15">	Card[] hand = {};</span>
+<span class="fc" id="L16">	Card[] limbo = {}; //Where action cards go after they have been played</span>
+
+	public Player(String set_name)
+<span class="fc" id="L19">	{</span>
+<span class="fc" id="L20">		name = set_name;</span>
+<span class="fc" id="L21">		action_turns = 0;</span>
+<span class="fc" id="L22">		buy_turns = 0;</span>
+<span class="fc" id="L23">		vp = 3;</span>
+<span class="fc" id="L24">	}</span>
+
+	public void shuffle(Random rnd)
+	{
+<span class="fc bfc" id="L28" title="All 2 branches covered.">		for (int i = deck.length - 1; i &gt; 0; i--)</span>
+		{
+<span class="fc" id="L30">			int index = rnd.nextInt(i + 1);</span>
+<span class="fc" id="L31">			Card a = deck[index];</span>
+<span class="fc" id="L32">			deck[index] = deck[i];</span>
+<span class="fc" id="L33">			deck[i] = a;</span>
+		}
+<span class="fc" id="L35">	}</span>
+
+	public Card[] remove(Card[] x, int i)
+	{
+<span class="fc" id="L39">		ArrayList&lt;Card&gt; temp_deck = new ArrayList&lt;&gt;(Arrays.asList(x));</span>
+<span class="fc" id="L40">		temp_deck.remove(i);</span>
+<span class="fc" id="L41">		x = temp_deck.toArray(new Card[0]);</span>
+<span class="fc" id="L42">		return x;</span>
+	}
+
+	static Card[] append(Card[] arr, Card element) 
+	{ //TODO: Create a give function to apply card attributes as they go into a player's deck (Victory, curse, money) 
+<span class="fc" id="L47">	    final int N = arr.length;</span>
+<span class="fc" id="L48">	    arr = Arrays.copyOf(arr, N + 1);</span>
+<span class="fc" id="L49">	    arr[N] = element;</span>
+<span class="fc" id="L50">	    return arr;</span>
+	}
+ 
+	public void draw(int n)
+	{
+<span class="fc bfc" id="L55" title="All 2 branches covered.">		if(n &lt;= deck.length)</span>
+		{
+<span class="fc" id="L57">			int last = deck.length-1;</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">			for (int i = last; i != last - n; i--)</span>
+			{
+<span class="fc" id="L60">				hand = append(hand, deck[i]);</span>
+<span class="fc" id="L61">				deck = remove(deck, i);</span>
+			}
+		}
+<span class="fc" id="L64">	}</span>
+
+	public void count_ac()
+	{
+<span class="fc" id="L68">		ac_hand = 0;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		for(int i = 0; i &lt; hand.length - 1; i++)</span>
+		{
+<span class="fc bfc" id="L71" title="All 2 branches covered.">			if (&quot;action&quot;.equals(hand[i].type))</span>
+			{
+<span class="fc" id="L73">				ac_hand = ac_hand + 1;</span>
+			}
+		}
+<span class="fc" id="L76">	}</span>
+
+	public void discard(int n)
+	{
+<span class="nc" id="L80">		hand = remove(hand, n);</span>
+<span class="nc" id="L81">	}</span>
+
+	public void putback()
+	{
+<span class="fc" id="L85">		int last = hand.length-1;</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">		for (int i = last; i != -1; i--)</span>
+		{
+<span class="fc" id="L88">			deck = append(deck, hand[i]);</span>
+<span class="fc" id="L89">			hand = remove(hand, i);</span>
+		}
+<span class="fc" id="L91">		last = limbo.length-1;</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">		for (int i = last; i != -1; i--)</span>
+		{
+<span class="fc" id="L94">			deck = append(deck, limbo[i]);</span>
+<span class="fc" id="L95">			limbo = remove(limbo, i);</span>
+		}
+<span class="fc" id="L97">	}</span>
+
+	public void play_all_treasure()
+	{
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            for (Card hand1 : hand) {</span>
+<span class="fc" id="L102">                played_value += hand1.value;</span>
+            }
+<span class="fc" id="L104">	}</span>
+
+	public int buy(Card x)
+	{
+<span class="fc" id="L108">		buy_turns = buy_turns - 1;</span>
+<span class="fc" id="L109">		deck = append(deck, x);</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if (&quot;victory&quot;.equals(x.type))</span>
+		{
+<span class="fc" id="L112">			vp = vp + x.victory;</span>
+			//debug_print();
+		}
+<span class="fc" id="L115">		return 0;</span>
+	}
+
+	public void play_action(int i, Random rand, Player p, Game g)
+	{
+<span class="fc bfc" id="L120" title="All 2 branches covered.">		if (&quot;action&quot;.equals(hand[i].type))</span>
+		{
+<span class="fc" id="L122">			action_turns = action_turns - 1;</span>
+<span class="fc" id="L123">			Card temp = hand[i];</span>
+
+<span class="fc" id="L125">			System.out.println(&quot;\tPlays &quot; + temp.name);</span>
+<span class="fc" id="L126">			to_limbo(i); </span>
+
+<span class="fc" id="L128">			ac_hand = ac_hand - 1;	</span>
+<span class="fc" id="L129">			temp.play(temp.index, rand, i, p, g);</span>
+		}
+<span class="fc" id="L131">	}</span>
+
+	public void to_limbo(int i)
+	{
+<span class="fc" id="L135">			limbo = append(limbo, hand[i]); </span>
+<span class="fc" id="L136">			hand = remove(hand, i);</span>
+<span class="fc" id="L137">	}</span>
+
+	public void to_deck(int i)
+	{
+<span class="nc" id="L141">			deck = append(deck, hand[i]); </span>
+<span class="nc" id="L142">			hand = remove(hand, i);</span>
+<span class="nc" id="L143">	}</span>
+
+	public void debug_print()
+	{
+<span class="fc" id="L147">		System.out.println(&quot;\nName: &quot; + name + &quot;\tVP: &quot; + vp + &quot;\tAC: &quot;+ac_hand+ &quot;\tPlayed Value: &quot;+ played_value+&quot;\tBuy Turns: &quot; + buy_turns + &quot;\tPlay Turns: &quot; + action_turns);</span>
+		
+<span class="fc" id="L149">		System.out.print(&quot;\tD&quot; + deck.length + &quot;: &quot;);</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">            for (Card deck1 : deck) {</span>
+<span class="fc" id="L151">                System.out.print(&quot;'&quot; + deck1.name + &quot;' &quot;);</span>
+            }
+<span class="fc" id="L153">		System.out.print(&quot;\n\tH&quot; + hand.length + &quot;: &quot;);</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">            for (Card hand1 : hand) {</span>
+<span class="fc" id="L155">                System.out.print(&quot;'&quot; + hand1.name + &quot;' &quot;);</span>
+            }
+<span class="fc" id="L157">		System.out.print(&quot;\n&quot;);</span>
+		
+<span class="fc" id="L159">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

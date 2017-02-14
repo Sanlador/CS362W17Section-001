@@ -1,0 +1,4 @@
+1. Navigate to Dominion folder
+2. mvn compile
+3. mvn test
+4. mvn cobertura:cobertura

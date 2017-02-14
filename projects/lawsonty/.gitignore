@@ -1,0 +1,4 @@
+gnore .class files created by java
+*.class
+/Dominion/target/*
+/.metadata/*

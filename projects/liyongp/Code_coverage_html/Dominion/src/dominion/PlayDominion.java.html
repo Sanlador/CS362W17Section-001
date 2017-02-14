@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>PlayDominion.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">AllTests (1) (Feb 13, 2017 3:07:02 PM)</a> &gt; <a href="../../index.html" class="el_group">Dominion</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">dominion</a> &gt; <span class="el_source">PlayDominion.java</span></div><h1>PlayDominion.java</h1><pre class="source lang-java linenums">package dominion;
+
+import java.util.*;
+
+
+<span class="nc" id="L6">public class PlayDominion {</span>
+
+	   public  static void main(String args[]){
+		   
+		    List&lt;Card&gt; cards;
+		    GameState state;
+<span class="nc" id="L12">			Randomness.reset(10);	   </span>
+
+			
+			//the cards  are achieved by each element/constant in the enum class 
+<span class="nc" id="L16">			cards = new ArrayList&lt;Card&gt;(Card.createCards());</span>
+<span class="nc" id="L17">			state = new GameState(cards);</span>
+//			 System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString()); 
+			
+<span class="nc" id="L20">		      Player player = new Player(state, &quot;player-1&quot;);</span>
+//		      player.printStateGame();
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+
+<span class="nc" id="L25">		      state.addPlayer(player);</span>
+<span class="nc" id="L26">		       player = new Player(state, &quot;player-2&quot;);</span>
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
+		         //player.hand.add(Card.getCard(cards,Card.CardName.Village));
+<span class="nc" id="L29">		      state.addPlayer(player);		      </span>
+		      //Initialize the game!
+<span class="nc" id="L31">		      state.initializeGame();</span>
+		      
+<span class="nc" id="L33">		      System.out.println(&quot;Initialization DominionBoard:\n &quot; + state.toString());</span>
+		      
+<span class="nc" id="L35">		      HashMap&lt;Player, Integer&gt; winners=state.play();</span>
+<span class="nc" id="L36">		      System.out.println (&quot;Finished game.\n&quot;);</span>
+		    
+<span class="nc bnc" id="L38" title="All 2 branches missed.">		      for(Player p: winners.keySet()){</span>
+<span class="nc" id="L39">		    	  System.out.println (&quot;Player name: &quot;+ p.player_username + &quot; , Score: &quot;+ p.scoreFor() );</span>
+		      }
+		      
+	//	      player.printStateGame();
+		      
+		      
+<span class="nc" id="L45">			System.exit(0);  </span>
+
+<span class="nc" id="L47">	   }</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>AllTests (1) (Feb 13, 2017 3:07:02 PM)</div></body></html>

@@ -1,0 +1,379 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Player</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Player (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Player</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.7%
+  </span>
+  <span class="absValue">
+    (11/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    52%
+  </span>
+  <span class="absValue">
+    (105/ 202)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.*;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;public class Player{
+<i>4</i>&nbsp;	ArrayList&lt;Card&gt; hand;// int hand[MAX_PLAYERS][MAX_HAND];
+<i>5</i>&nbsp;	LinkedList&lt;Card&gt; deck;// int deck[MAX_PLAYERS][MAX_DECK];
+<i>6</i>&nbsp;	List&lt;Card&gt; discard; // int discard[MAX_PLAYERS][MAX_DECK];
+<i>7</i>&nbsp;	ArrayList&lt;Card&gt; playedCards;
+<i>8</i>&nbsp;	private Random gen;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;	String player_username;
+<i>11</i>&nbsp;	int numActions;
+<i>12</i>&nbsp;	int numBuys;
+<i>13</i>&nbsp;	int coins;
+<i>14</i>&nbsp;	private final GameState gameState;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;	
+<b class="fc"><i>17</i>&nbsp;	Player(GameState gameState,String player_username) {</b>
+<b class="fc"><i>18</i>&nbsp;		this.player_username = player_username;</b>
+<b class="fc"><i>19</i>&nbsp;		this.gameState = gameState;</b>
+<b class="fc"><i>20</i>&nbsp;        discard = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>21</i>&nbsp;        playedCards = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>22</i>&nbsp;        deck = new LinkedList&lt;Card&gt;();</b>
+<b class="fc"><i>23</i>&nbsp;        hand = new ArrayList&lt;Card&gt;();</b>
+<b class="fc"><i>24</i>&nbsp;        gen = new Random();</b>
+<b class="fc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;	final Card drawCard() {
+<b class="fc"><i>28</i>&nbsp;		if (deck.isEmpty()) {// Deck is empty</b>
+<i>29</i>&nbsp;			// Step 1 Shuffle the discard pile back into a deck
+<b class="fc"><i>30</i>&nbsp;			System.out.println(&quot;\nReshuffle the deck of the player &quot;</b>
+<i>31</i>&nbsp;					+ player_username + &quot; to draw FIVE cards&quot;);
+<b class="fc"><i>32</i>&nbsp;			while (discard.size() &gt; 0) {</b>
+<b class="fc"><i>33</i>&nbsp;				int ndx = gen.nextInt(discard.size());</b>
+<i>34</i>&nbsp;				// Move discard to deck
+<b class="fc"><i>35</i>&nbsp;				deck.add(discard.remove(ndx));</b>
+<b class="fc"><i>36</i>&nbsp;			}</b>
+<i>37</i>&nbsp;		}
+<b class="fc"><i>38</i>&nbsp;		Card toDraw = deck.poll();//card at top of deck</b>
+<i>39</i>&nbsp;		// Add card to hand and hand count automatically will be incremented since we use List
+<b class="fc"><i>40</i>&nbsp;		hand.add(toDraw);</b>
+<b class="fc"><i>41</i>&nbsp;		System.out.println(player_username + &quot; draws&quot; + toDraw);</b>
+<b class="fc"><i>42</i>&nbsp;		Collections.sort(hand);</b>
+<b class="fc"><i>43</i>&nbsp;		return toDraw;</b>
+<i>44</i>&nbsp;	}
+<i>45</i>&nbsp;	
+<i>46</i>&nbsp;	final void initializePlayerTurn() {
+<b class="fc"><i>47</i>&nbsp;		numActions = 1;</b>
+<b class="fc"><i>48</i>&nbsp;		coins = 0;</b>
+<b class="fc"><i>49</i>&nbsp;		numBuys = 1;</b>
+<i>50</i>&nbsp;		//Shuffle your starting 10 cards (7 Coppers &amp; 3 Estates) and place them face-down as your Deck. Draw the top
+<i>51</i>&nbsp;		//5 cards as your starting hand
+<b class="fc"><i>52</i>&nbsp;		for (int i = 0; i &lt; 5; i++) {</b>
+<b class="fc"><i>53</i>&nbsp;			drawCard();</b>
+<i>54</i>&nbsp;		}
+<b class="fc"><i>55</i>&nbsp;	}</b>
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;	 //card goes in discard,
+<i>58</i>&nbsp;	final boolean gain(Card card) {
+<b class="fc"><i>59</i>&nbsp;		discard.add(card);</b>
+<b class="fc"><i>60</i>&nbsp;		System.out.println(this.player_username + &quot; gains &quot; + card);</b>
+<b class="fc"><i>61</i>&nbsp;		return true;</b>
+<i>62</i>&nbsp;	}
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;	//Discard hand
+<i>65</i>&nbsp;	void discard(Card card) {
+<b class="fc"><i>66</i>&nbsp;		hand.remove(card);</b>
+<b class="fc"><i>67</i>&nbsp;		discard.add(card);</b>
+<b class="fc"><i>68</i>&nbsp;		System.out.println(player_username + &quot; discards &quot; + card);</b>
+<b class="fc"><i>69</i>&nbsp;	}</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;	void playKingdomCard() {
+<b class="fc"><i>72</i>&nbsp;		while (numActions &gt; 0) {</b>
+<b class="fc"><i>73</i>&nbsp;			List&lt;Card&gt; actionCards = Card.filter(hand, Card.Type.ACTION);</b>
+<b class="fc"><i>74</i>&nbsp;			Iterator&lt;Card&gt; it = actionCards.iterator();</b>
+<b class="fc"><i>75</i>&nbsp;			while(it.hasNext()){</b>
+<b class="fc"><i>76</i>&nbsp;				Card c = it.next();</b>
+<b class="fc"><i>77</i>&nbsp;				if(c == Card.getCard(gameState.cards, Card.CardName.Gardens)){</b>
+<b class="nc"><i>78</i>&nbsp;					it.remove();</b>
+<i>79</i>&nbsp;				}
+<b class="fc"><i>80</i>&nbsp;			}</b>
+<b class="fc"><i>81</i>&nbsp;			if (actionCards.size() == 0)</b>
+<b class="fc"><i>82</i>&nbsp;				return;</b>
+<i>83</i>&nbsp;
+<b class="fc"><i>84</i>&nbsp;			Card c = actionCards.get(0);</b>
+<i>85</i>&nbsp;
+<b class="fc"><i>86</i>&nbsp;            if (c == null)</b>
+<b class="nc"><i>87</i>&nbsp;				return;</b>
+<b class="fc"><i>88</i>&nbsp;			System.out.println(&quot;Player.actionPhase Card:&quot; + c.toString());</b>
+<i>89</i>&nbsp;
+<b class="fc"><i>90</i>&nbsp;			playedCards.add(c);</b>
+<b class="fc"><i>91</i>&nbsp;			hand.remove(c);</b>
+<i>92</i>&nbsp;
+<b class="fc"><i>93</i>&nbsp;			numActions -= 1;</b>
+<i>94</i>&nbsp;
+<b class="fc"><i>95</i>&nbsp;			c.play(this, gameState);//plays the kingdom card</b>
+<b class="fc"><i>96</i>&nbsp;		}</b>
+<b class="fc"><i>97</i>&nbsp;	}</b>
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;	final int scoreFor() {
+<b class="fc"><i>100</i>&nbsp;		int numGardens = 0;</b>
+<b class="fc"><i>101</i>&nbsp;		int numCards = 0;</b>
+<b class="fc"><i>102</i>&nbsp;		int score = 0;</b>
+<i>103</i>&nbsp;		//score from hand
+<b class="fc"><i>104</i>&nbsp;		for (Card c : hand)</b>
+<b class="nc"><i>105</i>&nbsp;			score += c.score();</b>
+<b class="fc"><i>106</i>&nbsp;			numCards++;</b>
+<i>107</i>&nbsp;		//score from discard
+<b class="fc"><i>108</i>&nbsp;		for (Card c : discard){</b>
+<b class="fc"><i>109</i>&nbsp;			if(Card.getCard(discard, Card.CardName.Gardens) != null) {</b>
+<b class="nc"><i>110</i>&nbsp;				if(c == Card.getCard(discard ,Card.CardName.Gardens)) numGardens++;</b>
+<i>111</i>&nbsp;			}
+<b class="fc"><i>112</i>&nbsp;			score += c.score();</b>
+<b class="fc"><i>113</i>&nbsp;			numCards++;</b>
+<b class="fc"><i>114</i>&nbsp;		}</b>
+<i>115</i>&nbsp;		//score from deck
+<b class="fc"><i>116</i>&nbsp;		for (Card c : deck){</b>
+<b class="fc"><i>117</i>&nbsp;			if(Card.getCard(deck, Card.CardName.Gardens) != null){</b>
+<b class="nc"><i>118</i>&nbsp;				if(c == Card.getCard(discard ,Card.CardName.Gardens)) numGardens++;</b>
+<i>119</i>&nbsp;			}
+<b class="fc"><i>120</i>&nbsp;			score += c.score();</b>
+<b class="fc"><i>121</i>&nbsp;			numCards++;</b>
+<b class="fc"><i>122</i>&nbsp;		}</b>
+<i>123</i>&nbsp;		//System.out.println(&quot;numGardens: &quot; + numGardens);
+<b class="fc"><i>124</i>&nbsp;		if(numGardens &gt; 0){</b>
+<b class="nc"><i>125</i>&nbsp;			score += numGardens*(numCards/10);</b>
+<i>126</i>&nbsp;		}
+<i>127</i>&nbsp;
+<b class="fc"><i>128</i>&nbsp;		return score;</b>
+<i>129</i>&nbsp;	}
+<i>130</i>&nbsp;	   
+<i>131</i>&nbsp;	void playTreasureCard() {
+<b class="fc"><i>132</i>&nbsp;		List&lt;Card&gt; treasureCards = Card.filter(hand, Card.Type.TREASURE);</b>
+<i>133</i>&nbsp;
+<b class="fc"><i>134</i>&nbsp;		if(treasureCards.size() == 0) return;</b>
+<i>135</i>&nbsp;
+<b class="fc"><i>136</i>&nbsp;		System.out.println(&quot;Treasure Cards Played:&quot;);</b>
+<b class="fc"><i>137</i>&nbsp;		for(Card c: treasureCards)</b>
+<i>138</i>&nbsp;		{
+<b class="fc"><i>139</i>&nbsp;			coins += c.getTreasureValue();</b>
+<b class="fc"><i>140</i>&nbsp;			System.out.println(c.toString());</b>
+<b class="fc"><i>141</i>&nbsp;			playedCards.add(c);</b>
+<b class="fc"><i>142</i>&nbsp;			hand.remove(c);</b>
+<b class="fc"><i>143</i>&nbsp;		}</b>
+<b class="fc"><i>144</i>&nbsp;		System.out.println(player_username + &quot;&#39;s COINS: &quot; + coins + &quot;\n&quot;);</b>
+<b class="fc"><i>145</i>&nbsp;	}</b>
+<i>146</i>&nbsp;
+<i>147</i>&nbsp;    void buyCard(GameState state) {
+<b class="fc"><i>148</i>&nbsp;		while(numBuys &gt; 0 &amp;&amp; coins &gt; 0) {</b>
+<b class="fc"><i>149</i>&nbsp;			if (coins == 0){</b>
+<b class="nc"><i>150</i>&nbsp;				gain(Card.getCard(state.cards, Card.CardName.Copper));</b>
+<b class="nc"><i>151</i>&nbsp;				state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Copper), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Copper)) - 1 );</b>
+<i>152</i>&nbsp;			}
+<b class="fc"><i>153</i>&nbsp;			else if (coins == 1) {</b>
+<b class="nc"><i>154</i>&nbsp;				gain(Card.getCard(state.cards, Card.CardName.Copper));</b>
+<b class="nc"><i>155</i>&nbsp;				state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Copper), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Copper)) - 1 );</b>
+<i>156</i>&nbsp;			}
+<b class="fc"><i>157</i>&nbsp;			else if (coins == 2) {</b>
+<b class="nc"><i>158</i>&nbsp;			    int rand = gen.nextInt(2);</b>
+<b class="nc"><i>159</i>&nbsp;				if (rand == 0 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Embargo)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Embargo)) &gt; 0) {</b>
+<b class="nc"><i>160</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Embargo));</b>
+<b class="nc"><i>161</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Embargo), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Embargo)) - 1);</b>
+<b class="nc"><i>162</i>&nbsp;					coins = coins - 2;</b>
+<b class="nc"><i>163</i>&nbsp;				} else if (rand == 1 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Estate)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Estate)) &gt; 0) {</b>
+<b class="nc"><i>164</i>&nbsp;                    gain(Card.getCard(state.cards, Card.CardName.Estate));</b>
+<b class="nc"><i>165</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Estate), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Estate)) - 1);</b>
+<b class="nc"><i>166</i>&nbsp;                    coins = coins - 2;</b>
+<i>167</i>&nbsp;                }
+<b class="nc"><i>168</i>&nbsp;			}</b>
+<b class="fc"><i>169</i>&nbsp;			else if (coins == 3) {//randomly choose 3 cost cards?</b>
+<b class="fc"><i>170</i>&nbsp;				int rand = gen.nextInt(4);</b>
+<b class="fc"><i>171</i>&nbsp;				if (rand == 0 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Village)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Village)) &gt; 0) {</b>
+<b class="nc"><i>172</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Village));</b>
+<b class="nc"><i>173</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Village), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Village)) - 1);</b>
+<b class="nc"><i>174</i>&nbsp;					coins = coins - 3;</b>
+<b class="fc"><i>175</i>&nbsp;				} else if (rand == 1 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Ambassador)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Ambassador)) &gt; 0) {</b>
+<b class="fc"><i>176</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Ambassador));</b>
+<b class="fc"><i>177</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Ambassador), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Ambassador)) - 1);</b>
+<b class="fc"><i>178</i>&nbsp;					coins = coins - 3;</b>
+<b class="nc"><i>179</i>&nbsp;				} else if (rand == 2 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Great_Hall)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Great_Hall)) &gt; 0) {</b>
+<b class="nc"><i>180</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Great_Hall));</b>
+<b class="nc"><i>181</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Great_Hall), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Great_Hall)) - 1);</b>
+<b class="nc"><i>182</i>&nbsp;					coins = coins - 3;</b>
+<b class="nc"><i>183</i>&nbsp;				} else if (rand == 3 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Silver)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Silver)) &gt; 0) {</b>
+<b class="nc"><i>184</i>&nbsp;                    gain(Card.getCard(state.cards, Card.CardName.Silver));</b>
+<b class="nc"><i>185</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Silver), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Silver)) - 1);</b>
+<b class="nc"><i>186</i>&nbsp;                    coins = coins - 3;</b>
+<i>187</i>&nbsp;                }
+<i>188</i>&nbsp;
+<b class="fc"><i>189</i>&nbsp;			} else if (coins == 4) {//randomly choose one of these</b>
+<b class="nc"><i>190</i>&nbsp;                int rand = gen.nextInt(6);</b>
+<b class="nc"><i>191</i>&nbsp;				if (rand == 0 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Smithy)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) &gt; 0) {</b>
+<b class="nc"><i>192</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Smithy));</b>
+<b class="nc"><i>193</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Smithy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Smithy)) - 1);</b>
+<b class="nc"><i>194</i>&nbsp;					coins = coins - 4;</b>
+<b class="nc"><i>195</i>&nbsp;				} else if (rand == 1 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Baron)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) &gt; 0) {</b>
+<b class="nc"><i>196</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Baron));</b>
+<b class="nc"><i>197</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Baron), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Baron)) - 1);</b>
+<b class="nc"><i>198</i>&nbsp;					coins = coins - 4;</b>
+<b class="nc"><i>199</i>&nbsp;				} else if (rand == 2 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Cutpurse)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Cutpurse)) &gt; 0) {</b>
+<b class="nc"><i>200</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Cutpurse));</b>
+<b class="nc"><i>201</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Cutpurse), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Cutpurse)) - 1);</b>
+<b class="nc"><i>202</i>&nbsp;					coins = coins - 4;</b>
+<b class="nc"><i>203</i>&nbsp;				} else if (rand == 3 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Feast)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) &gt; 0) {</b>
+<b class="nc"><i>204</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Feast));</b>
+<b class="nc"><i>205</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Feast), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Feast)) - 1);</b>
+<b class="nc"><i>206</i>&nbsp;					coins = coins - 4;</b>
+<b class="nc"><i>207</i>&nbsp;				} else if (rand == 4 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Remodel)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Remodel)) &gt; 0) {</b>
+<b class="nc"><i>208</i>&nbsp;                    gain(Card.getCard(state.cards, Card.CardName.Remodel));</b>
+<b class="nc"><i>209</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Remodel), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Remodel)) - 1);</b>
+<b class="nc"><i>210</i>&nbsp;                    coins = coins - 4;</b>
+<b class="nc"><i>211</i>&nbsp;                } else if (rand == 5 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gardens)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gardens)) &gt; 0) {</b>
+<b class="nc"><i>212</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Gardens));</b>
+<b class="nc"><i>213</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gardens), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gardens)) - 1);</b>
+<b class="nc"><i>214</i>&nbsp;					coins = coins - 4;</b>
+<i>215</i>&nbsp;				}
+<b class="nc"><i>216</i>&nbsp;			} else if (coins == 5) {//randomly choose one of these</b>
+<b class="nc"><i>217</i>&nbsp;                int rand = gen.nextInt(3);</b>
+<b class="nc"><i>218</i>&nbsp;				if (rand == 0 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Mine)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Mine)) &gt; 0) {</b>
+<b class="nc"><i>219</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Mine));</b>
+<b class="nc"><i>220</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Mine), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Mine)) - 1);</b>
+<b class="nc"><i>221</i>&nbsp;					coins = coins - 5;</b>
+<b class="nc"><i>222</i>&nbsp;				} else if (rand == 1 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Council_Room)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Council_Room)) &gt; 0) {</b>
+<b class="nc"><i>223</i>&nbsp;                    gain(Card.getCard(state.cards, Card.CardName.Council_Room));</b>
+<b class="nc"><i>224</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Council_Room), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Council_Room)) - 1);</b>
+<b class="nc"><i>225</i>&nbsp;                    coins = coins - 5;</b>
+<b class="nc"><i>226</i>&nbsp;                } else if (rand == 2 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Duchy)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Duchy)) &gt; 0) {</b>
+<b class="nc"><i>227</i>&nbsp;                    gain(Card.getCard(state.cards, Card.CardName.Duchy));</b>
+<b class="nc"><i>228</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Duchy), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Duchy)) - 1);</b>
+<b class="nc"><i>229</i>&nbsp;                    coins = coins - 5;</b>
+<i>230</i>&nbsp;                }
+<b class="nc"><i>231</i>&nbsp;			} else if (coins == 6) {</b>
+<b class="nc"><i>232</i>&nbsp;			    int rand = gen.nextInt(2);</b>
+<b class="nc"><i>233</i>&nbsp;				if (rand == 0 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gold)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) &gt; 0) {</b>
+<b class="nc"><i>234</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Gold));</b>
+<b class="nc"><i>235</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gold), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) - 1);</b>
+<b class="nc"><i>236</i>&nbsp;					coins = coins - 6;</b>
+<b class="nc"><i>237</i>&nbsp;				} else if (rand == 1 &amp;&amp; state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Adventurer)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) &gt; 0) {</b>
+<b class="nc"><i>238</i>&nbsp;                    gain(Card.getCard(state.cards, Card.CardName.Adventurer));</b>
+<b class="nc"><i>239</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Adventurer), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Adventurer)) - 1);</b>
+<b class="nc"><i>240</i>&nbsp;                    coins = coins - 6;</b>
+<i>241</i>&nbsp;                }
+<b class="nc"><i>242</i>&nbsp;			} else if (coins == 7) {</b>
+<b class="nc"><i>243</i>&nbsp;                if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Gold)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) &gt; 0) {</b>
+<b class="nc"><i>244</i>&nbsp;                    gain(Card.getCard(state.cards, Card.CardName.Gold));</b>
+<b class="nc"><i>245</i>&nbsp;                    state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Gold), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Gold)) - 1);</b>
+<b class="nc"><i>246</i>&nbsp;                    coins = coins - 6;</b>
+<i>247</i>&nbsp;                }
+<b class="nc"><i>248</i>&nbsp;			} else if (coins &gt;= 8){</b>
+<b class="nc"><i>249</i>&nbsp;				if (state.gameBoard.containsKey(Card.getCard(state.cards, Card.CardName.Province)) &amp;&amp; state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Province)) &gt; 0) {</b>
+<b class="nc"><i>250</i>&nbsp;					gain(Card.getCard(state.cards, Card.CardName.Province));</b>
+<b class="nc"><i>251</i>&nbsp;					state.gameBoard.put(Card.getCard(state.cards, Card.CardName.Province), state.gameBoard.get(Card.getCard(state.cards, Card.CardName.Province)) - 1);</b>
+<b class="nc"><i>252</i>&nbsp;					coins = coins - 8;</b>
+<i>253</i>&nbsp;				}
+<i>254</i>&nbsp;		    }
+<b class="fc"><i>255</i>&nbsp;			numBuys--;</b>
+<i>256</i>&nbsp;		}
+<b class="fc"><i>257</i>&nbsp;	}</b>
+<i>258</i>&nbsp;
+<i>259</i>&nbsp;	final void endTurn() {
+<b class="fc"><i>260</i>&nbsp;		coins = 0;</b>
+<b class="fc"><i>261</i>&nbsp;		numActions = 1;</b>
+<b class="fc"><i>262</i>&nbsp;		numBuys = 1;</b>
+<b class="fc"><i>263</i>&nbsp;		for(Card c: playedCards)</b>
+<i>264</i>&nbsp;		{
+<b class="nc"><i>265</i>&nbsp;			discard.add(c);</b>
+<b class="nc"><i>266</i>&nbsp;		}</b>
+<b class="fc"><i>267</i>&nbsp;		for(Card c: hand)</b>
+<i>268</i>&nbsp;		{
+<b class="fc"><i>269</i>&nbsp;			discard.add(c);</b>
+<b class="fc"><i>270</i>&nbsp;		}</b>
+<b class="fc"><i>271</i>&nbsp;		playedCards.clear();</b>
+<b class="fc"><i>272</i>&nbsp;		hand.clear();</b>
+<b class="fc"><i>273</i>&nbsp;	}</b>
+<i>274</i>&nbsp;
+<i>275</i>&nbsp;	void printStateGame() {
+<b class="nc"><i>276</i>&nbsp;		System.out.println(&quot; --- &quot; + this.player_username + &quot; --- &quot;);</b>
+<b class="nc"><i>277</i>&nbsp;		System.out.println(&quot; --- --------------------------- --- &quot;);</b>
+<b class="nc"><i>278</i>&nbsp;		System.out.println(this.gameState.toString());</b>
+<b class="nc"><i>279</i>&nbsp;		System.out.println(&quot; --- --------------------------- --- &quot;);</b>
+<b class="nc"><i>280</i>&nbsp;	}</b>
+<i>281</i>&nbsp;
+<i>282</i>&nbsp;	@Override
+<i>283</i>&nbsp;	public String toString() {
+<b class="fc"><i>284</i>&nbsp;        String sb = (&quot;\n------- &quot; + this.player_username + &quot; -------&quot;) +</b>
+<i>285</i>&nbsp;                &quot;\nnumActions: &quot; + this.numActions +
+<i>286</i>&nbsp;                &quot;, coins: &quot; + this.coins +
+<i>287</i>&nbsp;                &quot;, numBuys: &quot; + this.numBuys +
+<i>288</i>&nbsp;                &quot;\nHand: &quot; + this.hand +
+<i>289</i>&nbsp;                &quot;\nDiscard: &quot; + this.discard +
+<i>290</i>&nbsp;                &quot;\nDeck: &quot; + this.deck +
+<i>291</i>&nbsp;                &quot;\nPlayed Cards: &quot; + this.playedCards +
+<i>292</i>&nbsp;                &quot;\n&quot;;
+<i>293</i>&nbsp;
+<b class="fc"><i>294</i>&nbsp;        return sb;</b>
+<i>295</i>&nbsp;	}
+<i>296</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-02-12 18:59</div>
+</div>
+</body>
+</html>
